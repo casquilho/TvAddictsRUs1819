@@ -33,4 +33,11 @@ public class ShowPediaClass implements ShowPedia {
         Show newShow = new ShowClass(showName);
         myShows.put(showName, newShow);
     }
+
+    public void swtichShow(String showName)throws UnknownShowExc {
+        if(!myShows.containsKey(showName))
+            throw new UnknownShowExc();
+
+        currentShow = myShows.get(showName);
+    }
 }

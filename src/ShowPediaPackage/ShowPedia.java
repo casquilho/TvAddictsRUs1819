@@ -8,4 +8,6 @@ public interface ShowPedia {
 
     void addShow(String showName) throws ExistentShowExc;
 
+    void swtichShow(String showName)throws UnknownShowExc;
+
 }

@@ -53,7 +53,7 @@ public class Main {
             switch (comm) {
                 case CURRENTSHOW:           currentShow(showPedia);    break;
                 case ADDSHOW:               addShow(in, showPedia);    break;
-                case SWITCHTOSHOW:          switchToShow(in);          break;
+                case SWITCHTOSHOW:          switchToShow(in, showPedia);          break;
                 case ADDSEASON:             addSeason(in);             break;
                 case ADDEPISODE:            addEpisode(in);            break;
                 case ADDCHARACTER:          addCharacter(in);          break;
@@ -113,7 +113,15 @@ public class Main {
         }
     }
 
-    private static void switchToShow(Scanner in){
+    private static void switchToShow(Scanner in, ShowPedia showPedia){
+        try{
+            String showName = in.nextLine();
+            showPedia.swtichShow(showName);
+            System.out.println(showPedia.getCurrentShow());
+        }
+        catch(UnknownShowExc | NoShowSelectedExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void addSeason(Scanner in){
