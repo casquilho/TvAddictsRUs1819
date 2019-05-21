@@ -19,11 +19,21 @@ public class ShowPediaClass implements ShowPedia {
     }
 
 
-    public String getCurrentShow() throws NoShowSelectedExc{
+    public Show getCurrentShow() throws NoShowSelectedExc{
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
-        return currentShow.getName()+". Seasons: "+ currentShow.getSeasonsNumber()+" Episodes: "+ currentShow.getTotalEpisodesNumber();
+        return currentShow;
+    }
+
+    public String printCurrentShow() throws NoShowSelectedExc{
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        return String.format("%s. Seasons: %s Episodes: %s",
+                              currentShow.getName(),
+                                            currentShow.getSeasonsNumber(),
+                                                        currentShow.getTotalEpisodesNumber());
     }
 
     public void addShow(String showName) throws ExistentShowExc{
@@ -34,10 +44,24 @@ public class ShowPediaClass implements ShowPedia {
         myShows.put(showName, newShow);
     }
 
-    public void swtichShow(String showName)throws UnknownShowExc {
+    public void switchShow(String showName)throws UnknownShowExc {
         if(!myShows.containsKey(showName))
             throw new UnknownShowExc();
 
         currentShow = myShows.get(showName);
+    }
+
+    public void addSeasonToCurrentShow() throws NoShowSelectedExc{
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        currentShow.addSeason();
+    }
+
+    public int addEpisodeToGivenSeason(int seasonNumber, String epiName) throws NoShowSelectedExc, UnknownSeasonExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        return currentShow.addEpisode(seasonNumber, epiName);
     }
 }

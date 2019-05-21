@@ -54,8 +54,8 @@ public class Main {
                 case CURRENTSHOW:           currentShow(showPedia);    break;
                 case ADDSHOW:               addShow(in, showPedia);    break;
                 case SWITCHTOSHOW:          switchToShow(in, showPedia);          break;
-                case ADDSEASON:             addSeason(in);             break;
-                case ADDEPISODE:            addEpisode(in);            break;
+                case ADDSEASON:             addSeason(showPedia);             break;
+                case ADDEPISODE:            addEpisode(in, showPedia);            break;
                 case ADDCHARACTER:          addCharacter(in);          break;
                 case ADDRELATIONSHIP:       addRelationship(in);       break;
                 case ADDROMANCE:            addRomance(in);            break;
@@ -95,7 +95,7 @@ public class Main {
 
     private static void currentShow(ShowPedia showPedia){
         try{
-            System.out.println(showPedia.getCurrentShow());
+            System.out.println(showPedia.printCurrentShow());
         }
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
@@ -116,63 +116,91 @@ public class Main {
     private static void switchToShow(Scanner in, ShowPedia showPedia){
         try{
             String showName = in.nextLine();
-            showPedia.swtichShow(showName);
-            System.out.println(showPedia.getCurrentShow());
+            showPedia.switchShow(showName);
+            System.out.println(showPedia.printCurrentShow());
         }
         catch(UnknownShowExc | NoShowSelectedExc e){
             System.out.println(e.getMessage());
         }
     }
 
-    private static void addSeason(Scanner in){
+    private static void addSeason(ShowPedia showPedia){
+        try{
+            showPedia.addSeasonToCurrentShow();
+            System.out.println(showPedia.printCurrentShow());
+        }
+        catch(NoShowSelectedExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private static void addEpisode(Scanner in){
+    private static void addEpisode(Scanner in, ShowPedia showPedia){
+        try{
+            int seasonNumber = in.nextInt();
+            String epiName = in.nextLine();
+            int epiNumber = showPedia.addEpisodeToGivenSeason(seasonNumber, epiName);
+            System.out.println(String.format("%s S%d, Ep%s: %s.", showPedia.getCurrentShow().getName(), seasonNumber, epiNumber, epiName));
+        }
+        catch(NoShowSelectedExc | UnknownSeasonExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void addCharacter(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void addRelationship(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void addRomance(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void addEvent(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void addQuote(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void seasonsOutline(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void characterResume(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void howAreTheseTwoRelated(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void famousQuotes(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void alsoAppearsOn(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void mostRomantic(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void kingOfCGI(Scanner in){
+        System.out.println("not implemented yet");
     }
 
     private static void help(){
         System.out.println(
-            "currentShow - show the current show\n"
-            +"addShow - add a new show\n"
-            +"switchToShow - change the context to a particular show\n"
-            +"addSeason - add a new season to the current show\n"
-            +"addEpisode - add a new episode to a particular season of the current show\n"
+            "currentShow - show the current show\n"     //done
+            +"addShow - add a new show\n"       //done
+            +"switchToShow - change the context to a particular show\n"     //done
+            +"addSeason - add a new season to the current show\n"       //done
+            +"addEpisode - add a new episode to a particular season of the current show\n" //done
             +"addCharacter - add a new character to a show\n"
             +"addRelationship - add a family relationship between characters\n"
             +"addRomance - add a romantic relationship between characters\n"
