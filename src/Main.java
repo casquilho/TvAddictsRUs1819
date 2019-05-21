@@ -1,8 +1,12 @@
 /**
  * @author Joao Casquilho 54440
  */
-
 import java.util.*;
+
+import MyExceptionsPackage.*;
+import ShowPediaPackage.*;
+
+
 
 
 public class Main {
@@ -47,8 +51,8 @@ public class Main {
         while (!comm.equals(Command.EXIT)) {
             System.out.print("> ");
             switch (comm) {
-                case CURRENTSHOW:           currentShow(in);           break;
-                case ADDSHOW:               addShow(in);               break;
+                case CURRENTSHOW:           currentShow(showPedia);    break;
+                case ADDSHOW:               addShow(in, showPedia);    break;
                 case SWITCHTOSHOW:          switchToShow(in);          break;
                 case ADDSEASON:             addSeason(in);             break;
                 case ADDEPISODE:            addEpisode(in);            break;
@@ -89,11 +93,24 @@ public class Main {
         }
     }
 
-    private static void currentShow(Scanner in){
-
+    private static void currentShow(ShowPedia showPedia){
+        try{
+            System.out.println(showPedia.getCurrentShow());
+        }
+        catch (NoShowSelectedExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private static void addShow(Scanner in){
+    private static void addShow(Scanner in, ShowPedia showPedia){
+        try{
+            String showName = in.nextLine();
+            showPedia.addShow(showName);
+            System.out.println(showName + " created.");
+        }
+        catch (ExistentShowExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void switchToShow(Scanner in){
