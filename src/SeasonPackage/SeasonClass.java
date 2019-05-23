@@ -26,6 +26,10 @@ public class SeasonClass implements Season {
         return episodes.get(index);
     }
 
+    public int getEpisodesNumber(){
+        return episodes.size();
+    }
+
     public boolean participatesIn(String charName){
         return participants.containsKey(charName);
     }

@@ -88,6 +88,12 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addCGICharacter(charName, company, cost);
     }
 
+    public void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        currentShow.addQuote(season, episode, charName, quoteText, companiesCGI);
+    }
 
 
 

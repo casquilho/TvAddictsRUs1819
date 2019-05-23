@@ -11,6 +11,8 @@ public interface Season  {
 
     Episode getEpisode(int index);
 
+    int getEpisodesNumber();
+
     boolean participatesIn(String charName);
 
     boolean addParticipant(Character character);

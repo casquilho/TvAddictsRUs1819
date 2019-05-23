@@ -1,6 +1,9 @@
 package ShowPackage;
 
+import CGICompaniesPackage.CGICompany;
 import MyExceptionsPackage.*;
+
+import java.util.List;
 
 public interface Show {
 
@@ -18,5 +21,5 @@ public interface Show {
 
     void addCGICharacter(String charName, String company, int cost) throws DuplicateCharacterExc;
 
-    void addQuote(int season, int episode, String charName, String quoteText) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
+    void addQuote(int season, int episode, String charName, String quoteText, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 }

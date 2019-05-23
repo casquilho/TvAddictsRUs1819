@@ -10,4 +10,7 @@ public interface CGICompany {
 
     String getName();
 
+    void addProfit(int value);
+
+
 }

@@ -61,7 +61,7 @@ public class Main {
                 case ADDRELATIONSHIP:       addRelationship(in);       break;
                 case ADDROMANCE:            addRomance(in);            break;
                 case ADDEVENT:              addEvent(in);              break;
-                case ADDQUOTE:              addQuote(in);              break;
+                case ADDQUOTE:              addQuote(in, showPedia);              break;
                 case SEASONSOUTLINE:        seasonsOutline(in);        break;
                 case CHARACTERRESUME:       characterResume(in);       break;
                 case HOWARETHESETWORELATED: howAreTheseTwoRelated(in); break;
@@ -186,8 +186,19 @@ public class Main {
         System.out.println("not implemented yet");
     }
 
-    private static void addQuote(Scanner in){
-        System.out.println("not implemented yet");
+    private static void addQuote(Scanner in, ShowPedia showPedia){//TESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTAR
+        try{
+            int season = in.nextInt();
+            int episode = in.nextInt();in.nextLine();
+            String charName = in.nextLine();
+            String quoteText = in.nextLine();
+            showPedia.addQuote(season, episode, charName, quoteText);
+        }
+        catch (NoShowSelectedExc | NonExistentEpisodeExc| NonExistentSeasonExc| UnknownCharacterExc e){  //tratar da exceçoes individualmente
+
+        }
+
+
     }
 
     private static void seasonsOutline(Scanner in){

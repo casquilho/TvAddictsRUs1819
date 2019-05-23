@@ -41,7 +41,7 @@ public class CGICompanyClass implements CGICompany {
         this.numberChars++;
     }
 
-    private void addProfit(int value){
+    public void addProfit(int value){
         this.totalProfit += value;
     }
 }
