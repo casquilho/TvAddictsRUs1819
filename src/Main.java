@@ -3,6 +3,7 @@
  */
 import java.util.*;
 
+import ActorCharacterPackage.Character;
 import MyExceptionsPackage.*;
 import ShowPediaPackage.*;
 
@@ -56,7 +57,7 @@ public class Main {
                 case SWITCHTOSHOW:          switchToShow(in, showPedia);          break;
                 case ADDSEASON:             addSeason(showPedia);             break;
                 case ADDEPISODE:            addEpisode(in, showPedia);            break;
-                case ADDCHARACTER:          addCharacter(in);          break;
+                case ADDCHARACTER:          addCharacter(in, showPedia);          break;
                 case ADDRELATIONSHIP:       addRelationship(in);       break;
                 case ADDROMANCE:            addRomance(in);            break;
                 case ADDEVENT:              addEvent(in);              break;
@@ -146,8 +147,31 @@ public class Main {
         }
     }
 
-    private static void addCharacter(Scanner in){
-        System.out.println("not implemented yet");
+    private static void addCharacter(Scanner in, ShowPedia showPedia){
+        try{
+            String type = in.nextLine();
+
+            if(type.equals(Character.REAL)){
+                String charName = in.nextLine();
+                String actorName = in.nextLine();
+                int cost = in.nextInt();in.nextLine();
+
+                showPedia.addRealCharacter(charName, actorName, cost);
+            }
+            else
+                if(type.equals(Character.VIRTUAL)){
+                    String charName = in.nextLine();
+                    String company = in.nextLine();
+                    int cost = in.nextInt();in.nextLine();
+
+                    showPedia.addCGICharacter(charName, company, cost);
+                }
+                else
+                    System.out.println("Unknown character category!");
+        }
+        catch (NoShowSelectedExc | DuplicateCharacterExc e ){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void addRelationship(Scanner in){

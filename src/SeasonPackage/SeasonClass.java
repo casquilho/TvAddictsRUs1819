@@ -20,6 +20,10 @@ public class SeasonClass implements Season {
         return this.episodesSeasonNumber;
     }
 
+    public int numberOfEpisodes(){
+        return episodesSeasonNumber;
+    }
+
     private void incrementEpisodesNumber(){
         this.episodesSeasonNumber++;
     }

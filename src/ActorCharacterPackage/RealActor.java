@@ -6,9 +6,6 @@ import java.util.*;
 public interface RealActor {
 
 
-
-    void addShowAppearence(String showName);
-
     String getCharName();
 
     String getActorName();
