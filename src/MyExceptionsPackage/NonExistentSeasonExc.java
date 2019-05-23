@@ -11,8 +11,4 @@ public class NonExistentSeasonExc extends Exception {
 
     }
 
-    @Override
-    public static String getMessage() {
-        return message;
-    }
 }

@@ -3,12 +3,12 @@ package ActorCharacterPackage;
 import java.text.Collator;
 import java.util.*;
 
-public class ActorClass {
+public class ActorClass implements Actor{
 
     private String name;
     private Set<String> starsOn;
 
-    public ActorClass(String name, Map<String, String> starsOn) {
+    public ActorClass(String name) {
         this.name = name;
         this.starsOn = new TreeSet<String>(Collator.getInstance());
     }

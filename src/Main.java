@@ -12,7 +12,7 @@ import ShowPediaPackage.*;
 
 public class Main {
 
-    //Enumerators that define the user commands
+    //Enumerator that defines the user commands
     private enum Command {
 
     CURRENTSHOW,
@@ -186,7 +186,8 @@ public class Main {
         System.out.println("not implemented yet");
     }
 
-    private static void addQuote(Scanner in, ShowPedia showPedia){//TESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTARTESTAR
+    private static void addQuote(Scanner in, ShowPedia showPedia){//testar
+
         try{
             int season = in.nextInt();
             int episode = in.nextInt();in.nextLine();

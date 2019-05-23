@@ -11,9 +11,9 @@ public class CGICompanyClass implements CGICompany {
     private int totalProfit;
     private int numberChars;
 
-    public CGICompanyClass(String name, int cost){
+    public CGICompanyClass(String name){
         this.name = name;
-        this.totalProfit = cost;
+        this.totalProfit = 0;
         this.numberChars = 1;
     }
 

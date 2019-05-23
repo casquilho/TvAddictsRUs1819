@@ -4,12 +4,11 @@
 
 package ShowPediaPackage;
 
-import ActorCharacterPackage.Character;
+import ActorCharacterPackage.Actor;
+import ActorCharacterPackage.ActorClass;
 import CGICompaniesPackage.*;
 import MyExceptionsPackage.*;
 import ShowPackage.*;
-import javafx.collections.transformation.SortedList;
-
 import java.util.*;
 
 public class ShowPediaClass implements ShowPedia {
@@ -18,12 +17,14 @@ public class ShowPediaClass implements ShowPedia {
     private List<CGICompany> companiesCGI;
     private Map<String,LinkedList<String>> actorAppearences;
     private Show currentShow;
+    private Map<String, Actor> actors;
 
     public ShowPediaClass(){
         this.myShows = new HashMap<String, Show>();
         this.companiesCGI = new LinkedList<CGICompany>();
         this.actorAppearences = new HashMap<String,LinkedList<String>>();
         this.currentShow = null;
+        this.actors = new HashMap<String, Actor>();
     }
 
 
@@ -50,6 +51,7 @@ public class ShowPediaClass implements ShowPedia {
 
         Show newShow = new ShowClass(showName);
         myShows.put(showName, newShow);
+        currentShow = myShows.get(showName);
     }
 
     public void switchShow(String showName)throws UnknownShowExc {
@@ -77,7 +79,13 @@ public class ShowPediaClass implements ShowPedia {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
+        //add the character to the current show
         currentShow.addRealCharacter(charName, actorName, cost);
+
+        //create new actor, give it the show's name and insert into map
+        Actor aux = new ActorClass(actorName);
+        aux.addShowName(currentShow.getName());
+        actors.put(actorName, aux);
 
     }
 
@@ -85,7 +93,18 @@ public class ShowPediaClass implements ShowPedia {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
+        //add the character to the current show
         currentShow.addCGICharacter(charName, company, cost);
+
+        //if the company already exists, do nothing. if it doesn't, create and insert it
+        Iterator it = companiesCGI.iterator();
+        CGICompany aux;
+        while (it.hasNext()){
+            aux = (CGICompany) it.next();
+            if(aux.getName().equals(company))
+                return;
+        }
+        companiesCGI.add(new CGICompanyClass(company));
     }
 
     public void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc {

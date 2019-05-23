@@ -83,7 +83,7 @@ public class ShowClass implements Show {
     public void addQuote(int season, int episode, String charName, String quoteText, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {
         if( season < 1 || season > seasonsNumber)
             throw new NonExistentSeasonExc(showName, season);
-        if( episode < 1 || episode > seasons.get(season).getEpisodesNumber() )
+        if( episode < 1 || episode > seasons.get(season-1).getEpisodesNumber() )
             throw new NonExistentEpisodeExc(showName, season, episode);
         if(!characters.containsKey(charName))
             throw new UnknownCharacterExc(charName);
@@ -96,8 +96,8 @@ public class ShowClass implements Show {
 
     private void processQuote(Quote quote, Character character, int thisSeason, int thisEpisode, List<CGICompany> companies){
 
-        Season season = seasons.get(thisSeason);
-        Episode episode = season.getEpisode(thisEpisode);
+        Season season = seasons.get(thisSeason - 1);
+        Episode episode = season.getEpisode(thisEpisode -1);
 
         if(season.addParticipant(character))                //if character is not on the season, add him and if it is a virtual character, add the cost to the company's profits
             if(character instanceof VirtualCharacter) {
