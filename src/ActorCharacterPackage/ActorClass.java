@@ -1,24 +1,29 @@
 package ActorCharacterPackage;
 
-import ShowPackage.*;
-
+import java.text.Collator;
 import java.util.*;
 
 public class ActorClass {
 
     private String name;
-    private Map<String, String> starsOn;
+    private Set<String> starsOn;
 
     public ActorClass(String name, Map<String, String> starsOn) {
         this.name = name;
-        this.starsOn = starsOn;
+        this.starsOn = new TreeSet<String>(Collator.getInstance());
     }
 
     public String getName() {
         return name;
     }
 
-    public Map<String, String> getStarsOn() {
-        return starsOn;
+    public Iterator<String> StarsOn() {
+        return starsOn.iterator();
     }
+
+    public void addShowName(String showName){
+        this.starsOn.add(showName);
+    }
+
+
 }

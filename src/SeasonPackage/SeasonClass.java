@@ -1,30 +1,41 @@
 package SeasonPackage;
 
+import ActorCharacterPackage.Character;
 import EpisodePackage.*;
 import java.util.*;
 
 
 public class SeasonClass implements Season {
 
+    int seasonNumber;
     private List<Episode> episodes;
-    private int episodesSeasonNumber;
+    private Map<String, Character> participants;
 
-    public SeasonClass(){
+    public SeasonClass(int seasonNumber){
+        this.seasonNumber = seasonNumber;
         this.episodes = new ArrayList<Episode>();
-        this.episodesSeasonNumber = 0;
+        this.participants = new HashMap<String, Character>();
     }
 
     public int addEpisode(String epiName){
-        episodes.add(new EpisodeClass(epiName));
-        incrementEpisodesNumber();
-        return this.episodesSeasonNumber;
+        episodes.add(new EpisodeClass(epiName, seasonNumber, episodes.size()));
+        return episodes.size();
     }
 
-    public int numberOfEpisodes(){
-        return episodesSeasonNumber;
+    public Episode getEpisode(int index){
+        return episodes.get(index);
     }
 
-    private void incrementEpisodesNumber(){
-        this.episodesSeasonNumber++;
+    public boolean participatesIn(String charName){
+        return participants.containsKey(charName);
     }
+
+    public boolean addParticipant(Character character){
+        if(participants.containsKey(character.getCharName()))
+            return false;
+
+        participants.put(character.getCharName(), character);
+        return true;
+    }
+
 }

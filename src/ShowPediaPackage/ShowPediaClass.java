@@ -78,7 +78,7 @@ public class ShowPediaClass implements ShowPedia {
             throw new NoShowSelectedExc();
 
         currentShow.addRealCharacter(charName, actorName, cost);
-        assotiateAppearance(actorName);
+
     }
 
     public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc {
@@ -86,36 +86,12 @@ public class ShowPediaClass implements ShowPedia {
             throw new NoShowSelectedExc();
 
         currentShow.addCGICharacter(charName, company, cost);
-        processCompanyInfo(company, cost);
     }
 
 
 
-    //Associates the show with the character in actorAppearences
-    private void assotiateAppearance(String actorName){
 
-        if(actorAppearences.containsKey(actorName))
-            actorAppearences.get(actorName).add(currentShow.getName());
-        else{
 
-            actorAppearences.put(actorName, new LinkedList<String>());
-            actorAppearences.get(actorName).add(currentShow.getName());
-        }
-    }
-
-    //if the company already exists, add a character to it
-    // (i.e increments the number of Character made by the company
-    // and adds the cost/season of the character to it's profit
-    //if it doesn't exist, creates it
-    private void processCompanyInfo(String company, int cost){
-
-        for (CGICompany aux : companiesCGI) {
-            if (aux.getName().equals(company)) {
-                aux.addCharacter(cost);return;
-            }
-        }
-        companiesCGI.add(new CGICompanyClass(company, cost));
-    }
 
 
 }

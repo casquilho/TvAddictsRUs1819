@@ -1,5 +1,7 @@
 package ActorCharacterPackage;
 
+import ShowPackage.Show;
+
 public class RealCharacterClass extends CharacterClass implements RealCharacter {
 
     private String actorName;
@@ -7,8 +9,8 @@ public class RealCharacterClass extends CharacterClass implements RealCharacter 
 
 
 
-    public RealCharacterClass(String charName, String actorName, int cost){
-        super(charName, cost);
+    public RealCharacterClass(String charName, String actorName, Show show, int cost){
+        super(charName, show, cost);
         this.actorName = actorName;
     }
 
@@ -18,9 +20,6 @@ public class RealCharacterClass extends CharacterClass implements RealCharacter 
         return super.charName;
     }
 
-    public String getActorName() {
-        return actorName;
-    }
 
 
 }

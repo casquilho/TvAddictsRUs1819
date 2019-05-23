@@ -5,6 +5,7 @@ import ActorCharacterPackage.VirtualCharacter;
 import ActorCharacterPackage.Character;
 import ActorCharacterPackage.RealCharacter;
 import ActorCharacterPackage.*;
+import EpisodePackage.Episode;
 import MyExceptionsPackage.*;
 import QuotesPackage.*;
 import SeasonPackage.*;
@@ -67,8 +68,7 @@ public class ShowClass implements Show {
         if(characters.containsKey(charName))
             throw new DuplicateCharacterExc();
 
-        RealCharacter actorAux = new RealCharacterClass(charName, actorName, cost);
-        characters.put(charName, (Character) actorAux);
+        characters.put(charName, new RealCharacterClass(charName, actorName, this,cost));
 
     }
 
@@ -76,8 +76,7 @@ public class ShowClass implements Show {
         if (characters.containsKey(charName))
             throw new DuplicateCharacterExc();
 
-        VirtualCharacter actorAux = new VirtualActorClass(charName, company, cost);
-        characters.put(charName, (Character) actorAux);
+        characters.put(charName, new VirtualCharacterClass(charName,company, this, cost));
     }
 
     public void addQuote(int season, int episode, String charName, String quoteText) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {
@@ -90,11 +89,21 @@ public class ShowClass implements Show {
 
         Quote quoteAux = new QuoteClass(quoteText, charName, season, episode);
 
-        processQuote(quoteAux);
+        processQuote(quoteAux, characters.get(charName), season, episode);
 
     }
 
-    private void processQuote(Quote quote){}
+    private void processQuote(Quote quote, Character character, int thisSeason, int thisEpisode){
+
+        Season season = seasons.get(thisSeason);
+        Episode episode = season.//TODO
+
+
+        if(character instanceof VirtualCharacter) {
+            ((VirtualCharacter) character).getCompanyCGI();
+        }
+
+    }
 
     private void incrementEpisodesNumber(){
         this.totalEpisodesNumber++;

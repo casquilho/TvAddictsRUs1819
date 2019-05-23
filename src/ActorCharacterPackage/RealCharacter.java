@@ -8,7 +8,5 @@ public interface RealCharacter {
 
     String getCharName();
 
-    String getActorName();
-
 
 }

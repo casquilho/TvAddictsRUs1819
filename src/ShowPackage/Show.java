@@ -17,4 +17,6 @@ public interface Show {
     void addRealCharacter(String charName, String actorName, int cost) throws DuplicateCharacterExc;
 
     void addCGICharacter(String charName, String company, int cost) throws DuplicateCharacterExc;
+
+    void addQuote(int season, int episode, String charName, String quoteText) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 }
