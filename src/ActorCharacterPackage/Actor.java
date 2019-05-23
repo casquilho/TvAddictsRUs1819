@@ -1,4 +1,4 @@
 package ActorCharacterPackage;
 
-public interface CGICharacter {
+public interface Actor {
 }

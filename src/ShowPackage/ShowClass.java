@@ -1,9 +1,9 @@
 package ShowPackage;
 
 
-import ActorCharacterPackage.CGICharacter;
+import ActorCharacterPackage.VirtualCharacter;
 import ActorCharacterPackage.Character;
-import ActorCharacterPackage.RealActor;
+import ActorCharacterPackage.RealCharacter;
 import ActorCharacterPackage.*;
 import MyExceptionsPackage.*;
 import QuotesPackage.*;
@@ -67,7 +67,7 @@ public class ShowClass implements Show {
         if(characters.containsKey(charName))
             throw new DuplicateCharacterExc();
 
-        RealActor actorAux = new RealActorClass(charName, actorName, cost);
+        RealCharacter actorAux = new RealCharacterClass(charName, actorName, cost);
         characters.put(charName, (Character) actorAux);
 
     }
@@ -76,7 +76,7 @@ public class ShowClass implements Show {
         if (characters.containsKey(charName))
             throw new DuplicateCharacterExc();
 
-        CGICharacter actorAux = new CGIActorClass(charName, company, cost);
+        VirtualCharacter actorAux = new VirtualActorClass(charName, company, cost);
         characters.put(charName, (Character) actorAux);
     }
 

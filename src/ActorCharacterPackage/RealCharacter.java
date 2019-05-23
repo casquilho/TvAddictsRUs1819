@@ -3,7 +3,7 @@ package ActorCharacterPackage;
 import java.text.Collator;
 import java.util.*;
 
-public interface RealActor {
+public interface RealCharacter {
 
 
     String getCharName();

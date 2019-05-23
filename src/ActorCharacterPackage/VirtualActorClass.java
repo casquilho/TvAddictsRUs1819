@@ -1,10 +1,10 @@
 package ActorCharacterPackage;
 
-public class CGIActorClass extends CharacterClass implements CGICharacter {
+public class VirtualActorClass extends CharacterClass implements VirtualCharacter {
 
     private String companyCGI;
 
-    public CGIActorClass(String charName, String company, int cost){
+    public VirtualActorClass(String charName, String company, int cost){
         super(charName, cost);
         this.companyCGI = company;
     }

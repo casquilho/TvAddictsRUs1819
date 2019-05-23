@@ -1,18 +1,13 @@
 package ActorCharacterPackage;
 
-import java.text.Collator;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-public class RealActorClass extends CharacterClass implements RealActor {
+public class RealCharacterClass extends CharacterClass implements RealCharacter {
 
     private String actorName;
 
 
 
 
-    public RealActorClass(String charName, String actorName, int cost){
+    public RealCharacterClass(String charName, String actorName, int cost){
         super(charName, cost);
         this.actorName = actorName;
     }
