@@ -10,5 +10,5 @@ public interface RealActor {
 
     String getActorName();
 
-    int getCostPerEpisode();
+
 }

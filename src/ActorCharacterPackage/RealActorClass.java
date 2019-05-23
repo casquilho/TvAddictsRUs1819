@@ -8,13 +8,13 @@ import java.util.TreeSet;
 public class RealActorClass extends CharacterClass implements RealActor {
 
     private String actorName;
-    private int costPerEpisode;
+
+
 
 
     public RealActorClass(String charName, String actorName, int cost){
-        super(charName);
+        super(charName, cost);
         this.actorName = actorName;
-        this.costPerEpisode = cost;
     }
 
 
@@ -25,10 +25,6 @@ public class RealActorClass extends CharacterClass implements RealActor {
 
     public String getActorName() {
         return actorName;
-    }
-
-    public int getCostPerEpisode() {
-        return costPerEpisode;
     }
 
 

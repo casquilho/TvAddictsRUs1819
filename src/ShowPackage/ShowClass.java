@@ -1,11 +1,12 @@
 package ShowPackage;
 
 
-import ActorCharacterPackage.CGIActor;
+import ActorCharacterPackage.CGICharacter;
 import ActorCharacterPackage.Character;
 import ActorCharacterPackage.RealActor;
 import ActorCharacterPackage.*;
 import MyExceptionsPackage.*;
+import QuotesPackage.*;
 import SeasonPackage.*;
 
 
@@ -18,7 +19,7 @@ public class ShowClass implements Show {
     private int totalEpisodesNumber;
     private List<Season>  seasons;
     private Map<String, Character> characters;
-    private Map<String, ArrayList<String>> quotes;
+    private Map<String, Set<Quote>> quotes;
 
     public ShowClass(String ShowName){
         this.showName = ShowName;
@@ -26,7 +27,7 @@ public class ShowClass implements Show {
         this.totalEpisodesNumber = 0;
         this.seasons = new ArrayList<Season>();
         this.characters = new HashMap<String, Character>();
-        this.quotes = new HashMap<String, ArrayList<String>>();
+        this.quotes = new HashMap<String, Set<Quote>>();
 
 
     }
@@ -75,21 +76,25 @@ public class ShowClass implements Show {
         if (characters.containsKey(charName))
             throw new DuplicateCharacterExc();
 
-        CGIActor actorAux = new CGIActorClass(charName, company, cost);
+        CGICharacter actorAux = new CGIActorClass(charName, company, cost);
         characters.put(charName, (Character) actorAux);
     }
 
-    public void addQuote(int season, int episode, String charName, String Quote) throws NonExistentSeasonExc, NonExistentEpisodeExc {
+    public void addQuote(int season, int episode, String charName, String quoteText) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {
         if(season > seasonsNumber)
             throw new NonExistentSeasonExc(showName, season);
         if(episode > seasons.get(season).numberOfEpisodes())
             throw new NonExistentEpisodeExc(showName, season, episode);
-
         if(!characters.containsKey(charName))
-            throw new UnknownCharacter//TODO
+            throw new UnknownCharacterExc(charName);
+
+        Quote quoteAux = new QuoteClass(quoteText, charName, season, episode);
+
+        processQuote(quoteAux);
 
     }
 
+    private void processQuote(Quote quote){}
 
     private void incrementEpisodesNumber(){
         this.totalEpisodesNumber++;

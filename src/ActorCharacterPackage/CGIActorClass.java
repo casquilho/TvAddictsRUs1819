@@ -1,14 +1,12 @@
 package ActorCharacterPackage;
 
-public class CGIActorClass extends CharacterClass implements CGIActor {
+public class CGIActorClass extends CharacterClass implements CGICharacter {
 
     private String companyCGI;
-    private int costPerSeason;
 
     public CGIActorClass(String charName, String company, int cost){
-        super(charName);
+        super(charName, cost);
         this.companyCGI = company;
-        this.costPerSeason = cost;
     }
 
     public String getCharName(){
@@ -19,7 +17,4 @@ public class CGIActorClass extends CharacterClass implements CGIActor {
         return companyCGI;
     }
 
-    public int getCostPerSeason() {
-        return costPerSeason;
-    }
 }
