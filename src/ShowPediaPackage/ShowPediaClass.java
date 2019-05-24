@@ -146,12 +146,16 @@ public class ShowPediaClass implements ShowPedia {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
+
+
         return actors.get(currentShow.getActorNameFromCharName(charName)).StarsOn();
     }
 
     public void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
+
+        currentShow.addEvent(episode, season, characters, event);
     }
 
 

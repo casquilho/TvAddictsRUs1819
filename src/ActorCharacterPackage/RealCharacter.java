@@ -12,4 +12,6 @@ public interface RealCharacter {
 
     Actor  getActor();
 
+    void addProfitFromAppearance();
+
 }

@@ -7,6 +7,8 @@ import ActorCharacterPackage.RealCharacter;
 import ActorCharacterPackage.*;
 import CGICompaniesPackage.CGICompany;
 import EpisodePackage.Episode;
+import EventPackage.Event;
+import EventPackage.EventClass;
 import MyExceptionsPackage.*;
 import QuotesPackage.*;
 import SeasonPackage.*;
@@ -23,6 +25,7 @@ public class ShowClass implements Show {
     private List<Season>  seasons;
     private Map<String, Character> characters;
     private Map<String, List<String>> quotes;
+    private Map<String, List<Event>> events;
 
     public ShowClass(String ShowName){
         this.showName = ShowName;
@@ -31,6 +34,7 @@ public class ShowClass implements Show {
         this.seasons = new ArrayList<Season>();
         this.characters = new HashMap<String, Character>();
         this.quotes = new HashMap<String, List<String>>();
+        this.events = new HashMap<String, List<Event>>();
 
 
     }
@@ -83,9 +87,9 @@ public class ShowClass implements Show {
 
     public void addQuote(int season, int episode, String charName, String quoteText, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {
         if( season < 1 || season > seasonsNumber)
-            throw new NonExistentSeasonExc(showName, season);
+            throw new NonExistentSeasonExc();
         if( episode < 1 || episode > seasons.get(season-1).getEpisodesNumber() )
-            throw new NonExistentEpisodeExc(showName, season, episode);
+            throw new NonExistentEpisodeExc();
         if(!characters.containsKey(charName))
             throw new UnknownCharacterExc();
 
@@ -100,20 +104,25 @@ public class ShowClass implements Show {
         Season season = seasons.get(thisSeason - 1);
         Episode episode = season.getEpisode(thisEpisode -1);
 
-        if(season.addParticipant(character))                //if character is not on the season, add him and if it is a virtual character, add the cost to the company's profits
-            if(character instanceof VirtualCharacter) {
-                String companyName = ((VirtualCharacter) character).getCompanyCGI();
-                for (CGICompany company : companies) {
-                    if (company.getName().equals(companyName))
-                        company.addProfit(character.getCost());
+        //if character is not on the season, add him.
+        // if it's a virtual character, appearing in the season for the first time, add its value to the company's profits
+        if(season.addParticipant(character) && character instanceof VirtualCharacter){
+            String companyName = ((VirtualCharacter) character).getCompanyCGI();
+            for (CGICompany company : companies) {
+                if (company.getName().equals(companyName))
+                    company.addProfit(character.getCost());
                 }
             }
+        //if character is not on the episode, add him.
+        // if it's a real character appearing in the episode for the first time, add its value to its profits
+        if(episode.addParticipant(character) && character instanceof RealCharacter)
+            ((RealCharacter) character).addProfitFromAppearance();
 
-        episode.addParticipant(character); //if character is not on the episode, add him
 
-
+        //if this particular quote already exists, add the character to the list of characters who said it
         if(quotes.containsKey(quote.getQuote()))
             quotes.get(quote.getQuote()).add(character.getCharName());
+        //otherwise, create a new entry for it
         else {
             List aux = new LinkedList<String>();
             aux.add(character.getCharName());
@@ -135,6 +144,43 @@ public class ShowClass implements Show {
 
         RealCharacter aux = (RealCharacter) characters.get(charName);
         return aux.getActorName();
+    }
+
+    public void addEvent(int episode, int season, List<String> chars, String event) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc{
+        if( season < 1 || season > seasonsNumber)
+            throw new NonExistentSeasonExc();
+        if( episode < 1 || episode > seasons.get(season-1).getEpisodesNumber() )
+            throw new NonExistentEpisodeExc();
+
+        List<Character> charsObj = new LinkedList<Character>();
+        Character aux;
+
+        //check if the character names passed correspond to exiting characters and if so, get the characters and insert then into a new list
+        for (String charName: chars) {
+            if(!characters.containsKey(charName))
+                throw new UnknownCharacterExc();
+            aux = characters.get(charName);
+            if(!charsObj.contains(aux))
+                charsObj.add(aux);
+        }
+
+        Event newEvent = new EventClass(episode, season, event, charsObj);
+
+        String key = season +""+ episode;
+
+        if(events.containsKey(key))
+            events.get(key).add(newEvent);
+        else{
+            List<Event> auxList = new LinkedList<Event>();
+            auxList.add(newEvent);
+            events.put(key, auxList);
+        }
+
+        for (Character auxChar: charsObj ) {
+            auxChar.addEvent(key, newEvent);//TODO STOPED HERE
+
+        }
+
     }
 
     private void incrementEpisodesNumber(){

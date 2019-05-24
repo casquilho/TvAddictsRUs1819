@@ -1,5 +1,6 @@
 package ActorCharacterPackage;
 
+import EventPackage.Event;
 import ShowPackage.Show;
 
 public interface Character {
@@ -12,4 +13,5 @@ public interface Character {
 
     int getCost();
 
+    void addEvent(String key, Event newEvent);
 }

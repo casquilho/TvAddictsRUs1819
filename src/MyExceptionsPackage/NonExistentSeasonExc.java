@@ -5,9 +5,8 @@ public class NonExistentSeasonExc extends Exception {
     private static String message;
 
 
-    public NonExistentSeasonExc(String showName, int season) {
+    public NonExistentSeasonExc() {
         super();
-        message = String.format("%s does not have season %d!", showName, season);
 
     }
 
