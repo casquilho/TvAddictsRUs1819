@@ -65,12 +65,12 @@ public class ShowClass implements Show {
         }
     }
 
-    public void addRealCharacter(String charName, String actorName, int cost) throws DuplicateCharacterExc {
+    public void addRealCharacter(String charName, Actor actor, int cost) throws DuplicateCharacterExc {
 
         if(characters.containsKey(charName))
             throw new DuplicateCharacterExc();
 
-        characters.put(charName, new RealCharacterClass(charName, actorName, this,cost));
+        characters.put(charName, new RealCharacterClass(charName, actor, this,cost));
 
     }
 
@@ -87,7 +87,7 @@ public class ShowClass implements Show {
         if( episode < 1 || episode > seasons.get(season-1).getEpisodesNumber() )
             throw new NonExistentEpisodeExc(showName, season, episode);
         if(!characters.containsKey(charName))
-            throw new UnknownCharacterExc(charName);
+            throw new UnknownCharacterExc();
 
         Quote quoteAux = new QuoteClass(quoteText, charName, season, episode);
 
@@ -127,6 +127,14 @@ public class ShowClass implements Show {
             throw new UnknownQuoteExc();
         quotes.get(quoteText).sort(Collator.getInstance());
         return quotes.get(quoteText).iterator();
+    }
+
+    public String getActorNameFromCharName(String charName) throws UnknownCharacterExc{
+        if(!characters.containsKey(charName))
+            throw new UnknownCharacterExc();
+
+        RealCharacter aux = (RealCharacter) characters.get(charName);
+        return aux.getActorName();
     }
 
     private void incrementEpisodesNumber(){

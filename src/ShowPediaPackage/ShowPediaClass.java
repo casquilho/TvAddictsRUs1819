@@ -15,7 +15,6 @@ public class ShowPediaClass implements ShowPedia {
 
     private Map<String, Show> myShows;
     private List<CGICompany> companiesCGI;
-    private Map<String,LinkedList<String>> actorAppearences;
     private Show currentShow;
     private Map<String, Actor> actors;
     private int realCharactersNumber;
@@ -24,7 +23,6 @@ public class ShowPediaClass implements ShowPedia {
     public ShowPediaClass(){
         this.myShows = new HashMap<String, Show>();
         this.companiesCGI = new LinkedList<CGICompany>();
-        this.actorAppearences = new HashMap<String,LinkedList<String>>();
         this.currentShow = null;
         this.actors = new HashMap<String, Actor>();
         this.virtualCharactersNumber = 0;
@@ -83,13 +81,21 @@ public class ShowPediaClass implements ShowPedia {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
-        //add the character to the current show
-        currentShow.addRealCharacter(charName, actorName, cost);
-
+        Actor aux;
+        //if the actor already exists, pass it the show's name
+        if(actors.containsKey(actorName)) {
+            aux = actors.get(actorName);
+            aux.addShowName(currentShow.getName());
+        }
         //create new actor, give it the show's name and insert into map
-        Actor aux = new ActorClass(actorName);
-        aux.addShowName(currentShow.getName());
-        actors.put(actorName, aux);
+        else{
+            aux = new ActorClass(actorName);
+            aux.addShowName(currentShow.getName());
+            actors.put(actorName, aux);
+        }
+
+        //add the character to the current show
+        currentShow.addRealCharacter(charName, aux, cost);
 
         realCharactersNumber++;
     }
@@ -128,14 +134,25 @@ public class ShowPediaClass implements ShowPedia {
         return currentShow.getFamousQuotes(quote);
     }
 
-    public String kingOfCgi()throws NoVirtualCharactersExc{
+    public CGICompany kingOfCgi()throws NoVirtualCharactersExc{
         if(virtualCharactersNumber == 0)
             throw new NoVirtualCharactersExc();
         companiesCGI.sort(new CompanyComparator());
-        CGICompany aux =companiesCGI.get(0);
-        return String.format("%s. %d", aux.getName(), aux.getProfit());
+        return companiesCGI.get(0);
     }
 
+
+    public Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc{
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        return actors.get(currentShow.getActorNameFromCharName(charName)).StarsOn();
+    }
+
+    public void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+    }
 
 
 

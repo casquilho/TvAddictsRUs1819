@@ -4,6 +4,7 @@
 import java.util.*;
 
 import ActorCharacterPackage.Character;
+import CGICompaniesPackage.CGICompany;
 import MyExceptionsPackage.*;
 import ShowPediaPackage.*;
 import java.lang.StringBuilder;
@@ -15,33 +16,35 @@ public class Main {
 
     //Enumerator that defines the user commands
     private enum Command {
-
-    CURRENTSHOW,
-    ADDSHOW,
-    SWITCHTOSHOW,
-    ADDSEASON,
-    ADDEPISODE,
-    ADDCHARACTER,
-    ADDRELATIONSHIP,
-    ADDROMANCE,
-    ADDEVENT,
-    ADDQUOTE,
-    SEASONSOUTLINE,
-    CHARACTERRESUME,
-    HOWARETHESETWORELATED,
-    FAMOUSQUOTES,
-    ALSOAPPEARSON,
-    MOSTROMANTIC,
-    KINGOFCGI,
-    HELP,
-    UNKNOWN,
-    EXIT
-}
+        CURRENTSHOW,
+        ADDSHOW,
+        SWITCHTOSHOW,
+        ADDSEASON,
+        ADDEPISODE,
+        ADDCHARACTER,
+        ADDRELATIONSHIP,
+        ADDROMANCE,
+        ADDEVENT,
+        ADDQUOTE,
+        SEASONSOUTLINE,
+        CHARACTERRESUME,
+        HOWARETHESETWORELATED,
+        FAMOUSQUOTES,
+        ALSOAPPEARSON,
+        MOSTROMANTIC,
+        KINGOFCGI,
+        HELP,
+        UNKNOWN,
+        EXIT
+    }
 
     //Constantes que definem as mensagens para o utilizador
     public static final String HEADER             = "data | assunto | email";
     public static final String HEADER2            = "data | assunto | email | texto";
     public static final String MESSAGE_REGISTERED = "Mensagem registada.";
+    public static final String CGI_KING = "%s. %d";
+    public static final String ADD_EPISODE_MESSAGE = "%s S%d, Ep%s: %s.";
+    public static final String UNKNOW_CATEGORY = "Unknown character category!";
 
 
 
@@ -61,13 +64,13 @@ public class Main {
                 case ADDCHARACTER:          addCharacter(in, showPedia);          break;
                 case ADDRELATIONSHIP:       addRelationship(in);       break;
                 case ADDROMANCE:            addRomance(in);            break;
-                case ADDEVENT:              addEvent(in);              break;
+                case ADDEVENT:              addEvent(in, showPedia);              break;
                 case ADDQUOTE:              addQuote(in, showPedia);              break;
                 case SEASONSOUTLINE:        seasonsOutline(in);        break;
                 case CHARACTERRESUME:       characterResume(in);       break;
                 case HOWARETHESETWORELATED: howAreTheseTwoRelated(in); break;
                 case FAMOUSQUOTES:          famousQuotes(in, showPedia);          break;
-                case ALSOAPPEARSON:         alsoAppearsOn(in);         break;
+                case ALSOAPPEARSON:         alsoAppearsOn(in, showPedia);         break;
                 case MOSTROMANTIC:          mostRomantic(in);          break;
                 case KINGOFCGI:             kingOfCGI(showPedia);             break;
                 case HELP:                  help();                    break;
@@ -141,7 +144,7 @@ public class Main {
             int seasonNumber = in.nextInt();
             String epiName = in.nextLine();
             int epiNumber = showPedia.addEpisodeToGivenSeason(seasonNumber, epiName);
-            System.out.println(String.format("%s S%d, Ep%s: %s.", showPedia.getCurrentShow().getName(), seasonNumber, epiNumber, epiName));
+            System.out.println(String.format(ADD_EPISODE_MESSAGE, showPedia.getCurrentShow().getName(), seasonNumber, epiNumber, epiName));
         }
         catch(NoShowSelectedExc | UnknownSeasonExc e){
             System.out.println(e.getMessage());
@@ -168,7 +171,7 @@ public class Main {
                     showPedia.addCGICharacter(charName, company, cost);
                 }
                 else
-                    System.out.println("Unknown character category!");
+                    System.out.println(UNKNOW_CATEGORY);
         }
         catch (NoShowSelectedExc | DuplicateCharacterExc e ){
             System.out.println(e.getMessage());
@@ -183,8 +186,23 @@ public class Main {
         System.out.println("not implemented yet");
     }
 
-    private static void addEvent(Scanner in){
-        System.out.println("not implemented yet");
+    private static void addEvent(Scanner in, ShowPedia showPedia){
+        try{
+            String eventDescription = in.nextLine();
+            int season = in.nextInt();
+            int episode = in.nextInt();
+            int nChars = in.nextInt();in.nextLine();
+
+            List<String> aux = new LinkedList<>();
+
+            for(int i = 0; i < nChars;i++){
+                aux.add(in.nextLine());
+            }
+            showPedia.addEvent(episode, season, aux, eventDescription);
+        }
+        catch (NoShowSelectedExc e){
+
+        }
     }
 
     private static void addQuote(Scanner in, ShowPedia showPedia){
@@ -239,8 +257,22 @@ public class Main {
         }
     }
 
-    private static void alsoAppearsOn(Scanner in){
-        System.out.println("not implemented yet");
+    private static void alsoAppearsOn(Scanner in, ShowPedia showPedia){
+        try{
+            String charName = in.nextLine();
+
+            Iterator it = showPedia.alsoAppearsOn(charName);
+            while(it.hasNext()){
+                System.out.println(it.next());
+            }
+        }
+        catch (NoShowSelectedExc e){
+            System.out.println(e.getMessage());
+        }
+        catch (UnknownCharacterExc e){
+            System.out.println(String.format("Who is %s?"));
+        }
+
     }
 
     private static void mostRomantic(Scanner in){
@@ -249,7 +281,8 @@ public class Main {
 
     private static void kingOfCGI(ShowPedia showPedia){
         try{
-            System.out.println(showPedia.kingOfCgi());
+            CGICompany aux = showPedia.kingOfCgi();
+            System.out.println(String.format(CGI_KING, aux.getName(), aux.getProfit()));
         }
         catch (NoVirtualCharactersExc e){
             System.out.println(e.getMessage());
@@ -258,25 +291,25 @@ public class Main {
 
     private static void help(){
         System.out.println(
-            "currentShow - show the current show\n"     //done
-            +"addShow - add a new show\n"       //done
-            +"switchToShow - change the context to a particular show\n"     //done
-            +"addSeason - add a new season to the current show\n"       //done
-            +"addEpisode - add a new episode to a particular season of the current show\n" //done
-            +"addCharacter - add a new character to a show\n"
+                        /*done*/     "currentShow - show the current show\n"
+                        /*done*/    +"addShow - add a new show\n"
+                        /*done*/    +"switchToShow - change the context to a particular show\n"
+                        /*done*/    +"addSeason - add a new season to the current show\n"
+                        /*done*/   +"addEpisode - add a new episode to a particular season of the current show\n"
+                        /*done*/    +"addCharacter - add a new character to a show\n"
             +"addRelationship - add a family relationship between characters\n"
             +"addRomance - add a romantic relationship between characters\n"
             +"addEvent - add a significant event involving at least one character\n"
-            +"addQuote - add a new quote to a character\n"
+                        /*done*/    +"addQuote - add a new quote to a character\n"
             +"seasonsOutline - outline the contents of the selected seasons for a selected show\n"
             +"characterResume - outline the main information on a specific character\n"
             +"howAreTheseTwoRelated - find out if and how two characters may be related\n"
-            +"famousQuotes - find out which character(s) said a particular quote\n"
-            +"alsoAppearsOn - which other shows and roles is the same actor on?\n"
+                        /*done*/    +"famousQuotes - find out which character(s) said a particular quote\n"
+                        /*done*/    +"alsoAppearsOn - which other shows and roles is the same actor on?\n"  //solve exceptions
             +"mostRomantic - find out who is at least as romantic as X\n"
-            +"kingOfCGI - find out which company has earned more revenue with their CGI virtual actors\n"
-            +"help - shows the available commands\n"
-            +"exit - terminates the execution of the program");
+                        /*done*/    +"kingOfCGI - find out which company has earned more revenue with their CGI virtual actors\n"
+                        /*done*/    +"help - shows the available commands\n"
+                        /*done*/   +"exit - terminates the execution of the program");
     }
 
 

@@ -1,9 +1,11 @@
 package ShowPediaPackage;
 
+import CGICompaniesPackage.CGICompany;
 import MyExceptionsPackage.*;
 import ShowPackage.*;
 
 import java.util.Iterator;
+import java.util.List;
 
 public interface ShowPedia {
 
@@ -27,5 +29,9 @@ public interface ShowPedia {
 
     Iterator getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc;
 
-    String kingOfCgi()throws NoVirtualCharactersExc;
+    CGICompany kingOfCgi()throws NoVirtualCharactersExc;
+
+    Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc;
+
+    void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc;
 }

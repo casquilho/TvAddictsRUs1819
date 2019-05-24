@@ -4,9 +4,8 @@ public class UnknownCharacterExc extends Exception {
 
     private static String message;
 
-    public UnknownCharacterExc(String charName) {
+    public UnknownCharacterExc() {
         super();
-        message = String.format("Who is %s?", charName);
     }
 
 }
