@@ -12,6 +12,7 @@ import QuotesPackage.*;
 import SeasonPackage.*;
 
 
+import java.text.Collator;
 import java.util.*;
 
 public class ShowClass implements Show {
@@ -21,7 +22,7 @@ public class ShowClass implements Show {
     private int totalEpisodesNumber;
     private List<Season>  seasons;
     private Map<String, Character> characters;
-    private Map<String, List<Character>> quotes;
+    private Map<String, List<String>> quotes;
 
     public ShowClass(String ShowName){
         this.showName = ShowName;
@@ -29,7 +30,7 @@ public class ShowClass implements Show {
         this.totalEpisodesNumber = 0;
         this.seasons = new ArrayList<Season>();
         this.characters = new HashMap<String, Character>();
-        this.quotes = new HashMap<String, List<Character>>();
+        this.quotes = new HashMap<String, List<String>>();
 
 
     }
@@ -112,13 +113,20 @@ public class ShowClass implements Show {
 
 
         if(quotes.containsKey(quote.getQuote()))
-            quotes.get(quote.getQuote()).add(character);
+            quotes.get(quote.getQuote()).add(character.getCharName());
         else {
-            List aux = new LinkedList<Character>();
-            aux.add(character);
+            List aux = new LinkedList<String>();
+            aux.add(character.getCharName());
             quotes.put(quote.getQuote(), aux);
 
         }
+    }
+
+    public Iterator getFamousQuotes(String quoteText) throws UnknownQuoteExc{
+        if(!quotes.containsKey(quoteText))
+            throw new UnknownQuoteExc();
+        quotes.get(quoteText).sort(Collator.getInstance());
+        return quotes.get(quoteText).iterator();
     }
 
     private void incrementEpisodesNumber(){

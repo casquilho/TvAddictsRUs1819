@@ -6,6 +6,7 @@ import java.util.*;
 import ActorCharacterPackage.Character;
 import MyExceptionsPackage.*;
 import ShowPediaPackage.*;
+import java.lang.StringBuilder;
 
 
 
@@ -65,10 +66,10 @@ public class Main {
                 case SEASONSOUTLINE:        seasonsOutline(in);        break;
                 case CHARACTERRESUME:       characterResume(in);       break;
                 case HOWARETHESETWORELATED: howAreTheseTwoRelated(in); break;
-                case FAMOUSQUOTES:          famousQuotes(in);          break;
+                case FAMOUSQUOTES:          famousQuotes(in, showPedia);          break;
                 case ALSOAPPEARSON:         alsoAppearsOn(in);         break;
                 case MOSTROMANTIC:          mostRomantic(in);          break;
-                case KINGOFCGI:             kingOfCGI(in);             break;
+                case KINGOFCGI:             kingOfCGI(showPedia);             break;
                 case HELP:                  help();                    break;
 
                 default:
@@ -186,7 +187,7 @@ public class Main {
         System.out.println("not implemented yet");
     }
 
-    private static void addQuote(Scanner in, ShowPedia showPedia){//testar
+    private static void addQuote(Scanner in, ShowPedia showPedia){
 
         try{
             int season = in.nextInt();
@@ -195,11 +196,18 @@ public class Main {
             String quoteText = in.nextLine();
             showPedia.addQuote(season, episode, charName, quoteText);
         }
-        catch (NoShowSelectedExc | NonExistentEpisodeExc| NonExistentSeasonExc| UnknownCharacterExc e){  //tratar da exceçoes individualmente
-
+        catch (NoShowSelectedExc e){  //tratar da exceçoes individualmente
+            System.out.println(e.getMessage());
         }
-
-
+        catch (NonExistentSeasonExc e){
+            System.out.println(String.format("%s does not have season %d!" ));
+        }
+        catch (NonExistentEpisodeExc e){
+            System.out.println(String.format("%s S%d does not have episode %d!"));
+        }
+        catch (UnknownCharacterExc e){
+            System.out.println(String.format("Who is %s?"));
+        }
     }
 
     private static void seasonsOutline(Scanner in){
@@ -214,8 +222,21 @@ public class Main {
         System.out.println("not implemented yet");
     }
 
-    private static void famousQuotes(Scanner in){
-        System.out.println("not implemented yet");
+    private static void famousQuotes(Scanner in, ShowPedia showPedia){
+        try{
+            String quote = in.nextLine();
+            String toPrint = "";
+            Iterator it = showPedia.getFamousQuotes(quote);
+            while (it.hasNext()){
+                if(!toPrint.equals(""))
+                    toPrint += ", ";
+                toPrint += it.next();
+            }
+            System.out.println(toPrint);
+        }
+        catch (NoShowSelectedExc | UnknownQuoteExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void alsoAppearsOn(Scanner in){
@@ -226,8 +247,13 @@ public class Main {
         System.out.println("not implemented yet");
     }
 
-    private static void kingOfCGI(Scanner in){
-        System.out.println("not implemented yet");
+    private static void kingOfCGI(ShowPedia showPedia){
+        try{
+            System.out.println(showPedia.kingOfCgi());
+        }
+        catch (NoVirtualCharactersExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void help(){

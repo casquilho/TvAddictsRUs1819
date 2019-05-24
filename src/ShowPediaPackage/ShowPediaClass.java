@@ -18,6 +18,8 @@ public class ShowPediaClass implements ShowPedia {
     private Map<String,LinkedList<String>> actorAppearences;
     private Show currentShow;
     private Map<String, Actor> actors;
+    private int realCharactersNumber;
+    private int virtualCharactersNumber;
 
     public ShowPediaClass(){
         this.myShows = new HashMap<String, Show>();
@@ -25,6 +27,8 @@ public class ShowPediaClass implements ShowPedia {
         this.actorAppearences = new HashMap<String,LinkedList<String>>();
         this.currentShow = null;
         this.actors = new HashMap<String, Actor>();
+        this.virtualCharactersNumber = 0;
+        this.realCharactersNumber = 0;
     }
 
 
@@ -87,6 +91,7 @@ public class ShowPediaClass implements ShowPedia {
         aux.addShowName(currentShow.getName());
         actors.put(actorName, aux);
 
+        realCharactersNumber++;
     }
 
     public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc {
@@ -105,6 +110,7 @@ public class ShowPediaClass implements ShowPedia {
                 return;
         }
         companiesCGI.add(new CGICompanyClass(company));
+        virtualCharactersNumber++;
     }
 
     public void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc {
@@ -115,6 +121,20 @@ public class ShowPediaClass implements ShowPedia {
     }
 
 
+    public Iterator getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        return currentShow.getFamousQuotes(quote);
+    }
+
+    public String kingOfCgi()throws NoVirtualCharactersExc{
+        if(virtualCharactersNumber == 0)
+            throw new NoVirtualCharactersExc();
+        companiesCGI.sort(new CompanyComparator());
+        CGICompany aux =companiesCGI.get(0);
+        return String.format("%s. %d", aux.getName(), aux.getProfit());
+    }
 
 
 

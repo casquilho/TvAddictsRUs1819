@@ -14,7 +14,14 @@ public class CompanyComparator implements Comparator<CGICompany> {
     @Override
     public int compare(CGICompany m, CGICompany n) throws ClassCastException {
 
-        return m.getProfit() - n.getProfit();
+        int relation =  m.getProfit() - n.getProfit();
+
+        if(relation == 0) {
+            relation = m.getNumberChars() - n.getNumberChars();
+            if(relation == 0)
+                return m.getName().compareTo(n.getName());
+        }
+        return relation;
     }
 
 

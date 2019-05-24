@@ -18,7 +18,7 @@ public class SeasonClass implements Season {
     }
 
     public int addEpisode(String epiName){
-        episodes.add(new EpisodeClass(epiName, seasonNumber, episodes.size()));
+        episodes.add(new EpisodeClass(epiName, seasonNumber, episodes.size()+1));
         return episodes.size();
     }
 

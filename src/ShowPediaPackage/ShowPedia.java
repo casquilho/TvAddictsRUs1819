@@ -3,6 +3,8 @@ package ShowPediaPackage;
 import MyExceptionsPackage.*;
 import ShowPackage.*;
 
+import java.util.Iterator;
+
 public interface ShowPedia {
 
     Show getCurrentShow() throws NoShowSelectedExc;
@@ -22,4 +24,8 @@ public interface ShowPedia {
     void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc;
 
     void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc;
+
+    Iterator getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc;
+
+    String kingOfCgi()throws NoVirtualCharactersExc;
 }
