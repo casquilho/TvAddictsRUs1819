@@ -17,4 +17,16 @@ public class EventClass implements Event {
         this.event = event;
         this.participants = characters;
     }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public int getSeason() {
+        return season;
+    }
+
+    public int getEpisode() {
+        return episode;
+    }
 }

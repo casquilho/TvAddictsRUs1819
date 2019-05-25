@@ -34,9 +34,7 @@ public class ShowClass implements Show {
         this.seasons = new ArrayList<Season>();
         this.characters = new HashMap<String, Character>();
         this.quotes = new HashMap<String, List<String>>();
-        this.events = new HashMap<String, List<Event>>();
-
-
+        this.events = new TreeMap<String, List<Event>>(Collator.getInstance());
     }
 
     public String getName() {
@@ -96,7 +94,6 @@ public class ShowClass implements Show {
         Quote quoteAux = new QuoteClass(quoteText, charName, season, episode);
 
         processQuote(quoteAux, characters.get(charName), season, episode, companies);
-
     }
 
     private void processQuote(Quote quote, Character character, int thisSeason, int thisEpisode, List<CGICompany> companies){
@@ -155,7 +152,8 @@ public class ShowClass implements Show {
         List<Character> charsObj = new LinkedList<Character>();
         Character aux;
 
-        //check if the character names passed correspond to exiting characters and if so, get the characters and insert then into a new list
+        //check if the character names passed correspond to existing characters and if so,
+        // get the characters and insert then into a new list
         for (String charName: chars) {
             if(!characters.containsKey(charName))
                 throw new UnknownCharacterExc();
@@ -168,8 +166,10 @@ public class ShowClass implements Show {
 
         String key = season +""+ episode;
 
-        if(events.containsKey(key))
-            events.get(key).add(newEvent);
+        if(events.containsKey(key)) {
+            if (!events.get(key).contains(newEvent))
+                events.get(key).add(newEvent);
+        }
         else{
             List<Event> auxList = new LinkedList<Event>();
             auxList.add(newEvent);
@@ -177,10 +177,20 @@ public class ShowClass implements Show {
         }
 
         for (Character auxChar: charsObj ) {
-            auxChar.addEvent(key, newEvent);//TODO STOPED HERE
-
+            auxChar.addEvent(key, newEvent);
         }
+    }
 
+    public Iterator getCharacterResume(String charName) throws UnknownCharacterExc{
+        if(!characters.containsKey(charName))
+            throw new UnknownCharacterExc();
+        Character auxChar = characters.get(charName);
+
+        return auxChar.getCharacterEvents();
+    }
+
+    public Iterator getEvents(){
+        return events.values().iterator();
     }
 
     private void incrementEpisodesNumber(){

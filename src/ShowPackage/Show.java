@@ -28,4 +28,11 @@ public interface Show {
     Iterator getFamousQuotes(String quoteText) throws UnknownQuoteExc;
 
     String getActorNameFromCharName(String charName) throws UnknownCharacterExc;
+
+    void addEvent(int episode, int season, List<String> characters, String event) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
+
+    Iterator getCharacterResume(String charName) throws UnknownCharacterExc;
+
+    Iterator getEvents();
+
 }

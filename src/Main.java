@@ -5,6 +5,7 @@ import java.util.*;
 
 import ActorCharacterPackage.Character;
 import CGICompaniesPackage.CGICompany;
+import EventPackage.Event;
 import MyExceptionsPackage.*;
 import ShowPediaPackage.*;
 import java.lang.StringBuilder;
@@ -67,7 +68,7 @@ public class Main {
                 case ADDEVENT:              addEvent(in, showPedia);              break;
                 case ADDQUOTE:              addQuote(in, showPedia);              break;
                 case SEASONSOUTLINE:        seasonsOutline(in);        break;
-                case CHARACTERRESUME:       characterResume(in);       break;
+                case CHARACTERRESUME:       characterResume(in, showPedia);       break;
                 case HOWARETHESETWORELATED: howAreTheseTwoRelated(in); break;
                 case FAMOUSQUOTES:          famousQuotes(in, showPedia);          break;
                 case ALSOAPPEARSON:         alsoAppearsOn(in, showPedia);         break;
@@ -201,8 +202,11 @@ public class Main {
             showPedia.addEvent(episode, season, aux, eventDescription);
         }
         catch (NoShowSelectedExc e){
-
+            System.out.println(e.getMessage());
         }
+        catch (NonExistentSeasonExc e){}
+        catch (NonExistentEpisodeExc e){}
+        catch (UnknownCharacterExc e){}
     }
 
     private static void addQuote(Scanner in, ShowPedia showPedia){
@@ -229,11 +233,43 @@ public class Main {
     }
 
     private static void seasonsOutline(Scanner in){
-        System.out.println("not implemented yet");
+
+        int season = in.nextInt();
+        int episode = in.nextInt();in.nextLine();
+
+
+
+
+
     }
 
-    private static void characterResume(Scanner in){
-        System.out.println("not implemented yet");
+    private static void characterResume(Scanner in, ShowPedia showPedia){
+        try{
+            String charName = in.nextLine();
+
+            boolean flag = true;
+            Event eventAux;
+            List episode;
+            Iterator eventIt;
+            Iterator episodeIt = showPedia.characterResume(charName);
+
+            while (episodeIt.hasNext()){
+                episode = (List) episodeIt.next();
+                eventIt = episode.iterator();
+                while (eventIt.hasNext()){
+                    eventAux = (Event) eventIt.next();
+                    if(flag) {
+                        System.out.println(String.format("S%d Ep%d:", eventAux.getSeason(), eventAux.getEpisode()));
+                        flag = false;
+                    }
+                    System.out.println(eventAux.getEvent());
+                }
+                flag = true;
+            }
+        }
+        catch (UnknownCharacterExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void howAreTheseTwoRelated(Scanner in){
@@ -299,10 +335,10 @@ public class Main {
                         /*done*/    +"addCharacter - add a new character to a show\n"
             +"addRelationship - add a family relationship between characters\n"
             +"addRomance - add a romantic relationship between characters\n"
-            +"addEvent - add a significant event involving at least one character\n"
+                        /*done*/   +"addEvent - add a significant event involving at least one character\n"
                         /*done*/    +"addQuote - add a new quote to a character\n"
             +"seasonsOutline - outline the contents of the selected seasons for a selected show\n"
-            +"characterResume - outline the main information on a specific character\n"
+                        /*done*/+"characterResume - outline the main information on a specific character\n"
             +"howAreTheseTwoRelated - find out if and how two characters may be related\n"
                         /*done*/    +"famousQuotes - find out which character(s) said a particular quote\n"
                         /*done*/    +"alsoAppearsOn - which other shows and roles is the same actor on?\n"  //solve exceptions

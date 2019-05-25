@@ -3,10 +3,8 @@ package ActorCharacterPackage;
 import EventPackage.Event;
 import ShowPackage.*;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.text.Collator;
+import java.util.*;
 
 public abstract class CharacterClass implements Character{
 
@@ -22,7 +20,7 @@ public abstract class CharacterClass implements Character{
         this.charName = charName;
         this.show = show;
         this.cost = cost;
-        this.events = new HashMap<String, List<Event>>();
+        this.events = new TreeMap<String, List<Event>>(Collator.getInstance());
     }
 
     public String getCharName() {
@@ -38,13 +36,19 @@ public abstract class CharacterClass implements Character{
     }
 
     public void addEvent(String key, Event value){
-        if(events.containsKey(key))
-            events.get(key).add(value);
+        if(events.containsKey(key)) {
+            if (!events.get(key).contains(value))
+                events.get(key).add(value);
+        }
         else{
             List<Event> auxList = new LinkedList<Event>();
             auxList.add(value);
             events.put(key, auxList);
         }
+    }
+
+    public Iterator<List<Event>> getCharacterEvents(){
+        return events.values().iterator();
     }
 
 }

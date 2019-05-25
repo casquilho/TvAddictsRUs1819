@@ -33,5 +33,7 @@ public interface ShowPedia {
 
     Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc;
 
-    void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc;
+    void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
+
+    Iterator characterResume(String charName) throws UnknownCharacterExc;
 }

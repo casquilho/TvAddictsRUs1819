@@ -7,7 +7,7 @@ import java.util.*;
 
 public class SeasonClass implements Season {
 
-    int seasonNumber;
+    private int seasonNumber;
     private List<Episode> episodes;
     private Map<String, Character> participants;
 
