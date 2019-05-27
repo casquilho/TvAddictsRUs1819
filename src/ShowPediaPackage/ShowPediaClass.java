@@ -13,20 +13,19 @@ import java.util.*;
 
 public class ShowPediaClass implements ShowPedia {
 
-    private Map<String, Show> myShows;
-    private List<CGICompany> companiesCGI;
     private Show currentShow;
+    private Map<String, Show> myShows;
     private Map<String, Actor> actors;
-    private int realCharactersNumber;
-    private int virtualCharactersNumber;
+    private List<CGICompany> companiesCGI;
+
 
     public ShowPediaClass(){
-        this.myShows = new HashMap<String, Show>();
-        this.companiesCGI = new LinkedList<CGICompany>();
         this.currentShow = null;
-        this.actors = new HashMap<String, Actor>();
-        this.virtualCharactersNumber = 0;
-        this.realCharactersNumber = 0;
+        this.myShows = new HashMap<String, Show>();
+        this.actors  = new HashMap<String, Actor>();
+        this.companiesCGI = new LinkedList<CGICompany>();
+
+
     }
 
 
@@ -96,8 +95,6 @@ public class ShowPediaClass implements ShowPedia {
 
         //add the character to the current show
         currentShow.addRealCharacter(charName, aux, cost);
-
-        realCharactersNumber++;
     }
 
     public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc {
@@ -116,7 +113,6 @@ public class ShowPediaClass implements ShowPedia {
                 return;
         }
         companiesCGI.add(new CGICompanyClass(company));
-        virtualCharactersNumber++;
     }
 
     public void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc {
@@ -135,7 +131,7 @@ public class ShowPediaClass implements ShowPedia {
     }
 
     public CGICompany kingOfCgi()throws NoVirtualCharactersExc{
-        if(virtualCharactersNumber == 0)
+        if(companiesCGI.size() == 0)
             throw new NoVirtualCharactersExc();
         companiesCGI.sort(new CompanyComparator());
         return companiesCGI.get(0);
@@ -163,9 +159,9 @@ public class ShowPediaClass implements ShowPedia {
     }
 
 
-    public Iterator seasonsOutline(){
-        return currentShow.
-    }
+    /*public Iterator seasonsOutline(){
+        return currentShow
+    }*/
 
 
 }

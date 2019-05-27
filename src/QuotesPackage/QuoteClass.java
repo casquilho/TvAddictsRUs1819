@@ -4,8 +4,8 @@ public class QuoteClass implements Quote {
 
     private String quote;
     private String charName;
-    private int season;
-    private int episode;
+    private int    season;
+    private int    episode;
 
 
 

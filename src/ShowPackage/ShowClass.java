@@ -31,10 +31,10 @@ public class ShowClass implements Show {
         this.showName = ShowName;
         this.seasonsNumber = 0;
         this.totalEpisodesNumber = 0;
-        this.seasons = new ArrayList<Season>();
+        this.seasons    = new ArrayList<Season>();
         this.characters = new HashMap<String, Character>();
-        this.quotes = new HashMap<String, List<String>>();
-        this.events = new TreeMap<String, List<Event>>(Collator.getInstance());
+        this.quotes     = new HashMap<String, List<String>>();
+        this.events     = new TreeMap<String, List<Event>>(Collator.getInstance());
     }
 
     public String getName() {

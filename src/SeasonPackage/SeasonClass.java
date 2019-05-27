@@ -13,7 +13,7 @@ public class SeasonClass implements Season {
 
     public SeasonClass(int seasonNumber){
         this.seasonNumber = seasonNumber;
-        this.episodes = new ArrayList<Episode>();
+        this.episodes     = new ArrayList<Episode>();
         this.participants = new HashMap<String, Character>();
     }
 
