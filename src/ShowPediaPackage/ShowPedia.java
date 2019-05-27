@@ -1,5 +1,6 @@
 package ShowPediaPackage;
 
+import ActorCharacterPackage.Actor;
 import CGICompaniesPackage.CGICompany;
 import MyExceptionsPackage.*;
 import ShowPackage.*;
@@ -15,7 +16,7 @@ public interface ShowPedia {
 
     void addShow(String showName) throws ExistentShowExc;
 
-    void switchShow(String showName)throws UnknownShowExc;
+    Show switchShow(String showName)throws UnknownShowExc;
 
     void addSeasonToCurrentShow() throws NoShowSelectedExc;
 
@@ -36,4 +37,6 @@ public interface ShowPedia {
     void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
     Iterator characterResume(String charName) throws UnknownCharacterExc;
+
+    Actor getActor(String actorName);
 }

@@ -25,5 +25,9 @@ public class ActorClass implements Actor{
         this.starsOn.add(showName);
     }
 
+    public int getNumberOfroles(){
+        return starsOn.size();
+    }
+
 
 }

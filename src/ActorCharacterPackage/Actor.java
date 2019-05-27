@@ -10,4 +10,6 @@ public interface Actor {
 
     void addShowName(String showName);
 
+    int getNumberOfroles();
+
 }

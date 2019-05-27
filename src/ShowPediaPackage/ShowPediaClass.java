@@ -53,13 +53,14 @@ public class ShowPediaClass implements ShowPedia {
         Show newShow = new ShowClass(showName);
         myShows.put(showName, newShow);
         currentShow = myShows.get(showName);
+        currentShow.addSeason();
     }
 
-    public void switchShow(String showName)throws UnknownShowExc {
+    public Show switchShow(String showName)throws UnknownShowExc {
         if(!myShows.containsKey(showName))
             throw new UnknownShowExc();
 
-        currentShow = myShows.get(showName);
+        return currentShow = myShows.get(showName);
     }
 
     public void addSeasonToCurrentShow() throws NoShowSelectedExc{
@@ -151,13 +152,19 @@ public class ShowPediaClass implements ShowPedia {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
-        currentShow.addEvent(episode, season, characters, event);
+        currentShow.addEvent(episode, season, characters, event, companiesCGI);
     }
 
     public Iterator characterResume(String charName) throws UnknownCharacterExc{
         return currentShow.getCharacterResume(charName);
     }
 
+
+    public Actor getActor(String actorName){
+        if(!actors.containsKey(actorName))
+            return null;
+        return actors.get(actorName);
+    }
 
     /*public Iterator seasonsOutline(){
         return currentShow

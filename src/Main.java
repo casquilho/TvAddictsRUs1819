@@ -7,6 +7,7 @@ import ActorCharacterPackage.Character;
 import CGICompaniesPackage.CGICompany;
 import EventPackage.Event;
 import MyExceptionsPackage.*;
+import ShowPackage.Show;
 import ShowPediaPackage.*;
 import java.lang.StringBuilder;
 
@@ -40,14 +41,21 @@ public class Main {
     }
 
     //Constantes que definem as mensagens para o utilizador
-    public static final String HEADER             = "data | assunto | email";
-    public static final String HEADER2            = "data | assunto | email | texto";
-    public static final String MESSAGE_REGISTERED = "Mensagem registada.";
-    public static final String CGI_KING = "%s. %d";
-    public static final String ADD_EPISODE_MESSAGE = "%s S%d, Ep%s: %s.";
-    public static final String UNKNOW_CATEGORY = "Unknown character category!";
-
-
+    public static final String CGI_KING = "%s %d";
+    public static final String ADD_EPISODE_MESSAGE = "%s S%d, Ep%s:%s.";
+    public static final String UNKNOWN_CATEGORY = "Unknown character category!";
+    public static final String ADDSHOW = "%s created.";
+    public static final String PRINT_CURRENT_SHOW = "%s. Seasons: %d Episodes: %d";
+    public static final String UNKNOWN_CHARACTER = "Who is %s?";
+    public static final String CHAR_RESUME_HEADER = "S%d Ep%d:";
+    public static final String NONEXISTENT_EPISODE = "%s S%d does not have episode %d!";
+    public static final String NONEXISTENT_SEASON = "%s does not have season %d!";
+    public static final String EMPTY_STRING = "";
+    public static final String COMA_SPACE = ", ";
+    public static final String REAL_CHAR_CREATION = "%s is now part of %s. This is %s role %d.";
+    public static final String VIRTUAL_CHAR_CREATION = "%s is now part of %s. This is a virtual actor.";
+    public static final String ADD_QUOTE_MESSAGE = "Quote added.";
+    public static final String ADD_EVENT_MESSAGE = "Event added.";
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -79,11 +87,11 @@ public class Main {
                 default:
                     System.out.println("Unknown command. Type help to see available commands.");
             }
-            System.out.println();
+            //System.out.println();
             comm = getCommand(in);
         }
-        System.out.println("Bye!");
-        System.out.println();
+        System.out.println("> Bye!");
+        //System.out.println();
         in.close();
     }
 
@@ -101,7 +109,7 @@ public class Main {
 
     private static void currentShow(ShowPedia showPedia){
         try{
-            System.out.println(showPedia.printCurrentShow());
+            printCurrentShow(showPedia);
         }
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
@@ -112,7 +120,7 @@ public class Main {
         try{
             String showName = in.nextLine();
             showPedia.addShow(showName);
-            System.out.println(showName + " created.");
+            System.out.println(String.format(ADDSHOW, showName));
         }
         catch (ExistentShowExc e){
             System.out.println(e.getMessage());
@@ -123,7 +131,7 @@ public class Main {
         try{
             String showName = in.nextLine();
             showPedia.switchShow(showName);
-            System.out.println(showPedia.printCurrentShow());
+            printCurrentShow(showPedia);
         }
         catch(UnknownShowExc | NoShowSelectedExc e){
             System.out.println(e.getMessage());
@@ -133,7 +141,7 @@ public class Main {
     private static void addSeason(ShowPedia showPedia){
         try{
             showPedia.addSeasonToCurrentShow();
-            System.out.println(showPedia.printCurrentShow());
+            printCurrentShow(showPedia);
         }
         catch(NoShowSelectedExc e){
             System.out.println(e.getMessage());
@@ -153,26 +161,37 @@ public class Main {
     }
 
     private static void addCharacter(Scanner in, ShowPedia showPedia){
+
+        String type = null;
+        String charName = null;
+        String showName = null;
+
         try{
-            String type = in.nextLine();
+            type = in.nextLine();
 
             if(type.equals(Character.REAL)){
-                String charName = in.nextLine();
+                charName = in.nextLine();
                 String actorName = in.nextLine();
                 int cost = in.nextInt();in.nextLine();
+                showName = showPedia.getCurrentShow().getName();
 
                 showPedia.addRealCharacter(charName, actorName, cost);
+                int roleNumber = showPedia.getActor(actorName).getNumberOfroles();
+
+                System.out.println(String.format(REAL_CHAR_CREATION, charName, showName, actorName, roleNumber));
             }
             else
                 if(type.equals(Character.VIRTUAL)){
-                    String charName = in.nextLine();
+                    charName = in.nextLine();
                     String company = in.nextLine();
                     int cost = in.nextInt();in.nextLine();
+                    showName = showPedia.getCurrentShow().getName();
 
                     showPedia.addCGICharacter(charName, company, cost);
+                    System.out.println(String.format(VIRTUAL_CHAR_CREATION, charName, showName));
                 }
                 else
-                    System.out.println(UNKNOW_CATEGORY);
+                    System.out.println(UNKNOWN_CATEGORY);
         }
         catch (NoShowSelectedExc | DuplicateCharacterExc e ){
             System.out.println(e.getMessage());
@@ -188,47 +207,69 @@ public class Main {
     }
 
     private static void addEvent(Scanner in, ShowPedia showPedia){
-        try{
-            String eventDescription = in.nextLine();
-            int season = in.nextInt();
-            int episode = in.nextInt();
-            int nChars = in.nextInt();in.nextLine();
+        String eventDescription = null;
+        String showName = null;
+        int season  = 0;
+        int episode = 0;
+        int nChars  = 0;
+        List<String> aux = new LinkedList<>();
 
-            List<String> aux = new LinkedList<>();
+        try{
+            eventDescription = in.nextLine();
+            season = in.nextInt();
+            episode = in.nextInt();
+            nChars = in.nextInt();in.nextLine();
+            showName = showPedia.getCurrentShow().getName();
 
             for(int i = 0; i < nChars;i++){
                 aux.add(in.nextLine());
             }
             showPedia.addEvent(episode, season, aux, eventDescription);
+            System.out.println(ADD_EVENT_MESSAGE);
         }
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
         }
-        catch (NonExistentSeasonExc e){}
-        catch (NonExistentEpisodeExc e){}
-        catch (UnknownCharacterExc e){}
+        catch (NonExistentSeasonExc e){
+            System.out.println(String.format(NONEXISTENT_SEASON, showName, season));
+        }
+        catch (NonExistentEpisodeExc e){
+            System.out.println(String.format(NONEXISTENT_EPISODE, showName, season, episode));
+        }
+        catch (UnknownCharacterExc e){
+            System.out.println(String.format(UNKNOWN_CHARACTER, aux.get(0)));
+        }
     }
 
     private static void addQuote(Scanner in, ShowPedia showPedia){
 
+        int season = 0;
+        int episode = 0;
+        String charName = null;
+        String quoteText = null;
+        String showName = null;
+
         try{
-            int season = in.nextInt();
-            int episode = in.nextInt();in.nextLine();
-            String charName = in.nextLine();
-            String quoteText = in.nextLine();
+            season = in.nextInt();
+            episode = in.nextInt();in.nextLine();
+            charName = in.nextLine();
+            quoteText = in.nextLine();
+            showName = showPedia.getCurrentShow().getName();
+
             showPedia.addQuote(season, episode, charName, quoteText);
+            System.out.println(ADD_QUOTE_MESSAGE);
         }
-        catch (NoShowSelectedExc e){  //tratar da exceçoes individualmente
+        catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
         }
         catch (NonExistentSeasonExc e){
-            System.out.println(String.format("%s does not have season %d!" ));
+            System.out.println(String.format(NONEXISTENT_SEASON, showName, season));
         }
         catch (NonExistentEpisodeExc e){
-            System.out.println(String.format("%s S%d does not have episode %d!"));
+            System.out.println(String.format(NONEXISTENT_EPISODE, showName, season, episode));
         }
         catch (UnknownCharacterExc e){
-            System.out.println(String.format("Who is %s?"));
+            System.out.println(String.format(UNKNOWN_CHARACTER, charName));
         }
     }
 
@@ -259,7 +300,7 @@ public class Main {
                 while (eventIt.hasNext()){
                     eventAux = (Event) eventIt.next();
                     if(flag) {
-                        System.out.println(String.format("S%d Ep%d:", eventAux.getSeason(), eventAux.getEpisode()));
+                        System.out.println(String.format(CHAR_RESUME_HEADER, eventAux.getSeason(), eventAux.getEpisode()));
                         flag = false;
                     }
                     System.out.println(eventAux.getEvent());
@@ -279,11 +320,11 @@ public class Main {
     private static void famousQuotes(Scanner in, ShowPedia showPedia){
         try{
             String quote = in.nextLine();
-            String toPrint = "";
+            String toPrint = EMPTY_STRING;
             Iterator it = showPedia.getFamousQuotes(quote);
             while (it.hasNext()){
-                if(!toPrint.equals(""))
-                    toPrint += ", ";
+                if(!toPrint.equals(EMPTY_STRING))
+                    toPrint += COMA_SPACE;
                 toPrint += it.next();
             }
             System.out.println(toPrint);
@@ -294,9 +335,10 @@ public class Main {
     }
 
     private static void alsoAppearsOn(Scanner in, ShowPedia showPedia){
-        try{
-            String charName = in.nextLine();
+        String charName = null;
 
+        try{
+            charName = in.nextLine();
             Iterator it = showPedia.alsoAppearsOn(charName);
             while(it.hasNext()){
                 System.out.println(it.next());
@@ -306,7 +348,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
         catch (UnknownCharacterExc e){
-            System.out.println(String.format("Who is %s?"));
+            System.out.println(String.format(UNKNOWN_CHARACTER, charName));
         }
 
     }
@@ -346,6 +388,14 @@ public class Main {
                         /*done*/    +"kingOfCGI - find out which company has earned more revenue with their CGI virtual actors\n"
                         /*done*/    +"help - shows the available commands\n"
                         /*done*/   +"exit - terminates the execution of the program");
+    }
+
+    private static void printCurrentShow(ShowPedia showPedia) throws NoShowSelectedExc{
+        Show currentShow = showPedia.getCurrentShow();
+        System.out.println(String.format(PRINT_CURRENT_SHOW,
+                                            currentShow.getName(),
+                                            currentShow.getSeasonsNumber(),
+                                            currentShow.getTotalEpisodesNumber()));
     }
 
 
