@@ -19,4 +19,22 @@ public interface Character {
     void addEvent(String key, Event newEvent);
 
     Iterator<List<Event>> getCharacterEvents();
+
+    void addPartner(Character partner);
+
+    boolean addChild(Character child);
+
+    void addParents(Character aux);
+
+    void addParent(Character auxP);
+
+    Character getParent();
+
+    boolean hasChild(Character child);
+
+    boolean hasParent(Character auxP);
+
+    boolean hasPartner(Character auxP);
+
+    List<Character> getChildren();
 }

@@ -207,6 +207,55 @@ public class ShowClass implements Show {
         return events.values().iterator();
     }
 
+
+    public void addRelationship(String parent, String child) throws UnknownCharacterExc{
+        Character auxParent = characters.get(parent);
+        Character auxChild = characters.get(child);
+
+        if(auxChild == null)            //tenho que retornar o que falha
+            throw new UnknownCharacterExc();
+        if(auxParent == null)
+            throw new UnknownCharacterExc();
+
+        auxParent.addChild(auxChild);
+
+    }
+
+    public List<String> bfs(Character x, Character y) {
+
+        Queue<Character> queue = new LinkedList<>();
+        List<Character> visited = new LinkedList<>();
+        List<String> descendants = new LinkedList<>();
+
+        visited.add(x);
+        queue.add(x);
+
+        while (!queue.isEmpty()) {
+            Character v = queue.poll();
+            for (Character child : v.getChildren()) {
+                if (!visited.contains(child)) {
+                    visited.add(child);
+                    queue.add(child);
+                    child.addParent(v);     //add a pointer to the previous node
+                }
+                //when we find the desired node, trace back the descendants and add their names to a list
+                if (child.equals(y)) {
+                    while (child.getParent() != null) {
+                        descendants.add(child.getCharName());
+                        child = child.getParent();
+                    }
+                    descendants.add(child.getCharName());
+                    //clear the parent field in all the nodes
+                    for (Character auxP : visited)
+                        auxP.addParent(null);
+
+                    return descendants;
+                }
+            }
+        }
+        return null;
+    }
+
     private void incrementEpisodesNumber(){
         this.totalEpisodesNumber++;
     }

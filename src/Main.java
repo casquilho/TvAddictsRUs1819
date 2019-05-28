@@ -87,11 +87,9 @@ public class Main {
                 default:
                     System.out.println("Unknown command. Type help to see available commands.");
             }
-            //System.out.println();
             comm = getCommand(in);
         }
         System.out.println("> Bye!");
-        //System.out.println();
         in.close();
     }
 
@@ -199,7 +197,17 @@ public class Main {
     }
 
     private static void addRelationship(Scanner in){
-        System.out.println("not implemented yet");
+
+        try{
+            String parent = in.nextLine();
+            String child  = in.nextLine();
+
+            showPedia.addRelationship(parent, child);
+            System.out.println("%s has now %d kids. %s has now %d parent(s).");
+        }
+        catch (NoShowSelectedExc e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void addRomance(Scanner in){

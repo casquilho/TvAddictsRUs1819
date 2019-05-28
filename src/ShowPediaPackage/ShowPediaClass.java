@@ -166,6 +166,16 @@ public class ShowPediaClass implements ShowPedia {
         return actors.get(actorName);
     }
 
+    public void addRelationship(String parent, String child) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+        if(parent.equals(child))
+            throw new SameCharacterExc();
+
+        currentShow.addRelationship(parent, child);
+
+    }
+
     /*public Iterator seasonsOutline(){
         return currentShow
     }*/

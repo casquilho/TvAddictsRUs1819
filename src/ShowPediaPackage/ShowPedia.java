@@ -39,4 +39,7 @@ public interface ShowPedia {
     Iterator characterResume(String charName) throws UnknownCharacterExc;
 
     Actor getActor(String actorName);
+
+    void addRelationship(String parent, String child) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc;
+
 }
