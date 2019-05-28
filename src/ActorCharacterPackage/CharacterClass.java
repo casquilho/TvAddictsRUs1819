@@ -101,6 +101,14 @@ public abstract class CharacterClass implements Character{
             parents.add(aux);
     }
 
+    public int getNumParents(){
+        return parents.size();
+    }
+
+    public int getNumChildren(){
+        return children.size();
+    }
+
     public void addParent(Character auxP){
         this.parent = auxP;
     }

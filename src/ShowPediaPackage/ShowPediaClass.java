@@ -166,16 +166,23 @@ public class ShowPediaClass implements ShowPedia {
         return actors.get(actorName);
     }
 
-    public void addRelationship(String parent, String child) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc {
+    public void addRelationship(String parent, String child, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
         if(parent.equals(child))
             throw new SameCharacterExc();
 
-        currentShow.addRelationship(parent, child);
-
+        currentShow.addRelationship(parent, child, aux);
     }
 
+    public void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+        if(char1.equals(char2))
+            throw new SameCharacterExc();
+
+        currentShow.addRomance(char1, char2, aux);
+    }
     /*public Iterator seasonsOutline(){
         return currentShow
     }*/

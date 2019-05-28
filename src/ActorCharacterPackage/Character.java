@@ -37,4 +37,8 @@ public interface Character {
     boolean hasPartner(Character auxP);
 
     List<Character> getChildren();
+
+    int getNumParents();
+
+    int getNumChildren();
 }

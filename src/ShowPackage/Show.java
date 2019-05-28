@@ -35,4 +35,12 @@ public interface Show {
 
     Iterator getEvents();
 
+    void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc;
+
+    void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc;
+
+    int getNumParentsFromName(String charName);
+
+    int getNumChildrenFromName(String charName);
+
 }

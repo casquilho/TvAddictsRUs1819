@@ -208,18 +208,45 @@ public class ShowClass implements Show {
     }
 
 
-    public void addRelationship(String parent, String child) throws UnknownCharacterExc{
+    public void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc{
         Character auxParent = characters.get(parent);
         Character auxChild = characters.get(child);
 
-        if(auxChild == null)            //tenho que retornar o que falha
+        if(auxChild == null) {
+            aux.add(0, child);
             throw new UnknownCharacterExc();
-        if(auxParent == null)
+        }
+        if(auxParent == null){
+            aux.add(0, parent);
             throw new UnknownCharacterExc();
-
+        }
         auxParent.addChild(auxChild);
-
     }
+
+    public void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc{
+        Character auxChar1 = characters.get(char1);
+        Character auxChar2 = characters.get(char2);
+
+        if(auxChar1 == null) {
+            aux.add(0, char1);
+            throw new UnknownCharacterExc();
+        }
+        if(auxChar2 == null){
+            aux.add(0, char2);
+            throw new UnknownCharacterExc();
+        }
+        auxChar1.addPartner(auxChar2);
+    }
+
+    public int getNumParentsFromName(String charName){
+       return characters.get(charName).getNumParents();
+    }
+
+    public int getNumChildrenFromName(String charName){
+        return characters.get(charName).getNumChildren();
+    }
+
+
 
     public List<String> bfs(Character x, Character y) {
 

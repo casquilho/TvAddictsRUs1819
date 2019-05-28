@@ -40,6 +40,8 @@ public interface ShowPedia {
 
     Actor getActor(String actorName);
 
-    void addRelationship(String parent, String child) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc;
+    void addRelationship(String parent, String child, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc;
+
+    void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc;
 
 }
