@@ -33,7 +33,7 @@ public interface ShowPedia {
 
     CGICompany kingOfCgi()throws NoVirtualCharactersExc;
 
-    Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc;
+    Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc;
 
     void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 

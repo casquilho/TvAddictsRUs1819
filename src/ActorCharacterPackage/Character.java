@@ -29,7 +29,7 @@ public interface Character {
 
     Iterator<Character> getParentsIt();
 
-    Iterator<Character> getSiblingsIt();
+    Iterator<Character> getSiblingsIt(Character auxChar);
 
     Iterator<Character> getRomancesIt();
 

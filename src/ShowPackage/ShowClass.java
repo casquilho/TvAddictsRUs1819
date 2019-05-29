@@ -144,11 +144,14 @@ public class ShowClass implements Show {
     }
 
     public String getActorNameFromCharName(String charName) throws UnknownCharacterExc{
-        if(!characters.containsKey(charName))
+        if(!characters.containsKey(charName) )
             throw new UnknownCharacterExc();
 
-        RealCharacter aux = (RealCharacter) characters.get(charName);
-        return aux.getActorName();
+        Character aux = (Character) characters.get(charName);
+        if(aux instanceof RealCharacter)
+            return ((RealCharacter) aux).getActorName();
+
+        return null;
     }
 
     public void addEvent(int thisEpisode, int thisSeason, List<String> chars, String event, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc{
@@ -204,7 +207,7 @@ public class ShowClass implements Show {
         auxList.add(0,auxChar.getCharacterEvents());
         auxList.add(1,auxChar.getParentsIt());
         auxList.add(2,auxChar.getChildrenIt());
-        auxList.add(3,auxChar.getSiblingsIt());
+        auxList.add(3,auxChar.getSiblingsIt(auxChar));
         auxList.add(4,auxChar.getRomancesIt());
 }
 
@@ -230,6 +233,7 @@ public class ShowClass implements Show {
             throw new DuplicateRelationshipExc();
 
         auxParent.addChild(auxChild);
+        auxChild.addParents(auxParent);
     }
 
     public void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc{
@@ -249,6 +253,7 @@ public class ShowClass implements Show {
             throw new DuplicateRelationshipExc();
 
         auxChar1.addPartner(auxChar2);
+        auxChar2.addPartner(auxChar1);
     }
 
     public int getNumParentsFromName(String charName){
@@ -282,6 +287,15 @@ public class ShowClass implements Show {
         else
             return stack2;
 
+    }
+
+    public boolean realChar(String charName) throws NotRealCharacterExc{
+        Character auxChar = characters.get(charName);
+
+        if(auxChar instanceof VirtualCharacter)
+            throw new NotRealCharacterExc();
+
+        return true;
     }
 
     private Stack<String> bfs(Character x, Character y) {

@@ -146,13 +146,16 @@ public class ShowPediaClass implements ShowPedia {
     }
 
 
-    public Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc{
+    public Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc{
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
+        if(currentShow.realChar(charName))
+            return (actors.get(currentShow.getActorNameFromCharName(charName))).StarsOn();
+        /*if(actors.containsKey(currentShow.getActorNameFromCharName(charName)))
+            return (actors.get(currentShow.getActorNameFromCharName(charName))).StarsOn();*/
 
-
-        return actors.get(currentShow.getActorNameFromCharName(charName)).StarsOn();
+        return null;
     }
 
     public void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {

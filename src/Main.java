@@ -65,8 +65,8 @@ public class Main {
 
     public static final String PARENTS_HEADER = "Parents: ";
     public static final String KIDS_HEADER = "Kids: ";
-    public static final String SIBLINGS_HEADER = "Siblings: ";
-    public static final String ROMANCE_HEADER = "Romantic Relationships: ";
+    public static final String SIBLINGS_HEADER = "Siblings:";
+    public static final String ROMANCE_HEADER = "Romantic relationships: ";
     public static final String NO_RELATION_OF_KIND = "None.";
 
 
@@ -342,6 +342,7 @@ public class Main {
         Iterator eventIt, episodeIt;
         List<Iterator> auxList = new ArrayList<>();
         List<String> header = new ArrayList<>();
+        Character auxChar;
         try{
             String charName = in.nextLine();
             showPedia.characterResume(charName, auxList);
@@ -358,17 +359,19 @@ public class Main {
                 System.out.print(header.get(i-1));
 
                 if(!it.hasNext())
-                    System.out.println(NO_RELATION_OF_KIND);
+                    System.out.print(NO_RELATION_OF_KIND);
                 else {
                     while (it.hasNext()) {
-                        if(!flag){
-                            System.out.println(", ");
-                            flag = false;
-                        }
-                        System.out.println(it.next());
+                        if(!flag)
+                            System.out.print(", ");
+
+                        flag = false;
+                        auxChar = (Character) it.next();
+                        System.out.print(auxChar.getCharName());
                     }
                 }
                 flag = true;
+                System.out.println();
             }
             episodeIt  = auxList.get(0);
 
@@ -440,17 +443,22 @@ public class Main {
         String charName = null;
 
         try{
+
             charName = in.nextLine();
             Iterator it = showPedia.alsoAppearsOn(charName);
-            while(it.hasNext()){
-                System.out.println(it.next());
-            }
+            if(it != null)
+                while(it.hasNext()){
+                    System.out.println(it.next());
+                }
         }
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
         }
         catch (UnknownCharacterExc e){
             System.out.println(String.format(UNKNOWN_CHARACTER, charName));
+        }
+        catch (NotRealCharacterExc e){
+            System.out.println(String.format(e.getMessage(), charName));
         }
 
     }

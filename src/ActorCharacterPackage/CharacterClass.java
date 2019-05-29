@@ -76,10 +76,23 @@ public abstract class CharacterClass implements Character{
         return parents.iterator();
     }
 
-    public Iterator<Character> getSiblingsIt(){
+    public Iterator<Character> getSiblingsIt(Character auxChar){
         if(parents.size() == 0)
             return parents.iterator();
-        return parents.get(0).getChildrenIt();
+
+        int counter = 0;
+        Character storeChar = null;
+
+        //get's the parent with the most children
+        for(Character auxParent : parents)
+            if(auxParent.getNumChildren() >= counter) {
+                storeChar = auxParent;
+                counter = auxParent.getNumChildren();
+            }
+        //removes the current character from the copy of the children's list
+        List<Character> auxList = storeChar.getChildren();
+        auxList.remove(auxChar);
+        return auxList.iterator();
     }
 
     public Iterator<Character> getRomancesIt(){
@@ -104,9 +117,22 @@ public abstract class CharacterClass implements Character{
         }
     }
 
-
-
     public void addPartner(Character partner){
+        if(!partners.contains(partner) && partner != this)
+            partners.add(partner);
+    }
+
+    public void addChild(Character child){
+        if(!children.contains(child) && child != this)
+            children.add(child);
+    }
+
+    public void addParents(Character parent){
+        if(!parents.contains(parent) && parent != this)
+            parents.add(parent);
+    }
+
+    /*public void addPartner(Character partner){
         this.partners.add(partner);
 
         if(!partner.hasPartner(this))
@@ -147,7 +173,7 @@ public abstract class CharacterClass implements Character{
             parents.add(aux);
         if(!aux.getChildren().contains(this))
             aux.addChild(this);
-    }
+    }*/
 
     public void addParent(Character auxP){
         this.parent = auxP;

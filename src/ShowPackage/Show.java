@@ -45,4 +45,6 @@ public interface Show {
     int getNumChildrenFromName(String charName);
 
     Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc;
+
+    boolean realChar(String charName) throws NotRealCharacterExc;
 }
