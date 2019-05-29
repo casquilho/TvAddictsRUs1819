@@ -2,7 +2,9 @@ package ShowPackage;
 
 import ActorCharacterPackage.Actor;
 import CGICompaniesPackage.CGICompany;
+import EventPackage.Event;
 import MyExceptionsPackage.*;
+import SeasonPackage.Season;
 
 import java.util.Iterator;
 import java.util.List;
@@ -49,4 +51,6 @@ public interface Show {
     boolean realChar(String charName) throws NotRealCharacterExc;
 
     String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc;
+    Season getSeason(int seasonNumber) throws InvalidSeasonInterval;
+    Iterator<Event> getEventsFromEpisode(String key);
 }

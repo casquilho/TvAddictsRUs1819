@@ -62,7 +62,7 @@ public abstract class CharacterClass implements Character{
         //if(events.size() == 0)
         // return null;
         return events.values().iterator();
-       //TODO events.entrySet().iterator()
+
     }
 
     public Iterator<Character> getChildrenIt(){

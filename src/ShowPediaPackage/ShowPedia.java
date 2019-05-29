@@ -2,6 +2,7 @@ package ShowPediaPackage;
 
 import ActorCharacterPackage.Actor;
 import CGICompaniesPackage.CGICompany;
+import EventPackage.Event;
 import MyExceptionsPackage.*;
 import ShowPackage.*;
 
@@ -50,4 +51,5 @@ public interface ShowPedia {
     String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc;
 
 
+    Iterator<Event> getEventsIt(int season, int episode) throws InvalidSeasonInterval, NoShowSelectedExc;
 }

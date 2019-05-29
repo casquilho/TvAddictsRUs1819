@@ -5,8 +5,10 @@ import java.util.*;
 
 import ActorCharacterPackage.Character;
 import CGICompaniesPackage.CGICompany;
+import EpisodePackage.Episode;
 import EventPackage.Event;
 import MyExceptionsPackage.*;
+import SeasonPackage.Season;
 import ShowPackage.Show;
 import ShowPediaPackage.*;
 import java.lang.StringBuilder;
@@ -86,7 +88,7 @@ public class Main {
                 case ADDROMANCE:            addRomance(in, showPedia);            break;
                 case ADDEVENT:              addEvent(in, showPedia);              break;
                 case ADDQUOTE:              addQuote(in, showPedia);              break;
-                case SEASONSOUTLINE:        seasonsOutline(in);        break;
+                case SEASONSOUTLINE:        seasonsOutline(in,showPedia);        break;
                 case CHARACTERRESUME:       characterResume(in, showPedia);       break;
                 case HOWARETHESETWORELATED: howAreTheseTwoRelated(in, showPedia); break;
                 case FAMOUSQUOTES:          famousQuotes(in, showPedia);          break;
@@ -319,15 +321,68 @@ public class Main {
         }
     }
 
-    private static void seasonsOutline(Scanner in){//TODO
+    private static void seasonsOutline(Scanner in, ShowPedia showPedia){
 
-        int season = in.nextInt();
-        int episode = in.nextInt();in.nextLine();
+        int seasonStart;
+        int seasonEnd;
+        Iterator<Event> episodeIt = null;
+        Iterator<Event> eventIt = null;
+        List<Event> episodeAux = null;
+        Event eventAux = null;
+        boolean flag = true;
 
 
+        /*try{
+            seasonStart = in.nextInt();
+            seasonEnd = in.nextInt();in.nextLine();
 
+            episodeIt = showPedia.getEventsIt(seasonStart, seasonEnd);
 
+            while (episodeIt.hasNext()){
+                episodeAux = (List<Event>) episodeIt.next();
+                eventIt = episodeAux.iterator();
+                while (eventIt.hasNext()){
+                    eventAux = (Event) eventIt.next();
+                    if(eventAux.getSeason() <= seasonEnd && eventAux.getSeason() >= seasonStart) {
+                        if (flag) {
+                            System.out.println(String.format(CHAR_RESUME_HEADER, eventAux.getSeason(), eventAux.getEpisode(), showPedia.getEpisodeName(eventAux.getSeason(), eventAux.getEpisode())));
+                            flag = false;
+                        }
+                        System.out.println(eventAux.getEvent());
+                    }
+                }
+                flag = true;
+            }
+        }*/
 
+        try{
+            seasonStart = in.nextInt();
+            seasonEnd = in.nextInt();in.nextLine();
+            Show currentShow = showPedia.getCurrentShow();
+            episodeIt = showPedia.getEventsIt(seasonStart, seasonEnd);
+            Iterator<Event> it;
+            System.out.println(currentShow.getName());
+
+            for(int i = seasonStart; i < seasonEnd+1; i++){
+                Season currentSeason = currentShow.getSeason(i);
+
+                for(int j = 1; j < currentSeason.getEpisodesNumber()+1; j++){
+                   // Episode auxEpi = showPedia.getCurrentShow().getSeason(i).getEpisode(j);
+                    String key = i+""+j;
+                    System.out.println(String.format(CHAR_RESUME_HEADER, i, j, currentShow.getEpisodeName(i-1, j-1)));
+                    if((it = currentShow.getEventsFromEpisode(key)) != null){
+                        while (it.hasNext()){
+                            System.out.println(it.next().getEvent());
+                        }
+                    }
+                }
+            }
+        }
+        catch (NoShowSelectedExc | InvalidSeasonInterval e){
+            System.out.println(e.getMessage());
+        } catch (NonExistentEpisodeExc | NonExistentSeasonExc e) {
+            e.printStackTrace();
+        }
     }
 
     private static void characterResume(Scanner in, ShowPedia showPedia){

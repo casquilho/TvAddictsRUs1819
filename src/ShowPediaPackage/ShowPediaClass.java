@@ -7,6 +7,7 @@ package ShowPediaPackage;
 import ActorCharacterPackage.Actor;
 import ActorCharacterPackage.ActorClass;
 import CGICompaniesPackage.*;
+import EventPackage.Event;
 import MyExceptionsPackage.*;
 import ShowPackage.*;
 import java.util.*;
@@ -130,7 +131,6 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addQuote(season, episode, charName, quoteText, companiesCGI);
     }
 
-
     public Iterator getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
@@ -144,7 +144,6 @@ public class ShowPediaClass implements ShowPedia {
         companiesCGI.sort(new CompanyComparator());
         return companiesCGI.get(0);
     }
-
 
     public Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc{
         if(currentShow == null)
@@ -168,7 +167,6 @@ public class ShowPediaClass implements ShowPedia {
     public void characterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc{
         currentShow.getCharacterResume(charName, auxList);
     }
-
 
     public Actor getActor(String actorName){
         if(!actors.containsKey(actorName))
@@ -194,7 +192,6 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addRomance(char1, char2, aux);
     }
 
-
     public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{
 
         if(currentShow == null)
@@ -208,9 +205,15 @@ public class ShowPediaClass implements ShowPedia {
     public String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc{
         return currentShow.getEpisodeName(season-1, episode-1);
     }
-    /*public Iterator seasonsOutline(){
-        return currentShow
-    }*/
+
+    public Iterator<Event> getEventsIt(int seasonStart, int seasonEnd) throws InvalidSeasonInterval, NoShowSelectedExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+        if(currentShow.getSeasonsNumber() < seasonEnd || currentShow.getSeasonsNumber() < seasonStart || seasonStart < 1)
+            throw new InvalidSeasonInterval();
+
+        return currentShow.getEvents();
+    }
 
 
 }

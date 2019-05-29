@@ -215,6 +215,11 @@ public class ShowClass implements Show {
         return events.values().iterator();
     }
 
+    public Iterator<Event> getEventsFromEpisode(String key){
+        if(!events.containsKey(key))
+            return null;
+        return events.get(key).iterator();
+    }
 
     public void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc {
         if(!characters.containsKey(parent)) {
@@ -343,6 +348,12 @@ public class ShowClass implements Show {
         return seasons.get(season).getEpisode(episode).getEpisodeName();
     }
 
+    public Season getSeason(int seasonNumber) throws InvalidSeasonInterval {
+        if( seasons.size() < seasonNumber)
+            throw new InvalidSeasonInterval();
+        return seasons.get(seasonNumber-1);
+    }
+
     private void incrementEpisodesNumber(){
         this.totalEpisodesNumber++;
     }
@@ -350,4 +361,6 @@ public class ShowClass implements Show {
     private void incrementSeasonsNumber(){
         this.seasonsNumber++;
     }
+
+
 }
