@@ -45,6 +45,9 @@ public interface ShowPedia {
 
     void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterRomanceExc, UnknownCharacterExc, DuplicateRelationshipExc;
 
-    Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc;
+    Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc;
+
+    String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc;
+
 
 }

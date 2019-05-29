@@ -195,14 +195,18 @@ public class ShowPediaClass implements ShowPedia {
     }
 
 
-    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc{
+    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{
 
         if(currentShow == null)
             throw new NoShowSelectedExc();
         if(char1.equals(char2))
-            throw new SameCharacterExc();
+            throw new DuplicateCharRelated();
 
         return currentShow.howAreTheseTwoRelated(char1, char2, aux);
+    }
+
+    public String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc{
+        return currentShow.getEpisodeName(season-1, episode-1);
     }
     /*public Iterator seasonsOutline(){
         return currentShow

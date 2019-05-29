@@ -62,6 +62,7 @@ public abstract class CharacterClass implements Character{
         //if(events.size() == 0)
         // return null;
         return events.values().iterator();
+       //TODO events.entrySet().iterator()
     }
 
     public Iterator<Character> getChildrenIt(){
@@ -90,9 +91,9 @@ public abstract class CharacterClass implements Character{
                 counter = auxParent.getNumChildren();
             }
         //removes the current character from the copy of the children's list
-        List<Character> auxList = storeChar.getChildren();
-        auxList.remove(auxChar);
-        return auxList.iterator();
+        List<Character> auxClone = new LinkedList<Character>(storeChar.getChildren());
+        auxClone.remove(auxChar);
+        return auxClone.iterator();
     }
 
     public Iterator<Character> getRomancesIt(){

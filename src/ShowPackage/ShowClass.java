@@ -180,7 +180,7 @@ public class ShowClass implements Show {
 
         Event newEvent = new EventClass(thisEpisode, thisSeason, event, charsObj);
 
-        String key = season +""+ episode;
+        String key = thisSeason +""+ thisEpisode;
 
         if(events.containsKey(key)) {
             if (!events.get(key).contains(newEvent))
@@ -229,7 +229,7 @@ public class ShowClass implements Show {
         Character auxParent = characters.get(parent);
         Character auxChild = characters.get(child);
 
-        if(auxChild.hasParent(auxParent))
+        if(auxChild.hasParent(auxParent) && auxParent.hasChild(auxChild))
             throw new DuplicateRelationshipExc();
 
         auxParent.addChild(auxChild);
@@ -264,7 +264,7 @@ public class ShowClass implements Show {
         return characters.get(charName).getNumChildren();
     }
 
-    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc{
+    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc, NotRelatedExc{
         if(!characters.containsKey(char1)) {
             aux.add(0, char1);
             throw new UnknownCharacterExc();
@@ -281,6 +281,9 @@ public class ShowClass implements Show {
 
         stack1 = bfs(auxChar1, auxChar2);
         stack2 = bfs(auxChar2, auxChar1);
+
+        if(stack1 == null && stack2 == null)
+            throw new NotRelatedExc();
 
         if(stack1 != null)
             return stack1;
@@ -331,6 +334,13 @@ public class ShowClass implements Show {
             }
         }
         return null;
+    }
+
+    public String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc{
+        if(season > seasons.size())
+            throw new NonExistentSeasonExc();
+
+        return seasons.get(season).getEpisode(episode).getEpisodeName();
     }
 
     private void incrementEpisodesNumber(){

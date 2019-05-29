@@ -3,6 +3,7 @@ package SeasonPackage;
 import ActorCharacterPackage.Character;
 import EpisodePackage.Episode;
 import EpisodePackage.EpisodeClass;
+import MyExceptionsPackage.NonExistentEpisodeExc;
 
 public interface Season  {
 
@@ -16,5 +17,7 @@ public interface Season  {
     boolean participatesIn(String charName);
 
     boolean addParticipant(Character character);
+
+    String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc;
 
 }

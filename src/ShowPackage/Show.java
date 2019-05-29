@@ -44,7 +44,9 @@ public interface Show {
 
     int getNumChildrenFromName(String charName);
 
-    Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc;
+    Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc, NotRelatedExc;
 
     boolean realChar(String charName) throws NotRealCharacterExc;
+
+    String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc;
 }

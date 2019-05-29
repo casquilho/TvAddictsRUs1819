@@ -2,6 +2,8 @@ package SeasonPackage;
 
 import ActorCharacterPackage.Character;
 import EpisodePackage.*;
+import MyExceptionsPackage.NonExistentEpisodeExc;
+
 import java.util.*;
 
 
@@ -40,6 +42,12 @@ public class SeasonClass implements Season {
 
         participants.put(character.getCharName(), character);
         return true;
+    }
+
+    public String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc {
+        if(episodes.size() < epiNumber)
+            throw new NonExistentEpisodeExc();
+        return episodes.get(epiNumber).getEpisodeName();
     }
 
 }

@@ -48,7 +48,7 @@ public class Main {
     public static final String ADDSHOW = "%s created.";
     public static final String PRINT_CURRENT_SHOW = "%s. Seasons: %d Episodes: %d";
 
-    public static final String CHAR_RESUME_HEADER = "S%d Ep%d:";
+    public static final String CHAR_RESUME_HEADER = "S%d EP%d:%s";
     public static final String EMPTY_STRING = "";
     public static final String COMA_SPACE = ", ";
     public static final String REAL_CHAR_CREATION = "%s is now part of %s. This is %s role %d.";
@@ -59,7 +59,6 @@ public class Main {
 
 
     public static final String ADD_ROMANCE_MESSAGE = "%s and %s are now a couple.";
-
 
     public static final String PARENTS_HEADER = "Parents: ";
     public static final String KIDS_HEADER = "Kids: ";
@@ -377,13 +376,16 @@ public class Main {
                 while (eventIt.hasNext()){
                     eventAux = (Event) eventIt.next();
                     if(flag) {
-                        System.out.println(String.format(CHAR_RESUME_HEADER, eventAux.getSeason(), eventAux.getEpisode()));
+                        System.out.println(String.format(CHAR_RESUME_HEADER, eventAux.getSeason(), eventAux.getEpisode(), showPedia.getEpisodeName(eventAux.getSeason(), eventAux.getEpisode())));
                         flag = false;
                     }
                     System.out.println(eventAux.getEvent());
                 }
                 flag = true;
             }
+        }
+        catch (NonExistentEpisodeExc | NonExistentSeasonExc e){
+            //ponho aqui alguma coisa?
         }
         catch (UnknownCharacterExc e){
             System.out.println(e.getMessage());
@@ -402,17 +404,17 @@ public class Main {
             char2  = in.nextLine();
 
             Stack stack = showPedia.howAreTheseTwoRelated(char1, char2, aux);
+
             while(!stack.empty()){
                 if(flag)
                     System.out.print("; ");
                 flag = true;
                 System.out.print(stack.pop());
             }
+            System.out.println();
         }
-        catch (NoShowSelectedExc e){
+        catch (NoShowSelectedExc | NotRelatedExc | DuplicateCharRelated e){
             System.out.println(e.getMessage());
-        } catch (SameCharacterExc e) {
-            System.out.println(String.format(e.getMessage(), char1));
         } catch (UnknownCharacterExc e) {
             System.out.println(String.format(e.getMessage(), aux.get(0)));
         }
