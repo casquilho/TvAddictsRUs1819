@@ -2,11 +2,11 @@ package MyExceptionsPackage;
 
 public class NonExistentSeasonExc extends Exception {
 
-    private static String message;
+    private static String message = "%s does not have season %d!";
 
 
     public NonExistentSeasonExc() {
-        super();
+        super(message);
 
     }
 

@@ -47,10 +47,8 @@ public class Main {
     public static final String UNKNOWN_CATEGORY = "Unknown actor category!";
     public static final String ADDSHOW = "%s created.";
     public static final String PRINT_CURRENT_SHOW = "%s. Seasons: %d Episodes: %d";
-    public static final String UNKNOWN_CHARACTER = "Who is %s?";
+
     public static final String CHAR_RESUME_HEADER = "S%d Ep%d:";
-    public static final String NONEXISTENT_EPISODE = "%s S%d does not have episode %d!";
-    public static final String NONEXISTENT_SEASON = "%s does not have season %d!";
     public static final String EMPTY_STRING = "";
     public static final String COMA_SPACE = ", ";
     public static final String REAL_CHAR_CREATION = "%s is now part of %s. This is %s role %d.";
@@ -58,8 +56,8 @@ public class Main {
     public static final String ADD_QUOTE_MESSAGE = "Quote added.";
     public static final String ADD_EVENT_MESSAGE = "Event added.";
     public static final String ADD_RELATIONSHIP_MESSAGE = "%s has now %d kids. %s has now %d parent(s).";
-    public static final String SAME_CHARACTER_RELATIONSHIP = "%s cannot be parent and child at the same time!";
-    public static final String SAME_CHARACTER_ROMANCE = "%s cannot be in a single person romantic relationship!";
+
+
     public static final String ADD_ROMANCE_MESSAGE = "%s and %s are now a couple.";
 
 
@@ -180,26 +178,24 @@ public class Main {
 
         try{
             type = in.nextLine();
+            charName = in.nextLine();
+            String actorName_company = in.nextLine();
+            int cost = in.nextInt();in.nextLine();
 
             if(type.equals(Character.REAL)){
-                charName = in.nextLine();
-                String actorName = in.nextLine();
-                int cost = in.nextInt();in.nextLine();
+
                 showName = showPedia.getCurrentShow().getName();
 
-                showPedia.addRealCharacter(charName, actorName, cost);
-                int roleNumber = showPedia.getActor(actorName).getNumberOfroles();
+                showPedia.addRealCharacter(charName, actorName_company, cost);
+                int roleNumber = showPedia.getActor(actorName_company).getNumberOfroles();
 
-                System.out.println(String.format(REAL_CHAR_CREATION, charName, showName, actorName, roleNumber));
+                System.out.println(String.format(REAL_CHAR_CREATION, charName, showName, actorName_company, roleNumber));
             }
             else
                 if(type.equals(Character.VIRTUAL)){
-                    charName = in.nextLine();
-                    String company = in.nextLine();
-                    int cost = in.nextInt();in.nextLine();
                     showName = showPedia.getCurrentShow().getName();
 
-                    showPedia.addCGICharacter(charName, company, cost);
+                    showPedia.addCGICharacter(charName, actorName_company, cost);
                     System.out.println(String.format(VIRTUAL_CHAR_CREATION, charName, showName));
                 }
                 else
@@ -225,10 +221,10 @@ public class Main {
         }
         catch (NoShowSelectedExc | DuplicateRelationshipExc e){
             System.out.println(e.getMessage());
-        } catch (SameCharacterExc sameCharacterExc) {
-            System.out.println(String.format(SAME_CHARACTER_RELATIONSHIP, parent));
-        } catch (UnknownCharacterExc unknownCharacterExc) {
-            System.out.println(String.format(UNKNOWN_CHARACTER, aux.get(0)));
+        } catch (SameCharacterExc e) {
+            System.out.println(String.format(e.getMessage(), parent));
+        } catch (UnknownCharacterExc e) {
+            System.out.println(String.format(e.getMessage(), aux.get(0)));
         }
     }
 
@@ -247,10 +243,10 @@ public class Main {
         }
         catch (NoShowSelectedExc | DuplicateRelationshipExc e){
             System.out.println(e.getMessage());
-        } catch (SameCharacterExc sameCharacterExc) {
-            System.out.println(String.format(SAME_CHARACTER_ROMANCE, char1));
-        } catch (UnknownCharacterExc unknownCharacterExc) {
-            System.out.println(String.format(UNKNOWN_CHARACTER, aux.get(0)));
+        } catch (SameCharacterRomanceExc e) {
+            System.out.println(String.format(e.getMessage(), char1));
+        } catch (UnknownCharacterExc e) {
+            System.out.println(String.format(e.getMessage(), aux.get(0)));
         }
 
 
@@ -282,13 +278,13 @@ public class Main {
             System.out.println(e.getMessage());
         }
         catch (NonExistentSeasonExc e){
-            System.out.println(String.format(NONEXISTENT_SEASON, showName, season));
+            System.out.println(String.format(e.getMessage(), showName, season));
         }
         catch (NonExistentEpisodeExc e){
-            System.out.println(String.format(NONEXISTENT_EPISODE, showName, season, episode));
+            System.out.println(String.format(e.getMessage(), showName, season, episode));
         }
         catch (UnknownCharacterExc e){
-            System.out.println(String.format(UNKNOWN_CHARACTER, aux.get(0)));
+            System.out.println(String.format(e.getMessage(), aux.get(0)));
         }
     }
 
@@ -314,13 +310,13 @@ public class Main {
             System.out.println(e.getMessage());
         }
         catch (NonExistentSeasonExc e){
-            System.out.println(String.format(NONEXISTENT_SEASON, showName, season));
+            System.out.println(String.format(e.getMessage(), showName, season));
         }
         catch (NonExistentEpisodeExc e){
-            System.out.println(String.format(NONEXISTENT_EPISODE, showName, season, episode));
+            System.out.println(String.format(e.getMessage(), showName, season, episode));
         }
         catch (UnknownCharacterExc e){
-            System.out.println(String.format(UNKNOWN_CHARACTER, charName));
+            System.out.println(String.format(e.getMessage(), charName));
         }
     }
 
@@ -416,9 +412,9 @@ public class Main {
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
         } catch (SameCharacterExc e) {
-            System.out.println(String.format(SAME_CHARACTER_ROMANCE, char1));
+            System.out.println(String.format(e.getMessage(), char1));
         } catch (UnknownCharacterExc e) {
-            System.out.println(String.format(UNKNOWN_CHARACTER, aux.get(0)));
+            System.out.println(String.format(e.getMessage(), aux.get(0)));
         }
     }
 
@@ -454,10 +450,7 @@ public class Main {
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
         }
-        catch (UnknownCharacterExc e){
-            System.out.println(String.format(UNKNOWN_CHARACTER, charName));
-        }
-        catch (NotRealCharacterExc e){
+        catch (UnknownCharacterExc | NotRealCharacterExc e){
             System.out.println(String.format(e.getMessage(), charName));
         }
 

@@ -185,11 +185,11 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addRelationship(parent, child, aux);
     }
 
-    public void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc, DuplicateRelationshipExc {
+    public void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterRomanceExc, UnknownCharacterExc, DuplicateRelationshipExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
         if(char1.equals(char2))
-            throw new SameCharacterExc();
+            throw new SameCharacterRomanceExc();
 
         currentShow.addRomance(char1, char2, aux);
     }
