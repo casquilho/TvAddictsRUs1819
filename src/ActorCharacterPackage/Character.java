@@ -4,6 +4,7 @@ import EventPackage.Event;
 import ShowPackage.Show;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public interface Character {
@@ -16,29 +17,37 @@ public interface Character {
 
     int getCost();
 
-    void addEvent(String key, Event newEvent);
+    int getNumParents();
+
+    int getNumChildren();
+
+    Character getParent();
 
     Iterator<List<Event>> getCharacterEvents();
 
+    Iterator<Character> getChildrenIt();
+
+    Iterator<Character> getParentsIt();
+
+    Iterator<Character> getSiblingsIt();
+
+    Iterator<Character> getRomancesIt();
+
+    List<Character> getChildren();
+
+    void addEvent(String key, Event value);
+
     void addPartner(Character partner);
 
-    boolean addChild(Character child);
+    void addChild(Character child);
 
     void addParents(Character aux);
 
     void addParent(Character auxP);
-
-    Character getParent();
 
     boolean hasChild(Character child);
 
     boolean hasParent(Character auxP);
 
     boolean hasPartner(Character auxP);
-
-    List<Character> getChildren();
-
-    int getNumParents();
-
-    int getNumChildren();
 }

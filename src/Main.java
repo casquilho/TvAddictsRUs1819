@@ -44,7 +44,7 @@ public class Main {
     //Constantes que definem as mensagens para o utilizador
     public static final String CGI_KING = "%s %d";
     public static final String ADD_EPISODE_MESSAGE = "%s S%d, Ep%s:%s.";
-    public static final String UNKNOWN_CATEGORY = "Unknown character category!";
+    public static final String UNKNOWN_CATEGORY = "Unknown actor category!";
     public static final String ADDSHOW = "%s created.";
     public static final String PRINT_CURRENT_SHOW = "%s. Seasons: %d Episodes: %d";
     public static final String UNKNOWN_CHARACTER = "Who is %s?";
@@ -60,7 +60,16 @@ public class Main {
     public static final String ADD_RELATIONSHIP_MESSAGE = "%s has now %d kids. %s has now %d parent(s).";
     public static final String SAME_CHARACTER_RELATIONSHIP = "%s cannot be parent and child at the same time!";
     public static final String SAME_CHARACTER_ROMANCE = "%s cannot be in a single person romantic relationship!";
-    public static final String ADD_ROMANCE_MESSAGE = "%s and %s are now in a romantic relationship!";
+    public static final String ADD_ROMANCE_MESSAGE = "%s and %s are now a couple.";
+
+
+    public static final String PARENTS_HEADER = "Parents: ";
+    public static final String KIDS_HEADER = "Kids: ";
+    public static final String SIBLINGS_HEADER = "Siblings: ";
+    public static final String ROMANCE_HEADER = "Romantic Relationships: ";
+    public static final String NO_RELATION_OF_KIND = "None.";
+
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -196,7 +205,7 @@ public class Main {
                 else
                     System.out.println(UNKNOWN_CATEGORY);
         }
-        catch (NoShowSelectedExc | DuplicateCharacterExc e ){
+        catch (NoShowSelectedExc | DuplicateCharacterExc | InvalidSalaryExc e ){
             System.out.println(e.getMessage());
         }
     }
@@ -214,7 +223,7 @@ public class Main {
             System.out.println(String.format(ADD_RELATIONSHIP_MESSAGE, parent, showPedia.getCurrentShow().getNumChildrenFromName(parent),
                                                                         child, showPedia.getCurrentShow().getNumParentsFromName(child)));
         }
-        catch (NoShowSelectedExc e){
+        catch (NoShowSelectedExc | DuplicateRelationshipExc e){
             System.out.println(e.getMessage());
         } catch (SameCharacterExc sameCharacterExc) {
             System.out.println(String.format(SAME_CHARACTER_RELATIONSHIP, parent));
@@ -236,7 +245,7 @@ public class Main {
             showPedia.addRomance(char1, char2, aux);
             System.out.println(String.format(ADD_ROMANCE_MESSAGE, char1, char2));
         }
-        catch (NoShowSelectedExc e){
+        catch (NoShowSelectedExc | DuplicateRelationshipExc e){
             System.out.println(e.getMessage());
         } catch (SameCharacterExc sameCharacterExc) {
             System.out.println(String.format(SAME_CHARACTER_ROMANCE, char1));
@@ -315,7 +324,7 @@ public class Main {
         }
     }
 
-    private static void seasonsOutline(Scanner in){
+    private static void seasonsOutline(Scanner in){//TODO
 
         int season = in.nextInt();
         int episode = in.nextInt();in.nextLine();
@@ -327,14 +336,41 @@ public class Main {
     }
 
     private static void characterResume(Scanner in, ShowPedia showPedia){
+        boolean flag = true;
+        Event eventAux;
+        List episode;
+        Iterator eventIt, episodeIt;
+        List<Iterator> auxList = new ArrayList<>();
+        List<String> header = new ArrayList<>();
         try{
             String charName = in.nextLine();
+            showPedia.characterResume(charName, auxList);
 
-            boolean flag = true;
-            Event eventAux;
-            List episode;
-            Iterator eventIt;
-            Iterator episodeIt = showPedia.characterResume(charName);
+
+            header.add(0, PARENTS_HEADER);
+            header.add(1, KIDS_HEADER);
+            header.add(2, SIBLINGS_HEADER);
+            header.add(3, ROMANCE_HEADER);
+            //parentsIt  = auxList.get(1); childrenIt = auxList.get(2);
+            //siblingsIt = auxList.get(3); romanceIt  = auxList.get(4);
+            for(int i = 1; i < 5; i++){
+                Iterator it = auxList.get(i);
+                System.out.print(header.get(i-1));
+
+                if(!it.hasNext())
+                    System.out.println(NO_RELATION_OF_KIND);
+                else {
+                    while (it.hasNext()) {
+                        if(!flag){
+                            System.out.println(", ");
+                            flag = false;
+                        }
+                        System.out.println(it.next());
+                    }
+                }
+                flag = true;
+            }
+            episodeIt  = auxList.get(0);
 
             while (episodeIt.hasNext()){
                 episode = (List) episodeIt.next();
@@ -366,19 +402,19 @@ public class Main {
             char1 = in.nextLine();
             char2  = in.nextLine();
 
-            Iterator it = showPedia.howAreTheseTwoRelated(char1, char2, aux);  //implementar
-            while(it.hasNext()){
+            Stack stack = showPedia.howAreTheseTwoRelated(char1, char2, aux);
+            while(!stack.empty()){
                 if(flag)
                     System.out.print("; ");
                 flag = true;
-                System.out.print(it.next());
+                System.out.print(stack.pop());
             }
         }
         catch (NoShowSelectedExc e){
             System.out.println(e.getMessage());
-        } catch (SameCharacterExc sameCharacterExc) {
+        } catch (SameCharacterExc e) {
             System.out.println(String.format(SAME_CHARACTER_ROMANCE, char1));
-        } catch (UnknownCharacterExc unknownCharacterExc) {
+        } catch (UnknownCharacterExc e) {
             System.out.println(String.format(UNKNOWN_CHARACTER, aux.get(0)));
         }
     }
@@ -445,9 +481,9 @@ public class Main {
                         /*done not tested*/ +"addRomance - add a romantic relationship between characters\n"
                         /*done*/   +"addEvent - add a significant event involving at least one character\n"
                         /*done*/    +"addQuote - add a new quote to a character\n"
-            +"seasonsOutline - outline the contents of the selected seasons for a selected show\n"
+                        /*done not tested*/+"seasonsOutline - outline the contents of the selected seasons for the selected show\n"
                         /*done*/+"characterResume - outline the main information on a specific character\n"
-            +"howAreTheseTwoRelated - find out if and how two characters may be related\n"
+                        /*done not tested*/+"howAreTheseTwoRelated - find out if and how two characters may be related\n"
                         /*done*/    +"famousQuotes - find out which character(s) said a particular quote\n"
                         /*done*/    +"alsoAppearsOn - which other shows and roles is the same actor on?\n"
             +"mostRomantic - find out who is at least as romantic as X\n"

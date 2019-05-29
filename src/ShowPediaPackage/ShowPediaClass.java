@@ -77,7 +77,7 @@ public class ShowPediaClass implements ShowPedia {
         return currentShow.addEpisode(seasonNumber, epiName);
     }
 
-    public void addRealCharacter(String charName, String actorName, int cost) throws NoShowSelectedExc, DuplicateCharacterExc {
+    public void addRealCharacter(String charName, String actorName, int cost) throws NoShowSelectedExc, DuplicateCharacterExc, InvalidSalaryExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
@@ -96,14 +96,21 @@ public class ShowPediaClass implements ShowPedia {
 
         //add the character to the current show
         currentShow.addRealCharacter(charName, aux, cost);
+
+        if(cost < 0)
+            throw new InvalidSalaryExc();
     }
 
-    public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc {
+    public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc, InvalidSalaryExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
+
         //add the character to the current show
         currentShow.addCGICharacter(charName, company, cost);
+
+        if(cost < 0)
+            throw new InvalidSalaryExc();
 
         //if the company already exists, do nothing. if it doesn't, create and insert it
         Iterator it = companiesCGI.iterator();
@@ -155,8 +162,8 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addEvent(episode, season, characters, event, companiesCGI);
     }
 
-    public Iterator characterResume(String charName) throws UnknownCharacterExc{
-        return currentShow.getCharacterResume(charName);
+    public void characterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc{
+        currentShow.getCharacterResume(charName, auxList);
     }
 
 
@@ -166,7 +173,7 @@ public class ShowPediaClass implements ShowPedia {
         return actors.get(actorName);
     }
 
-    public void addRelationship(String parent, String child, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc {
+    public void addRelationship(String parent, String child, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc, DuplicateRelationshipExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
         if(parent.equals(child))
@@ -175,13 +182,24 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addRelationship(parent, child, aux);
     }
 
-    public void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc {
+    public void addRomance(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc, DuplicateRelationshipExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
         if(char1.equals(char2))
             throw new SameCharacterExc();
 
         currentShow.addRomance(char1, char2, aux);
+    }
+
+
+    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc{
+
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+        if(char1.equals(char2))
+            throw new SameCharacterExc();
+
+        return currentShow.howAreTheseTwoRelated(char1, char2, aux);
     }
     /*public Iterator seasonsOutline(){
         return currentShow

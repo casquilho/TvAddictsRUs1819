@@ -6,6 +6,7 @@ import MyExceptionsPackage.*;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 public interface Show {
 
@@ -31,16 +32,17 @@ public interface Show {
 
     void addEvent(int episode, int season, List<String> characters, String event, List<CGICompany> companiesCGI) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
-    Iterator getCharacterResume(String charName) throws UnknownCharacterExc;
+    void getCharacterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc;
 
     Iterator getEvents();
 
-    void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc;
+    void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc;
 
-    void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc;
+    void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc;
 
     int getNumParentsFromName(String charName);
 
     int getNumChildrenFromName(String charName);
 
+    Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc;
 }

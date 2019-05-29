@@ -195,46 +195,59 @@ public class ShowClass implements Show {
         }
     }
 
-    public Iterator getCharacterResume(String charName) throws UnknownCharacterExc{
+    public void getCharacterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc{
         if(!characters.containsKey(charName))
             throw new UnknownCharacterExc();
+
         Character auxChar = characters.get(charName);
 
-        return auxChar.getCharacterEvents();
-    }
+        auxList.add(0,auxChar.getCharacterEvents());
+        auxList.add(1,auxChar.getParentsIt());
+        auxList.add(2,auxChar.getChildrenIt());
+        auxList.add(3,auxChar.getSiblingsIt());
+        auxList.add(4,auxChar.getRomancesIt());
+}
 
     public Iterator getEvents(){
         return events.values().iterator();
     }
 
 
-    public void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc{
-        Character auxParent = characters.get(parent);
-        Character auxChild = characters.get(child);
-
-        if(auxChild == null) {
-            aux.add(0, child);
-            throw new UnknownCharacterExc();
-        }
-        if(auxParent == null){
+    public void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc {
+        if(!characters.containsKey(parent)) {
             aux.add(0, parent);
             throw new UnknownCharacterExc();
         }
+        if(!characters.containsKey(child)){
+            aux.add(0, child);
+            throw new UnknownCharacterExc();
+        }
+
+        Character auxParent = characters.get(parent);
+        Character auxChild = characters.get(child);
+
+        if(auxChild.hasParent(auxParent))
+            throw new DuplicateRelationshipExc();
+
         auxParent.addChild(auxChild);
     }
 
-    public void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc{
-        Character auxChar1 = characters.get(char1);
-        Character auxChar2 = characters.get(char2);
-
-        if(auxChar1 == null) {
+    public void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc{
+        if(!characters.containsKey(char1)) {
             aux.add(0, char1);
             throw new UnknownCharacterExc();
         }
-        if(auxChar2 == null){
+        if(!characters.containsKey(char2)){
             aux.add(0, char2);
             throw new UnknownCharacterExc();
         }
+
+        Character auxChar1 = characters.get(char1);
+        Character auxChar2 = characters.get(char2);
+
+        if(auxChar1.hasPartner(auxChar2))
+            throw new DuplicateRelationshipExc();
+
         auxChar1.addPartner(auxChar2);
     }
 
@@ -246,13 +259,36 @@ public class ShowClass implements Show {
         return characters.get(charName).getNumChildren();
     }
 
+    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc{
+        if(!characters.containsKey(char1)) {
+            aux.add(0, char1);
+            throw new UnknownCharacterExc();
+        }
+        if(!characters.containsKey(char2)){
+            aux.add(0, char2);
+            throw new UnknownCharacterExc();
+        }
 
+        Character auxChar1 = characters.get(char1);
+        Character auxChar2 = characters.get(char2);
+        Stack stack1 = null;
+        Stack stack2 = null;
 
-    public List<String> bfs(Character x, Character y) {
+        stack1 = bfs(auxChar1, auxChar2);
+        stack2 = bfs(auxChar2, auxChar1);
+
+        if(stack1 != null)
+            return stack1;
+        else
+            return stack2;
+
+    }
+
+    private Stack<String> bfs(Character x, Character y) {
 
         Queue<Character> queue = new LinkedList<>();
         List<Character> visited = new LinkedList<>();
-        List<String> descendants = new LinkedList<>();
+        Stack<String> descendants = new Stack<>();
 
         visited.add(x);
         queue.add(x);

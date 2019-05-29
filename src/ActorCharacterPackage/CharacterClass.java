@@ -19,7 +19,7 @@ public abstract class CharacterClass implements Character{
     private List<Character> partners;
     private List<Character> children;
     private List<Character> parents;
-    private Character parent;
+    private Character parent;       //used only for the BFS algorithm
 
 
     CharacterClass(String charName, Show show, int cost) {
@@ -46,6 +46,52 @@ public abstract class CharacterClass implements Character{
         return cost;
     }
 
+    public int getNumParents(){
+        return parents.size();
+    }
+
+    public int getNumChildren(){
+        return children.size();
+    }
+
+    public Character getParent(){
+        return parent;
+    }
+
+    public Iterator<List<Event>> getCharacterEvents(){
+        //if(events.size() == 0)
+        // return null;
+        return events.values().iterator();
+    }
+
+    public Iterator<Character> getChildrenIt(){
+        //if(children.size() == 0)
+        //return null;
+        return  children.iterator();
+    }
+
+    public Iterator<Character> getParentsIt(){
+        //if(parents.size() == 0)
+        //return null;
+        return parents.iterator();
+    }
+
+    public Iterator<Character> getSiblingsIt(){
+        if(parents.size() == 0)
+            return parents.iterator();
+        return parents.get(0).getChildrenIt();
+    }
+
+    public Iterator<Character> getRomancesIt(){
+        //if(partners.size() == 0)
+        //    return null;
+        return partners.iterator();
+    }
+
+    public List<Character> getChildren(){
+        return children;
+    }
+
     public void addEvent(String key, Event value){
         if(events.containsKey(key)) {
             if (!events.get(key).contains(value))
@@ -58,9 +104,6 @@ public abstract class CharacterClass implements Character{
         }
     }
 
-    public Iterator<List<Event>> getCharacterEvents(){
-        return events.values().iterator();
-    }
 
 
     public void addPartner(Character partner){
@@ -69,52 +112,45 @@ public abstract class CharacterClass implements Character{
         if(!partner.hasPartner(this))
             partner.addPartner(this);
 
-        for(Character auxChild: children)
-            if(!partner.hasChild(auxChild))
+        for(Character auxChild: children) {
+            if (!partner.hasChild(auxChild))
                 partner.addChild(auxChild);
+            if (!auxChild.hasParent(partner))
+                auxChild.addParents(partner);
+        }
 
-        for(Character aux2Child : partner.getChildren())
-            if(!children.contains(aux2Child))
+        for(Character aux2Child : partner.getChildren()) {
+            if (!children.contains(aux2Child))
                 children.add(aux2Child);
-
-
+            if (!aux2Child.hasParent(this))
+                aux2Child.addParents(this);
+        }
     }
 
-    public boolean addChild(Character child){
+    public void addChild(Character child){
         if(children.contains(child))
-            return false;
+            return ;
 
         children.add(child);
         child.addParents(this);
 
         for(Character auxP : partners) {
-            if (!auxP.hasChild(child)) {
+            if (!auxP.hasChild(child))
                 auxP.addChild(child);
+            if(!child.hasParent(auxP))
                 child.addParents(auxP);
-            }
         }
-        return true;
     }
 
     public void addParents(Character aux){
         if(!parents.contains(aux))
             parents.add(aux);
-    }
-
-    public int getNumParents(){
-        return parents.size();
-    }
-
-    public int getNumChildren(){
-        return children.size();
+        if(!aux.getChildren().contains(this))
+            aux.addChild(this);
     }
 
     public void addParent(Character auxP){
         this.parent = auxP;
-    }
-
-    public Character getParent() {
-        return parent;
     }
 
     public boolean hasChild(Character child){
@@ -129,7 +165,5 @@ public abstract class CharacterClass implements Character{
         return partners.contains(auxP);
     }
 
-    public List<Character> getChildren(){
-        return  children;
-    }
+
 }
