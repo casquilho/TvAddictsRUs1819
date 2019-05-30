@@ -24,7 +24,8 @@ public abstract class CharacterClass implements Character{
     private List<Character> children;
     private List<Character> parents;
     private List<Character> siblings;
-    private Character parent;       //used only for the BFS algorithm
+    //used only for the BFS algorithm
+    private Character parent;
 
 
     CharacterClass(String charName, Show show, int cost) {
@@ -65,37 +66,31 @@ public abstract class CharacterClass implements Character{
     }
 
     public Iterator<List<Event>> getCharacterEvents(){
-        //if(events.size() == 0)
-        // return null;
         return events.values().iterator();
-
     }
 
     public Iterator<Character> getChildrenIt(){
-        //if(children.size() == 0)
-        //return null;
         return  children.iterator();
     }
 
     public Iterator<Character> getParentsIt(){
-        //if(parents.size() == 0)
-        //return null;
         return parents.iterator();
     }
 
     public Iterator<Character> getSiblingsIt(Character auxChar){
-       // siblings.remove(this);
         return  siblings.iterator();
     }
 
     public Iterator<Character> getRomancesIt(){
-        //if(partners.size() == 0)
-        //    return null;
         return partners.iterator();
     }
 
     public List<Character> getChildren(){
         return children;
+    }
+
+    public List<Character> getSiblings(){
+        return siblings;
     }
 
     public void addEvent(String key, Event value){
@@ -120,10 +115,6 @@ public abstract class CharacterClass implements Character{
             children.add(child);
     }
 
-    public List<Character> getSiblings(){
-        return siblings;
-    }
-
     public void addParents(Character parent){
         if(!parents.contains(parent) && parent != this)
             parents.add(parent);
@@ -135,8 +126,6 @@ public abstract class CharacterClass implements Character{
                 child.getSiblings().add(this);
         }
     }
-
-
 
     public void addParent(Character auxP){
         this.parent = auxP;
@@ -153,6 +142,4 @@ public abstract class CharacterClass implements Character{
     public boolean hasPartner(Character auxP){
         return partners.contains(auxP);
     }
-
-
 }

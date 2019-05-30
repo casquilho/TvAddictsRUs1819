@@ -41,8 +41,27 @@ public class ShowClass implements Show {
         this.events     = new TreeMap<String, List<Event>>(Collator.getInstance());
     }
 
+
     public String getName() {
         return showName;
+    }
+
+    public String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc{
+        if(season > seasons.size())
+            throw new NonExistentSeasonExc();
+
+        return seasons.get(season).getEpisode(episode).getEpisodeName();
+    }
+
+    public String getActorNameFromCharName(String charName) throws UnknownCharacterExc{
+        if(!characters.containsKey(charName) )
+            throw new UnknownCharacterExc();
+
+        Character aux = characters.get(charName);
+        if(aux instanceof RealCharacter)
+            return ((RealCharacter) aux).getActorName();
+
+        return null;
     }
 
     public int getSeasonsNumber() {
@@ -53,10 +72,49 @@ public class ShowClass implements Show {
         return totalEpisodesNumber;
     }
 
-    public void addSeason(){
-        Season newSeason = new SeasonClass(seasons.size()+1);
-        seasons.add(newSeason);
-        incrementSeasonsNumber();
+    public int getNumParentsFromName(String charName){
+        return characters.get(charName).getNumParents();
+    }
+
+    public int getNumChildrenFromName(String charName){
+        return characters.get(charName).getNumChildren();
+    }
+
+    public Season getSeason(int seasonNumber, int seasonStart, int seasonEnd) throws InvalidSeasonInterval {
+        if(this.getSeasonsNumber() < seasonEnd || this.getSeasonsNumber() < seasonStart || seasonStart < 1)
+            throw new InvalidSeasonInterval();
+        return seasons.get(seasonNumber-1);
+    }
+
+    public Iterator<Event> getEventsFromEpisode(String key){
+        if(!events.containsKey(key))
+            return null;
+        return events.get(key).iterator();
+    }
+
+    public Iterator<String> getFamousQuotes(String quoteText) throws UnknownQuoteExc{
+        if(!quotes.containsKey(quoteText))
+            throw new UnknownQuoteExc();
+        quotes.get(quoteText).sort(Collator.getInstance());
+        return quotes.get(quoteText).iterator();
+    }
+
+    public Iterator<List<Event>> getCharacterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc{
+        if(!characters.containsKey(charName))
+            throw new UnknownCharacterExc();
+
+        Character auxChar = characters.get(charName);
+
+        auxList.add(0,auxChar.getParentsIt());
+        auxList.add(1,auxChar.getChildrenIt());
+        auxList.add(2,auxChar.getSiblingsIt(auxChar));
+        auxList.add(3,auxChar.getRomancesIt());
+
+        return auxChar.getCharacterEvents();
+    }
+
+    public Iterator<List<Event>> getEvents(){
+        return events.values().iterator();
     }
 
     public int addEpisode(int seasonNumber, String epiName) throws UnknownSeasonExc {
@@ -69,6 +127,12 @@ public class ShowClass implements Show {
         catch(IndexOutOfBoundsException e){
             throw new UnknownSeasonExc();
         }
+    }
+
+    public void addSeason(){
+        Season newSeason = new SeasonClass(seasons.size()+1);
+        seasons.add(newSeason);
+        incrementSeasonsNumber();
     }
 
     public void addRealCharacter(String charName, Actor actor, int cost) throws DuplicateCharacterExc {
@@ -98,64 +162,6 @@ public class ShowClass implements Show {
         Quote quoteAux = new QuoteClass(quoteText, charName, season, episode);
 
         processQuote(quoteAux, characters.get(charName), season, episode, companies);
-    }
-
-    private void processQuote(Quote quote, Character character, int thisSeason, int thisEpisode, List<CGICompany> companies){
-
-        Season season = seasons.get(thisSeason - 1);
-        Episode episode = season.getEpisode(thisEpisode -1);
-
-
-        addCharToEpisodeSeason(season, episode, character, companies);
-
-        //if this particular quote already exists, add the character to the list of characters who said it
-        if(quotes.containsKey(quote.getQuote())){
-            if(!quotes.get(quote.getQuote()).contains(character.getCharName()))
-                quotes.get(quote.getQuote()).add(character.getCharName());
-        }
-
-        //otherwise, create a new entry for it
-        else {
-            List<String> aux = new LinkedList<String>();
-            aux.add(character.getCharName());
-            quotes.put(quote.getQuote(), aux);
-
-        }
-    }
-
-    private void addCharToEpisodeSeason(Season season, Episode episode, Character character, List<CGICompany> companies){
-
-        //if character is not on the season, add him.
-        // if it's a virtual character, appearing in the season for the first time, add its value to the company's profits
-        if(season.addParticipant(character) && character instanceof VirtualCharacter){
-            String companyName = ((VirtualCharacter) character).getCompanyCGI();
-            for (CGICompany company : companies) {
-                if (company.getName().equals(companyName))
-                    company.addProfit(character.getCost());
-            }
-        }
-        //if character is not on the episode, add him.
-        // if it's a real character appearing in the episode for the first time, add its value to its profits
-        if(episode.addParticipant(character) && character instanceof RealCharacter)
-            ((RealCharacter) character).addProfitFromAppearance();
-    }
-
-    public Iterator<String> getFamousQuotes(String quoteText) throws UnknownQuoteExc{
-        if(!quotes.containsKey(quoteText))
-            throw new UnknownQuoteExc();
-        quotes.get(quoteText).sort(Collator.getInstance());
-        return quotes.get(quoteText).iterator();
-    }
-
-    public String getActorNameFromCharName(String charName) throws UnknownCharacterExc{
-        if(!characters.containsKey(charName) )
-            throw new UnknownCharacterExc();
-
-        Character aux = characters.get(charName);
-        if(aux instanceof RealCharacter)
-            return ((RealCharacter) aux).getActorName();
-
-        return null;
     }
 
     public void addEvent(int thisEpisode, int thisSeason, List<String> chars, String event, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc{
@@ -202,30 +208,6 @@ public class ShowClass implements Show {
         }
     }
 
-    public Iterator<List<Event>> getCharacterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc{
-        if(!characters.containsKey(charName))
-            throw new UnknownCharacterExc();
-
-        Character auxChar = characters.get(charName);
-
-        auxList.add(0,auxChar.getParentsIt());
-        auxList.add(1,auxChar.getChildrenIt());
-        auxList.add(2,auxChar.getSiblingsIt(auxChar));
-        auxList.add(3,auxChar.getRomancesIt());
-
-        return auxChar.getCharacterEvents();
-}
-
-    public Iterator<List<Event>> getEvents(){
-        return events.values().iterator();
-    }
-
-    public Iterator<Event> getEventsFromEpisode(String key){
-        if(!events.containsKey(key))
-            return null;
-        return events.get(key).iterator();
-    }
-
     public void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc {
         if(!characters.containsKey(parent)) {
             aux.add(0, parent);
@@ -266,14 +248,6 @@ public class ShowClass implements Show {
         auxChar2.addPartner(auxChar1);
     }
 
-    public int getNumParentsFromName(String charName){
-       return characters.get(charName).getNumParents();
-    }
-
-    public int getNumChildrenFromName(String charName){
-        return characters.get(charName).getNumChildren();
-    }
-
     public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc, NotRelatedExc{
         if(!characters.containsKey(char1)) {
             aux.add(0, char1);
@@ -297,7 +271,6 @@ public class ShowClass implements Show {
             return stack1;
         else
             return stack2;
-
     }
 
     public boolean realChar(String charName) throws NotRealCharacterExc{
@@ -307,6 +280,54 @@ public class ShowClass implements Show {
             throw new NotRealCharacterExc();
 
         return true;
+    }
+
+    private void processQuote(Quote quote, Character character, int thisSeason, int thisEpisode, List<CGICompany> companies){
+
+        Season season = seasons.get(thisSeason - 1);
+        Episode episode = season.getEpisode(thisEpisode -1);
+
+
+        addCharToEpisodeSeason(season, episode, character, companies);
+
+        //if this particular quote already exists, add the character to the list of characters who said it
+        if(quotes.containsKey(quote.getQuote())){
+            if(!quotes.get(quote.getQuote()).contains(character.getCharName()))
+                quotes.get(quote.getQuote()).add(character.getCharName());
+        }
+
+        //otherwise, create a new entry for it
+        else {
+            List<String> aux = new LinkedList<String>();
+            aux.add(character.getCharName());
+            quotes.put(quote.getQuote(), aux);
+
+        }
+    }
+
+    private void addCharToEpisodeSeason(Season season, Episode episode, Character character, List<CGICompany> companies){
+
+        //if character is not on the season, add him.
+        // if it's a virtual character, appearing in the season for the first time, add its value to the company's profits
+        if(season.addParticipant(character) && character instanceof VirtualCharacter){
+            String companyName = ((VirtualCharacter) character).getCompanyCGI();
+            for (CGICompany company : companies) {
+                if (company.getName().equals(companyName))
+                    company.addProfit(character.getCost());
+            }
+        }
+        //if character is not on the episode, add him.
+        // if it's a real character appearing in the episode for the first time, add its value to its profits
+        if(episode.addParticipant(character) && character instanceof RealCharacter)
+            ((RealCharacter) character).addProfitFromAppearance();
+    }
+
+    private void incrementEpisodesNumber(){
+        this.totalEpisodesNumber++;
+    }
+
+    private void incrementSeasonsNumber(){
+        this.seasonsNumber++;
     }
 
     private Stack<String> bfs(Character x, Character y) {
@@ -343,27 +364,4 @@ public class ShowClass implements Show {
         }
         return null;
     }
-
-    public String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc{
-        if(season > seasons.size())
-            throw new NonExistentSeasonExc();
-
-        return seasons.get(season).getEpisode(episode).getEpisodeName();
-    }
-
-    public Season getSeason(int seasonNumber, int seasonStart, int seasonEnd) throws InvalidSeasonInterval {
-        if(this.getSeasonsNumber() < seasonEnd || this.getSeasonsNumber() < seasonStart || seasonStart < 1)
-            throw new InvalidSeasonInterval();
-        return seasons.get(seasonNumber-1);
-    }
-
-    private void incrementEpisodesNumber(){
-        this.totalEpisodesNumber++;
-    }
-
-    private void incrementSeasonsNumber(){
-        this.seasonsNumber++;
-    }
-
-
 }

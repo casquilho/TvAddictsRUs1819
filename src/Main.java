@@ -63,7 +63,7 @@ public class Main {
     private static final String CHAR_RESUME_HEADER = "S%d EP%d:%s";
     private static final String PARENTS_HEADER = "Parents: ";
     private static final String KIDS_HEADER = "Kids: ";
-    private static final String SIBLINGS_HEADER = "Siblings:";
+    private static final String SIBLINGS_HEADER = "Siblings: ";
     private static final String ROMANCE_HEADER = "Romantic relationships: ";
 
 

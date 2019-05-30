@@ -4,9 +4,7 @@
  */
 package ShowPediaPackage;
 
-import ActorCharacterPackage.Actor;
-import ActorCharacterPackage.ActorClass;
-import ActorCharacterPackage.ActorComparator;
+import ActorCharacterPackage.*;
 import ActorCharacterPackage.Character;
 import CGICompaniesPackage.*;
 import EventPackage.Event;
@@ -27,8 +25,6 @@ public class ShowPediaClass implements ShowPedia {
         this.myShows = new HashMap<String, Show>();
         this.actors  = new HashMap<String, Actor>();
         this.companiesCGI = new LinkedList<CGICompany>();
-
-
     }
 
 
@@ -37,16 +33,6 @@ public class ShowPediaClass implements ShowPedia {
             throw new NoShowSelectedExc();
 
         return currentShow;
-    }
-
-    public String printCurrentShow() throws NoShowSelectedExc{
-        if(currentShow == null)
-            throw new NoShowSelectedExc();
-
-        return String.format("%s. Seasons: %d Episodes: %d",
-                              currentShow.getName(),
-                                            currentShow.getSeasonsNumber(),
-                                                        currentShow.getTotalEpisodesNumber());
     }
 
     public void addShow(String showName) throws ExistentShowExc{
@@ -102,14 +88,11 @@ public class ShowPediaClass implements ShowPedia {
 
         if(cost < 0)
             throw new InvalidSalaryExc();
-
-        auxActor.incNumberOfRoles();
     }
 
     public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc, InvalidSalaryExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
-
 
         //add the character to the current show
         currentShow.addCGICharacter(charName, company, cost);
@@ -126,56 +109,6 @@ public class ShowPediaClass implements ShowPedia {
                 return;
         }
         companiesCGI.add(new CGICompanyClass(company));
-    }
-
-    public void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc {
-        if(currentShow == null)
-            throw new NoShowSelectedExc();
-
-        currentShow.addQuote(season, episode, charName, quoteText, companiesCGI);
-    }
-
-    public Iterator<String> getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc {
-        if(currentShow == null)
-            throw new NoShowSelectedExc();
-
-        return currentShow.getFamousQuotes(quote);
-    }
-
-    public CGICompany kingOfCgi()throws NoVirtualCharactersExc{
-        if(companiesCGI.size() == 0)
-            throw new NoVirtualCharactersExc();
-        companiesCGI.sort(new CompanyComparator());
-        return companiesCGI.get(0);
-    }
-
-    public Iterator<String> alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc{
-        if(currentShow == null)
-            throw new NoShowSelectedExc();
-
-        if(currentShow.realChar(charName))
-            return (actors.get(currentShow.getActorNameFromCharName(charName))).StarsOn();
-        /*if(actors.containsKey(currentShow.getActorNameFromCharName(charName)))
-            return (actors.get(currentShow.getActorNameFromCharName(charName))).StarsOn();*/
-
-        return null;
-    }
-
-    public void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {
-        if(currentShow == null)
-            throw new NoShowSelectedExc();
-
-        currentShow.addEvent(episode, season, characters, event, companiesCGI);
-    }
-
-    public Iterator<List<Event>> characterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc{
-        return currentShow.getCharacterResume(charName, auxList);
-    }
-
-    public Actor getActor(String actorName){
-        if(!actors.containsKey(actorName))
-            return null;
-        return actors.get(actorName);
     }
 
     public void addRelationship(String parent, String child, List<String> aux) throws NoShowSelectedExc, SameCharacterExc, UnknownCharacterExc, DuplicateRelationshipExc {
@@ -203,6 +136,51 @@ public class ShowPediaClass implements ShowPedia {
             this.actors.get(actorName2).setNumOfRomRelByShow(currentShow.getName());
     }
 
+    public void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        currentShow.addEvent(episode, season, characters, event, companiesCGI);
+    }
+
+    public void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        currentShow.addQuote(season, episode, charName, quoteText, companiesCGI);
+    }
+
+    public Iterator<List<Event>> characterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc{
+        return currentShow.getCharacterResume(charName, auxList);
+    }
+
+    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{
+
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+        if(char1.equals(char2))
+            throw new DuplicateCharRelated();
+
+        return currentShow.howAreTheseTwoRelated(char1, char2, aux);
+    }
+
+    public Iterator<String> getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc {
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        return currentShow.getFamousQuotes(quote);
+    }
+
+    public Iterator<String> alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc{
+        if(currentShow == null)
+            throw new NoShowSelectedExc();
+
+        if(currentShow.realChar(charName))
+            return (actors.get(currentShow.getActorNameFromCharName(charName))).StarsOn();
+
+        return null;
+    }
+
     public Iterator<Actor> mostRomantic(String actorName) throws UnknownActorExc, LoveIsntInTheAirExc {
         if(!this.actors.containsKey(actorName))
             throw new UnknownActorExc();
@@ -218,23 +196,25 @@ public class ShowPediaClass implements ShowPedia {
         if(!flag)
             throw new LoveIsntInTheAirExc();
 
-
         listOfActors.sort(new ActorComparator());
         return listOfActors.iterator();
     }
 
-    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{
-
-        if(currentShow == null)
-            throw new NoShowSelectedExc();
-        if(char1.equals(char2))
-            throw new DuplicateCharRelated();
-
-        return currentShow.howAreTheseTwoRelated(char1, char2, aux);
+    public CGICompany kingOfCgi()throws NoVirtualCharactersExc{
+        if(companiesCGI.size() == 0)
+            throw new NoVirtualCharactersExc();
+        companiesCGI.sort(new CompanyComparator());
+        return companiesCGI.get(0);
     }
 
     public String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc{
         return currentShow.getEpisodeName(season-1, episode-1);
+    }
+
+    public Actor getActor(String actorName){
+        if(!actors.containsKey(actorName))
+            return null;
+        return actors.get(actorName);
     }
 
     public Iterator<List<Event>> getEventsIt(int seasonStart, int seasonEnd) throws InvalidSeasonInterval, NoShowSelectedExc {
@@ -245,6 +225,4 @@ public class ShowPediaClass implements ShowPedia {
 
         return currentShow.getEvents();
     }
-
-
 }

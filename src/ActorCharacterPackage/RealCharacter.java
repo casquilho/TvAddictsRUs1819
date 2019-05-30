@@ -4,11 +4,7 @@
  */
 package ActorCharacterPackage;
 
-import java.text.Collator;
-import java.util.*;
-
 public interface RealCharacter {
-
 
     String getCharName();
 
@@ -17,5 +13,4 @@ public interface RealCharacter {
     Actor  getActor();
 
     void addProfitFromAppearance();
-
 }

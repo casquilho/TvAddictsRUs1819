@@ -22,5 +22,4 @@ public class VirtualCharacterClass extends CharacterClass implements VirtualChar
     public String getCompanyCGI() {
         return companyCGI;
     }
-
 }

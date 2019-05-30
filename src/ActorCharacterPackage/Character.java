@@ -27,9 +27,6 @@ public interface Character {
 
     Character getParent();
 
-    List<Character> getSiblings();
-
-
     Iterator<List<Event>> getCharacterEvents();
 
     Iterator<Character> getChildrenIt();
@@ -41,6 +38,8 @@ public interface Character {
     Iterator<Character> getRomancesIt();
 
     List<Character> getChildren();
+
+    List<Character> getSiblings();
 
     void addEvent(String key, Event value);
 

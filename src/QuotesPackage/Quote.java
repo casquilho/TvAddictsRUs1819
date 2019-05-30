@@ -8,7 +8,7 @@ public interface Quote {
 
     String getQuote();
 
-    public String getCharName();
+    String getCharName();
 
     int getSeason();
 

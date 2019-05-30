@@ -6,13 +6,13 @@ package CGICompaniesPackage;
 
 public interface CGICompany {
 
-    int getProfit();
+    String getName();
 
-    void addCharacter(int value);
+    int getProfit();
 
     int getNumberChars();
 
-    String getName();
+    void addCharacter(int value);
 
     void addProfit(int value);
 

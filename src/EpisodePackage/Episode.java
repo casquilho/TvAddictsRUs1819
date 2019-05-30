@@ -14,7 +14,7 @@ public interface Episode {
 
     int getEpisodeNumber();
 
-    boolean participatesIn(String charName);
-
     boolean addParticipant(Character character);
+
+    boolean participatesIn(String charName);
 }

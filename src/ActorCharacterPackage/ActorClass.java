@@ -26,29 +26,6 @@ public class ActorClass implements Actor{
         return name;
     }
 
-    public Iterator<String> StarsOn() {
-        return starsOn.iterator();
-    }
-
-    public void addShowName(String showName){
-        this.starsOn.add(showName);
-    }
-
-    public int getNumberOfroles(){
-        return numberOfRoles;
-    }
-
-    public void incNumberOfRoles(){
-        this.numberOfRoles++;
-    }
-
-    public void setNumOfRomRelByShow(String showName) {
-        if(this.numOfRomRelByShow.containsKey(showName))
-            this.numOfRomRelByShow.put(showName,numOfRomRelByShow.get(showName)+1 );
-        else
-            this.numOfRomRelByShow.put(showName, 1 );
-    }
-
     public int getNumberOfRomanticShows() {
         return this.numOfRomRelByShow.size();
     }
@@ -62,10 +39,38 @@ public class ActorClass implements Actor{
         return counter;
     }
 
+    public int getNumberOfroles(){
+        return numberOfRoles;
+    }
+
     public Iterator<Entry<String, Integer>> getNumOfRomRelByShowIt() {
         Set<Entry<String, Integer>> set = this.numOfRomRelByShow.entrySet();
         return set.iterator();
     }
+
+    public Iterator<String> StarsOn() {
+        return starsOn.iterator();
+    }
+
+    public void setNumOfRomRelByShow(String showName) {
+        if(this.numOfRomRelByShow.containsKey(showName))
+            this.numOfRomRelByShow.put(showName,numOfRomRelByShow.get(showName)+1 );
+        else
+            this.numOfRomRelByShow.put(showName, 1 );
+    }
+
+    public void addShowName(String showName){
+        this.starsOn.add(showName);
+        incNumberOfRoles();
+    }
+
+    private void incNumberOfRoles(){
+        this.numberOfRoles++;
+    }
+
+
+
+
 
 
 }

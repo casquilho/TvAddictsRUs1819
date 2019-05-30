@@ -6,22 +6,19 @@ package SeasonPackage;
 
 import ActorCharacterPackage.Character;
 import EpisodePackage.Episode;
-import EpisodePackage.EpisodeClass;
 import MyExceptionsPackage.NonExistentEpisodeExc;
 
 public interface Season  {
 
-
-    int addEpisode(String epiName);
+    String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc;
 
     Episode getEpisode(int index);
+
+    int addEpisode(String epiName);
 
     int getEpisodesNumber();
 
     boolean participatesIn(String charName);
 
     boolean addParticipant(Character character);
-
-    String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc;
-
 }

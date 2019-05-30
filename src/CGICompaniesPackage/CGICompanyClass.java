@@ -27,25 +27,24 @@ public class CGICompanyClass implements CGICompany {
         return name;
     }
 
-    public void addCharacter(int value){
-        this.addProfit(value);
-        this.incNumberChars();
-    }
-
     public int getProfit() {
         return totalProfit;
     }
-
 
     public int getNumberChars() {
         return numberChars;
     }
 
-    private void incNumberChars(){
-        this.numberChars++;
+    public void addCharacter(int value){
+        this.addProfit(value);
+        this.incNumberChars();
     }
 
     public void addProfit(int value){
         this.totalProfit += value;
+    }
+
+    private void incNumberChars(){
+        this.numberChars++;
     }
 }

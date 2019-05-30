@@ -21,9 +21,11 @@ public class SeasonClass implements Season {
         this.participants = new HashMap<String, Character>();
     }
 
-    public int addEpisode(String epiName){
-        episodes.add(new EpisodeClass(epiName, seasonNumber, episodes.size()+1));
-        return episodes.size();
+
+    public String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc {
+        if(episodes.size() < epiNumber)
+            throw new NonExistentEpisodeExc();
+        return episodes.get(epiNumber).getEpisodeName();
     }
 
     public Episode getEpisode(int index){
@@ -31,6 +33,11 @@ public class SeasonClass implements Season {
     }
 
     public int getEpisodesNumber(){
+        return episodes.size();
+    }
+
+    public int addEpisode(String epiName){
+        episodes.add(new EpisodeClass(epiName, seasonNumber, episodes.size()+1));
         return episodes.size();
     }
 
@@ -45,11 +52,4 @@ public class SeasonClass implements Season {
         participants.put(character.getCharName(), character);
         return true;
     }
-
-    public String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc {
-        if(episodes.size() < epiNumber)
-            throw new NonExistentEpisodeExc();
-        return episodes.get(epiNumber).getEpisodeName();
-    }
-
 }

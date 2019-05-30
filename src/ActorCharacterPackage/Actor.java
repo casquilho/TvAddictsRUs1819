@@ -11,20 +11,27 @@ public interface Actor {
 
     String getName();
 
-    Iterator<String> StarsOn();
-
-    void addShowName(String showName);
-
-    int getNumberOfroles();
-
-    void incNumberOfRoles();
-
-    void setNumOfRomRelByShow(String showName);
-
     int getNumberOfRomanticShows();
 
     int getTotalRomanticNum();
 
+    int getNumberOfroles();
+
     Iterator<Map.Entry<String, Integer>> getNumOfRomRelByShowIt();
+
+    Iterator<String> StarsOn();
+
+    void setNumOfRomRelByShow(String showName);
+
+    void addShowName(String showName);
+
+
+
+
+
+
+
+
+
 
 }

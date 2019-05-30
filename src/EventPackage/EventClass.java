@@ -5,7 +5,6 @@
 package EventPackage;
 
 import ActorCharacterPackage.Character;
-
 import java.util.List;
 
 public class EventClass implements Event {

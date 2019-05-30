@@ -5,7 +5,6 @@
 package EpisodePackage;
 
 import ActorCharacterPackage.Character;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,15 +34,15 @@ public class EpisodeClass implements Episode{
         return episodeNumber;
     }
 
-    public boolean participatesIn(String charName){
-        return participants.containsKey(charName);
-    }
-
     public boolean addParticipant(Character character){
         if(participants.containsKey(character.getCharName()))
             return false;
 
         participants.put(character.getCharName(), character);
         return true;
+    }
+
+    public boolean participatesIn(String charName){
+        return participants.containsKey(charName);
     }
 }
