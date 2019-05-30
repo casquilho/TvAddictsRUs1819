@@ -56,6 +56,6 @@ public interface Show {
     boolean realChar(String charName) throws NotRealCharacterExc;
 
     String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc;
-    Season getSeason(int seasonNumber) throws InvalidSeasonInterval;
+    Season getSeason(int seasonNumber, int seasonStart, int seasonEnd) throws InvalidSeasonInterval;
     Iterator<Event> getEventsFromEpisode(String key);
 }

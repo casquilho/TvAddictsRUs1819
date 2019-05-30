@@ -49,6 +49,7 @@ public class Main {
     private static final String CGI_KING = "%s %d";
     private static final String EMPTY_STRING = "";
     private static final String COMA_SPACE = ", ";
+    private static final String SEMICOLON_SPACE = "; ";
 
     private static final String ADD_SHOW_MESSAGE = "%s created.";
     private static final String ADD_REAL_CHAR_MESSAGE = "%s is now part of %s. This is %s role %d.";
@@ -323,16 +324,18 @@ public class Main {
         int seasonEnd;
         Iterator<Event> it;
         Show currentShow = null;
+        Season currentSeason = null;
 
         try{
             seasonStart = in.nextInt();
             seasonEnd = in.nextInt();in.nextLine();
             currentShow = showPedia.getCurrentShow();
+            currentSeason = currentShow.getSeason(1, seasonStart, seasonEnd);
 
             System.out.println(currentShow.getName());
 
             for(int i = seasonStart; i < seasonEnd+1; i++){
-                Season currentSeason = currentShow.getSeason(i);
+                currentSeason = currentShow.getSeason(i, seasonStart, seasonEnd);
 
                 for(int j = 1; j < currentSeason.getEpisodesNumber()+1; j++){
                     String key = i+""+j;
@@ -439,7 +442,7 @@ public class Main {
 
             while(!stack.empty()){
                 if(flag)
-                    System.out.print(COMA_SPACE);
+                    System.out.print(SEMICOLON_SPACE);
                 flag = true;
                 System.out.print(stack.pop());
             }

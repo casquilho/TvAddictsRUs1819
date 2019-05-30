@@ -351,8 +351,8 @@ public class ShowClass implements Show {
         return seasons.get(season).getEpisode(episode).getEpisodeName();
     }
 
-    public Season getSeason(int seasonNumber) throws InvalidSeasonInterval {
-        if( seasons.size() < seasonNumber)
+    public Season getSeason(int seasonNumber, int seasonStart, int seasonEnd) throws InvalidSeasonInterval {
+        if(this.getSeasonsNumber() < seasonEnd || this.getSeasonsNumber() < seasonStart || seasonStart < 1)
             throw new InvalidSeasonInterval();
         return seasons.get(seasonNumber-1);
     }
