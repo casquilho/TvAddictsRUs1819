@@ -1,6 +1,7 @@
 package ShowPediaPackage;
 
 import ActorCharacterPackage.Actor;
+import ActorCharacterPackage.Character;
 import CGICompaniesPackage.CGICompany;
 import EventPackage.Event;
 import MyExceptionsPackage.*;
@@ -30,15 +31,15 @@ public interface ShowPedia {
 
     void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc;
 
-    Iterator getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc;
+    Iterator<String> getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc;
 
     CGICompany kingOfCgi()throws NoVirtualCharactersExc;
 
-    Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc;
+    Iterator<String> alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc;
 
     void addEvent(int episode, int season, List<String> characters, String event) throws NoShowSelectedExc, NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
-    void characterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc;
+    Iterator<List<Event>> characterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc;
 
     Actor getActor(String actorName);
 
@@ -51,5 +52,5 @@ public interface ShowPedia {
     String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc;
 
 
-    Iterator<Event> getEventsIt(int season, int episode) throws InvalidSeasonInterval, NoShowSelectedExc;
+    Iterator<List<Event>> getEventsIt(int season, int episode) throws InvalidSeasonInterval, NoShowSelectedExc;
 }

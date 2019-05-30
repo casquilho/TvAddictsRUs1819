@@ -112,7 +112,7 @@ public class ShowClass implements Show {
 
         //otherwise, create a new entry for it
         else {
-            List aux = new LinkedList<String>();
+            List<String> aux = new LinkedList<String>();
             aux.add(character.getCharName());
             quotes.put(quote.getQuote(), aux);
 
@@ -136,7 +136,7 @@ public class ShowClass implements Show {
             ((RealCharacter) character).addProfitFromAppearance();
     }
 
-    public Iterator getFamousQuotes(String quoteText) throws UnknownQuoteExc{
+    public Iterator<String> getFamousQuotes(String quoteText) throws UnknownQuoteExc{
         if(!quotes.containsKey(quoteText))
             throw new UnknownQuoteExc();
         quotes.get(quoteText).sort(Collator.getInstance());
@@ -147,7 +147,7 @@ public class ShowClass implements Show {
         if(!characters.containsKey(charName) )
             throw new UnknownCharacterExc();
 
-        Character aux = (Character) characters.get(charName);
+        Character aux = characters.get(charName);
         if(aux instanceof RealCharacter)
             return ((RealCharacter) aux).getActorName();
 
@@ -198,20 +198,21 @@ public class ShowClass implements Show {
         }
     }
 
-    public void getCharacterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc{
+    public Iterator<List<Event>> getCharacterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc{
         if(!characters.containsKey(charName))
             throw new UnknownCharacterExc();
 
         Character auxChar = characters.get(charName);
 
-        auxList.add(0,auxChar.getCharacterEvents());
-        auxList.add(1,auxChar.getParentsIt());
-        auxList.add(2,auxChar.getChildrenIt());
-        auxList.add(3,auxChar.getSiblingsIt(auxChar));
-        auxList.add(4,auxChar.getRomancesIt());
+        auxList.add(0,auxChar.getParentsIt());
+        auxList.add(1,auxChar.getChildrenIt());
+        auxList.add(2,auxChar.getSiblingsIt(auxChar));
+        auxList.add(3,auxChar.getRomancesIt());
+
+        return auxChar.getCharacterEvents();
 }
 
-    public Iterator getEvents(){
+    public Iterator<List<Event>> getEvents(){
         return events.values().iterator();
     }
 
@@ -281,11 +282,9 @@ public class ShowClass implements Show {
 
         Character auxChar1 = characters.get(char1);
         Character auxChar2 = characters.get(char2);
-        Stack stack1 = null;
-        Stack stack2 = null;
 
-        stack1 = bfs(auxChar1, auxChar2);
-        stack2 = bfs(auxChar2, auxChar1);
+        Stack<String> stack1 = bfs(auxChar1, auxChar2);
+        Stack<String> stack2 = bfs(auxChar2, auxChar1);
 
         if(stack1 == null && stack2 == null)
             throw new NotRelatedExc();

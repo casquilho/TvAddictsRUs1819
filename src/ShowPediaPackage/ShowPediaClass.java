@@ -6,6 +6,7 @@ package ShowPediaPackage;
 
 import ActorCharacterPackage.Actor;
 import ActorCharacterPackage.ActorClass;
+import ActorCharacterPackage.Character;
 import CGICompaniesPackage.*;
 import EventPackage.Event;
 import MyExceptionsPackage.*;
@@ -116,10 +117,10 @@ public class ShowPediaClass implements ShowPedia {
             throw new InvalidSalaryExc();
 
         //if the company already exists, do nothing. if it doesn't, create and insert it
-        Iterator it = companiesCGI.iterator();
+        Iterator<CGICompany> it = companiesCGI.iterator();
         CGICompany aux;
         while (it.hasNext()){
-            aux = (CGICompany) it.next();
+            aux = it.next();
             if(aux.getName().equals(company))
                 return;
         }
@@ -133,7 +134,7 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addQuote(season, episode, charName, quoteText, companiesCGI);
     }
 
-    public Iterator getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc {
+    public Iterator<String> getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
@@ -147,7 +148,7 @@ public class ShowPediaClass implements ShowPedia {
         return companiesCGI.get(0);
     }
 
-    public Iterator alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc{
+    public Iterator<String> alsoAppearsOn(String charName) throws NoShowSelectedExc, UnknownCharacterExc, NotRealCharacterExc{
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
@@ -166,8 +167,8 @@ public class ShowPediaClass implements ShowPedia {
         currentShow.addEvent(episode, season, characters, event, companiesCGI);
     }
 
-    public void characterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc{
-        currentShow.getCharacterResume(charName, auxList);
+    public Iterator<List<Event>> characterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc{
+        return currentShow.getCharacterResume(charName, auxList);
     }
 
     public Actor getActor(String actorName){
@@ -208,7 +209,7 @@ public class ShowPediaClass implements ShowPedia {
         return currentShow.getEpisodeName(season-1, episode-1);
     }
 
-    public Iterator<Event> getEventsIt(int seasonStart, int seasonEnd) throws InvalidSeasonInterval, NoShowSelectedExc {
+    public Iterator<List<Event>> getEventsIt(int seasonStart, int seasonEnd) throws InvalidSeasonInterval, NoShowSelectedExc {
         if(currentShow == null)
             throw new NoShowSelectedExc();
         if(currentShow.getSeasonsNumber() < seasonEnd || currentShow.getSeasonsNumber() < seasonStart || seasonStart < 1)

@@ -1,6 +1,7 @@
 package ShowPackage;
 
 import ActorCharacterPackage.Actor;
+import ActorCharacterPackage.Character;
 import CGICompaniesPackage.CGICompany;
 import EventPackage.Event;
 import MyExceptionsPackage.*;
@@ -28,15 +29,15 @@ public interface Show {
 
     void addQuote(int season, int episode, String charName, String quoteText, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
-    Iterator getFamousQuotes(String quoteText) throws UnknownQuoteExc;
+    Iterator<String> getFamousQuotes(String quoteText) throws UnknownQuoteExc;
 
     String getActorNameFromCharName(String charName) throws UnknownCharacterExc;
 
     void addEvent(int episode, int season, List<String> characters, String event, List<CGICompany> companiesCGI) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
-    void getCharacterResume(String charName, List<Iterator> auxList) throws UnknownCharacterExc;
+    Iterator<List<Event>> getCharacterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc;
 
-    Iterator getEvents();
+    Iterator<List<Event>> getEvents();
 
     void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc;
 

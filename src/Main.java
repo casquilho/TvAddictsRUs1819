@@ -325,7 +325,7 @@ public class Main {
 
         int seasonStart;
         int seasonEnd;
-        Iterator<Event> episodeIt = null;
+        Iterator<List<Event>> episodeIt = null;
         Iterator<Event> eventIt = null;
         List<Event> episodeAux = null;
         Event eventAux = null;
@@ -388,14 +388,16 @@ public class Main {
     private static void characterResume(Scanner in, ShowPedia showPedia){
         boolean flag = true;
         Event eventAux;
-        List episode;
-        Iterator eventIt, episodeIt;
-        List<Iterator> auxList = new ArrayList<>();
+        List<Event> episode;
+        Iterator<Event> eventIt;
+        Iterator<List<Event>> episodeIt;
+        List<Iterator<Character>> auxList = new ArrayList<>();
         List<String> header = new ArrayList<>();
         Character auxChar;
-        try{
-            String charName = in.nextLine();
-            showPedia.characterResume(charName, auxList);
+        String charName = null;
+        try {
+            charName = in.nextLine();
+            episodeIt = showPedia.characterResume(charName, auxList);
 
 
             header.add(0, PARENTS_HEADER);
@@ -404,33 +406,31 @@ public class Main {
             header.add(3, ROMANCE_HEADER);
             //parentsIt  = auxList.get(1); childrenIt = auxList.get(2);
             //siblingsIt = auxList.get(3); romanceIt  = auxList.get(4);
-            for(int i = 1; i < 5; i++){
-                Iterator it = auxList.get(i);
-                System.out.print(header.get(i-1));
+            for (int i = 1; i < 5; i++) {
+                Iterator<Character> it = auxList.get(i - 1);
+                System.out.print(header.get(i - 1));
 
-                if(!it.hasNext())
+                if (!it.hasNext())
                     System.out.print(NO_RELATION_OF_KIND);
                 else {
                     while (it.hasNext()) {
-                        if(!flag)
+                        if (!flag)
                             System.out.print(", ");
 
                         flag = false;
-                        auxChar = (Character) it.next();
+                        auxChar = it.next();
                         System.out.print(auxChar.getCharName());
                     }
                 }
                 flag = true;
                 System.out.println();
             }
-            episodeIt  = auxList.get(0);
-
-            while (episodeIt.hasNext()){
-                episode = (List) episodeIt.next();
+            while (episodeIt.hasNext()) {
+                episode = episodeIt.next();
                 eventIt = episode.iterator();
-                while (eventIt.hasNext()){
-                    eventAux = (Event) eventIt.next();
-                    if(flag) {
+                while (eventIt.hasNext()) {
+                    eventAux = eventIt.next();
+                    if (flag) {
                         System.out.println(String.format(CHAR_RESUME_HEADER, eventAux.getSeason(), eventAux.getEpisode(), showPedia.getEpisodeName(eventAux.getSeason(), eventAux.getEpisode())));
                         flag = false;
                     }
@@ -438,12 +438,13 @@ public class Main {
                 }
                 flag = true;
             }
+
         }
         catch (NonExistentEpisodeExc | NonExistentSeasonExc e){
             //ponho aqui alguma coisa?
         }
         catch (UnknownCharacterExc e){
-            System.out.println(e.getMessage());
+            System.out.println(String.format(e.getMessage(), charName));
         }
     }
 
@@ -458,7 +459,7 @@ public class Main {
             char1 = in.nextLine();
             char2  = in.nextLine();
 
-            Stack stack = showPedia.howAreTheseTwoRelated(char1, char2, aux);
+            Stack<String> stack = showPedia.howAreTheseTwoRelated(char1, char2, aux);
 
             while(!stack.empty()){
                 if(flag)
@@ -479,7 +480,7 @@ public class Main {
         try{
             String quote = in.nextLine();
             String toPrint = EMPTY_STRING;
-            Iterator it = showPedia.getFamousQuotes(quote);
+            Iterator<String> it = showPedia.getFamousQuotes(quote);
             while (it.hasNext()){
                 if(!toPrint.equals(EMPTY_STRING))
                     toPrint += COMA_SPACE;
@@ -498,7 +499,7 @@ public class Main {
         try{
 
             charName = in.nextLine();
-            Iterator it = showPedia.alsoAppearsOn(charName);
+            Iterator<String> it = showPedia.alsoAppearsOn(charName);
             if(it != null)
                 while(it.hasNext()){
                     System.out.println(it.next());
