@@ -1,3 +1,7 @@
+/**
+ * @author Joao Casquilho 54440
+ * @author Andre Lisboa 54393
+ */
 package MyExceptionsPackage;
 
 public class NotRealCharacterExc extends Exception {

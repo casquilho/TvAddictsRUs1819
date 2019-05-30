@@ -1,11 +1,13 @@
+/**
+ * @author Joao Casquilho 54440
+ * @author Andre Lisboa 54393
+ */
 package SeasonPackage;
 
+import MyExceptionsPackage.NonExistentEpisodeExc;
 import ActorCharacterPackage.Character;
 import EpisodePackage.*;
-import MyExceptionsPackage.NonExistentEpisodeExc;
-
 import java.util.*;
-
 
 public class SeasonClass implements Season {
 

@@ -1,7 +1,7 @@
 /**
  * @author Joao Casquilho 54440
+ * @author Andre Lisboa 54393
  */
-
 package ShowPediaPackage;
 
 import ActorCharacterPackage.Actor;
@@ -99,10 +99,10 @@ public class ShowPediaClass implements ShowPedia {
         //add the character to the current show
         currentShow.addRealCharacter(charName, auxActor, cost);
 
-        auxActor.incNumberOfRoles();
-
         if(cost < 0)
             throw new InvalidSalaryExc();
+
+        auxActor.incNumberOfRoles();
     }
 
     public void addCGICharacter(String charName, String company, int cost) throws NoShowSelectedExc, DuplicateCharacterExc, InvalidSalaryExc {

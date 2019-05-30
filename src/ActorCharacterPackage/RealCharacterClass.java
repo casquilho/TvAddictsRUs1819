@@ -1,4 +1,7 @@
-package ActorCharacterPackage;
+/**
+ * @author Joao Casquilho 54440
+ * @author Andre Lisboa 54393
+ */package ActorCharacterPackage;
 
 import ShowPackage.Show;
 

@@ -1,3 +1,7 @@
+/**
+ * @author Joao Casquilho 54440
+ * @author Andre Lisboa 54393
+ */
 package ActorCharacterPackage;
 
 import EventPackage.Event;
@@ -19,6 +23,7 @@ public abstract class CharacterClass implements Character{
     private List<Character> partners;
     private List<Character> children;
     private List<Character> parents;
+    private List<Character> siblings;
     private Character parent;       //used only for the BFS algorithm
 
 
@@ -30,7 +35,8 @@ public abstract class CharacterClass implements Character{
 
         this.partners = new LinkedList<>();
         this.children = new LinkedList<>();
-        this.parents = new LinkedList<>();
+        this.parents  = new LinkedList<>();
+        this.siblings = new LinkedList<>();
         this.parent = null;
     }
 
@@ -78,22 +84,8 @@ public abstract class CharacterClass implements Character{
     }
 
     public Iterator<Character> getSiblingsIt(Character auxChar){
-        if(parents.size() == 0)
-            return parents.iterator();
-
-        int counter = 0;
-        Character storeChar = null;
-
-        //get's the parent with the most children
-        for(Character auxParent : parents)
-            if(auxParent.getNumChildren() >= counter) {
-                storeChar = auxParent;
-                counter = auxParent.getNumChildren();
-            }
-        //removes the current character from the copy of the children's list
-        List<Character> auxClone = new LinkedList<Character>(storeChar.getChildren());
-        auxClone.remove(auxChar);
-        return auxClone.iterator();
+       // siblings.remove(this);
+        return  siblings.iterator();
     }
 
     public Iterator<Character> getRomancesIt(){
@@ -128,53 +120,23 @@ public abstract class CharacterClass implements Character{
             children.add(child);
     }
 
+    public List<Character> getSiblings(){
+        return siblings;
+    }
+
     public void addParents(Character parent){
         if(!parents.contains(parent) && parent != this)
             parents.add(parent);
-    }
 
-    /*public void addPartner(Character partner){
-        this.partners.add(partner);
-
-        if(!partner.hasPartner(this))
-            partner.addPartner(this);
-
-        for(Character auxChild: children) {
-            if (!partner.hasChild(auxChild))
-                partner.addChild(auxChild);
-            if (!auxChild.hasParent(partner))
-                auxChild.addParents(partner);
-        }
-
-        for(Character aux2Child : partner.getChildren()) {
-            if (!children.contains(aux2Child))
-                children.add(aux2Child);
-            if (!aux2Child.hasParent(this))
-                aux2Child.addParents(this);
+        for(Character child : parent.getChildren()) {
+            if (!siblings.contains(child) && !child.equals(this))
+                siblings.add(child);
+            if(!child.getSiblings().contains(this) && !child.equals(this))
+                child.getSiblings().add(this);
         }
     }
 
-    public void addChild(Character child){
-        if(children.contains(child))
-            return ;
 
-        children.add(child);
-        child.addParents(this);
-
-        for(Character auxP : partners) {
-            if (!auxP.hasChild(child))
-                auxP.addChild(child);
-            if(!child.hasParent(auxP))
-                child.addParents(auxP);
-        }
-    }
-
-    public void addParents(Character aux){
-        if(!parents.contains(aux))
-            parents.add(aux);
-        if(!aux.getChildren().contains(this))
-            aux.addChild(this);
-    }*/
 
     public void addParent(Character auxP){
         this.parent = auxP;

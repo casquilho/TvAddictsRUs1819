@@ -1,3 +1,7 @@
+/**
+ * @author Joao Casquilho 54440
+ * @author Andre Lisboa 54393
+ */
 package ActorCharacterPackage;
 
 import EventPackage.Event;
@@ -22,6 +26,9 @@ public interface Character {
     int getNumChildren();
 
     Character getParent();
+
+    List<Character> getSiblings();
+
 
     Iterator<List<Event>> getCharacterEvents();
 
