@@ -261,15 +261,15 @@ public class ShowClass implements Show {
         Character auxChar1 = characters.get(char1);
         Character auxChar2 = characters.get(char2);
 
-        Stack<String> stack1 = bfs(auxChar1, auxChar2);
-        Stack<String> stack2 = bfs(auxChar2, auxChar1);
+        Stack<String> stack1 = familyBFS(auxChar1, auxChar2);
+        Stack<String> stack2 = familyBFS(auxChar2, auxChar1);
 
         if(stack1 == null && stack2 == null)
             throw new NotRelatedExc();
 
-        if(stack1 != null)
+        if(stack1 != null) {
             return stack1;
-        else
+        }else
             return stack2;
     }
 
@@ -330,7 +330,7 @@ public class ShowClass implements Show {
         this.seasonsNumber++;
     }
 
-    private Stack<String> bfs(Character x, Character y) {
+    private Stack<String> familyBFS(Character x, Character y) {
 
         Queue<Character> queue = new LinkedList<>();
         List<Character> visited = new LinkedList<>();
@@ -345,11 +345,12 @@ public class ShowClass implements Show {
                 if (!visited.contains(child)) {
                     visited.add(child);
                     queue.add(child);
-                    child.addParent(v);     //add a pointer to the previous node
+                    child.addParent(v);     //add a reference to the parent node
                 }
                 //when we find the desired node, trace back the descendants and add their names to a list
                 if (child.equals(y)) {
                     while (child.getParent() != null) {
+                        assert child.hasParent(child.getParent()) && child.getParent().hasChild(child) : child.getCharName();
                         descendants.add(child.getCharName());
                         child = child.getParent();
                     }
