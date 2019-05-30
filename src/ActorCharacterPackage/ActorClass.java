@@ -6,11 +6,13 @@ import java.util.*;
 public class ActorClass implements Actor{
 
     private String name;
+    private int numberOfRoles;
     private Set<String> starsOn;
 
     public ActorClass(String name) {
         this.name = name;
         this.starsOn = new TreeSet<String>(Collator.getInstance());
+        this.numberOfRoles = 0;
     }
 
     public String getName() {
@@ -26,7 +28,11 @@ public class ActorClass implements Actor{
     }
 
     public int getNumberOfroles(){
-        return starsOn.size();
+        return numberOfRoles;
+    }
+
+    public void incNumberOfRoles(){
+        this.numberOfRoles++;
     }
 
 

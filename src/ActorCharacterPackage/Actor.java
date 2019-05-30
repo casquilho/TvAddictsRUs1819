@@ -12,4 +12,6 @@ public interface Actor {
 
     int getNumberOfroles();
 
+    void incNumberOfRoles();
+
 }

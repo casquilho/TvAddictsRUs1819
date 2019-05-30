@@ -82,21 +82,23 @@ public class ShowPediaClass implements ShowPedia {
         if(currentShow == null)
             throw new NoShowSelectedExc();
 
-        Actor aux;
+        Actor auxActor;
         //if the actor already exists, pass it the show's name
         if(actors.containsKey(actorName)) {
-            aux = actors.get(actorName);
-            aux.addShowName(currentShow.getName());
+            auxActor = actors.get(actorName);
+            auxActor.addShowName(currentShow.getName());
         }
         //create new actor, give it the show's name and insert into map
         else{
-            aux = new ActorClass(actorName);
-            aux.addShowName(currentShow.getName());
-            actors.put(actorName, aux);
+            auxActor = new ActorClass(actorName);
+            auxActor.addShowName(currentShow.getName());
+            actors.put(actorName, auxActor);
         }
 
         //add the character to the current show
-        currentShow.addRealCharacter(charName, aux, cost);
+        currentShow.addRealCharacter(charName, auxActor, cost);
+
+        auxActor.incNumberOfRoles();
 
         if(cost < 0)
             throw new InvalidSalaryExc();
