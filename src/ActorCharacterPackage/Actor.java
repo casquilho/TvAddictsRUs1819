@@ -5,6 +5,7 @@
 package ActorCharacterPackage;
 
 import java.util.Iterator;
+import java.util.Map;
 
 public interface Actor {
 
@@ -17,5 +18,13 @@ public interface Actor {
     int getNumberOfroles();
 
     void incNumberOfRoles();
+
+    void setNumOfRomRelByShow(String showName);
+
+    int getNumberOfRomanticShows();
+
+    int getTotalRomanticNum();
+
+    Iterator<Map.Entry<String, Integer>> getNumOfRomRelByShowIt();
 
 }

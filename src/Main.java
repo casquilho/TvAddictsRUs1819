@@ -3,6 +3,8 @@
  * @author Andre Lisboa 54393
  */
 import java.util.*;
+
+import ActorCharacterPackage.Actor;
 import ActorCharacterPackage.Character;
 import CGICompaniesPackage.CGICompany;
 import EventPackage.Event;
@@ -487,7 +489,27 @@ public class Main {
     }
 
     private static void mostRomantic(Scanner in, ShowPedia showPedia){
-        System.out.println("not implemented yet");
+        String actorName = null;
+        try {
+            actorName = in.nextLine();
+
+            Actor auxActor;
+            Iterator<Actor> it = showPedia.mostRomantic(actorName);
+            while(it.hasNext()) {
+                auxActor = it.next();
+                if(auxActor.getName().compareTo(actorName)==0) {
+                    System.out.println(String.format("%s %d", auxActor.getName(), auxActor.getTotalRomanticNum()));
+                    break;
+                }
+                System.out.println(String.format("%s %d", auxActor.getName(), auxActor.getTotalRomanticNum()));
+            }
+        }
+        catch(UnknownActorExc e) {
+            System.out.println(String.format(e.getMessage(), actorName));
+        }
+        catch(LoveIsntInTheAirExc e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void kingOfCGI(ShowPedia showPedia){

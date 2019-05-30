@@ -55,6 +55,7 @@ public interface ShowPedia {
 
     String getEpisodeName(int season, int episode) throws NonExistentSeasonExc, NonExistentEpisodeExc;
 
+    Iterator<Actor> mostRomantic(String actorName) throws UnknownActorExc, LoveIsntInTheAirExc;
 
     Iterator<List<Event>> getEventsIt(int season, int episode) throws InvalidSeasonInterval, NoShowSelectedExc;
 }

@@ -6,6 +6,7 @@ package ShowPediaPackage;
 
 import ActorCharacterPackage.Actor;
 import ActorCharacterPackage.ActorClass;
+import ActorCharacterPackage.ActorComparator;
 import ActorCharacterPackage.Character;
 import CGICompaniesPackage.*;
 import EventPackage.Event;
@@ -193,6 +194,33 @@ public class ShowPediaClass implements ShowPedia {
             throw new SameCharacterRomanceExc();
 
         currentShow.addRomance(char1, char2, aux);
+        String actorName1,actorName2;
+
+        if((actorName1= currentShow.getActorNameFromCharName(char1))!=null)
+            this.actors.get(actorName1).setNumOfRomRelByShow(currentShow.getName());
+
+        if((actorName2 = currentShow.getActorNameFromCharName(char2))!=null)
+            this.actors.get(actorName2).setNumOfRomRelByShow(currentShow.getName());
+    }
+
+    public Iterator<Actor> mostRomantic(String actorName) throws UnknownActorExc, LoveIsntInTheAirExc {
+        if(!this.actors.containsKey(actorName))
+            throw new UnknownActorExc();
+        ArrayList<Actor> listOfActors = new ArrayList<Actor>();
+        boolean flag = false;
+
+        for(Actor actor: actors.values()) {
+            if( actor.getTotalRomanticNum() != 0)
+                flag = true;
+
+            listOfActors.add(actor);
+        }
+        if(!flag)
+            throw new LoveIsntInTheAirExc();
+
+
+        listOfActors.sort(new ActorComparator());
+        return listOfActors.iterator();
     }
 
     public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{

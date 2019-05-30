@@ -2,48 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b3a210-d72e-46fc-956b-33cf32eb287c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/54393_54440_TvAddictsRUs1819.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/54393_54440_TvAddictsRUs1819.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/ActorComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/LoveIsntInTheAirExc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownActorExc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/CharacterClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/CharacterClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacterClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacterClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacterClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacterClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CGICompaniesPackage/CGICompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CGICompaniesPackage/CGICompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CGICompaniesPackage/CGICompanyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CGICompaniesPackage/CGICompanyClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CGICompaniesPackage/CompanyComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CGICompaniesPackage/CompanyComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EpisodePackage/Episode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EpisodePackage/Episode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EpisodePackage/EpisodeClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EpisodePackage/EpisodeClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventPackage/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventPackage/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventPackage/EventClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventPackage/EventClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/DuplicateCharRelated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/DuplicateCharRelated.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/DuplicateCharacterExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/DuplicateCharacterExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/DuplicateRelationshipExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/DuplicateRelationshipExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/ExistentShowExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/ExistentShowExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/InvalidSalaryExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/InvalidSalaryExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/InvalidSeasonInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/InvalidSeasonInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/NoShowSelectedExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/NoShowSelectedExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/NoVirtualCharactersExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/NoVirtualCharactersExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/NonExistentEpisodeExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/NonExistentEpisodeExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/NonExistentSeasonExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/NonExistentSeasonExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/NotRealCharacterExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/NotRealCharacterExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/NotRelatedExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/NotRelatedExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/SameCharacterExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/SameCharacterExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/SameCharacterRomanceExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/SameCharacterRomanceExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknowCategoryExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknowCategoryExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownCharacterExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownCharacterExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownQuoteExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownQuoteExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownSeasonExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownSeasonExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownShowExc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownShowExc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuotesPackage/Quote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuotesPackage/Quote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuotesPackage/QuoteClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuotesPackage/QuoteClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SeasonPackage/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SeasonPackage/Season.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SeasonPackage/SeasonClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SeasonPackage/SeasonClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShowPackage/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPackage/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java" afterDir="false" />
     </list>
@@ -62,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="524" selection-start-line="524" selection-end-line="524" />
+            <state relative-caret-position="146">
+              <caret line="496" column="48" lean-forward="true" selection-start-line="496" selection-end-line="497" />
               <folding>
                 <element signature="class#Command#0;class#Main#0" />
                 <element signature="method#main#0;class#Main#0" />
@@ -147,7 +112,6 @@
                 <element signature="e#18720#18790#1" />
                 <element signature="e#18836#18895#0" />
                 <element signature="e#18955#19039#0" />
-                <element signature="n#!!block;n#mostRomantic#0;n#Main#0" />
                 <element signature="method#kingOfCGI#0;class#Main#0" />
                 <element signature="e#19223#19375#0" />
                 <element signature="e#19416#19475#0" />
@@ -158,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="749">
-              <caret line="195" column="5" lean-forward="true" selection-start-line="195" selection-start-column="5" selection-end-line="195" selection-end-column="5" />
+            <state relative-caret-position="489">
+              <caret line="218" column="41" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="method#ShowPediaClass#0;class#ShowPediaClass#0" />
@@ -181,9 +145,92 @@
                 <element signature="method#addEvent#0;class#ShowPediaClass#0" />
                 <element signature="method#characterResume#0;class#ShowPediaClass#0" />
                 <element signature="method#getActor#0;class#ShowPediaClass#0" />
+                <element signature="e#7518#7525#0" expanded="true" />
                 <element signature="method#howAreTheseTwoRelated#0;class#ShowPediaClass#0" />
                 <element signature="method#getEpisodeName#0;class#ShowPediaClass#0" />
                 <element signature="method#getEventsIt#0;class#ShowPediaClass#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="3" selection-end-column="3" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MyExceptionsPackage/UnknownActorExc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#159#160#0" expanded="true" />
+                <element signature="e#189#190#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyExceptionsPackage/LoveIsntInTheAirExc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#192#193#0" expanded="true" />
+                <element signature="e#222#223#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="64" selection-end-column="68" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1258#1259#0" expanded="true" />
+                <element signature="e#1310#1311#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="7" selection-end-line="3" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/ActorComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#231#232#0" expanded="true" />
+                <element signature="e#254#255#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,16 +270,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClassTest.java" />
-        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/RealActorClass.java" />
-        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/RealActor.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/CGIActorClass.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/VirtualActorClass.java" />
         <option value="$PROJECT_DIR$/src/CompanyPackage/CompanyClass.java" />
         <option value="$PROJECT_DIR$/src/EventPackage/EventComparator.java" />
         <option value="$PROJECT_DIR$/src/MyExceptionsPackage/NotRealCharacterException.java" />
-        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" />
-        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/Character.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/CharacterClass.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java" />
@@ -271,14 +313,19 @@
         <option value="$PROJECT_DIR$/src/SeasonPackage/SeasonClass.java" />
         <option value="$PROJECT_DIR$/src/ShowPackage/Show.java" />
         <option value="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" />
-        <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" />
-        <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java" />
+        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java" />
+        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" />
+        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/ActorComparator.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java" />
+        <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" />
+        <option value="$PROJECT_DIR$/src/MyExceptionsPackage/LoveIsntInTheAirExc.java" />
+        <option value="$PROJECT_DIR$/src/MyExceptionsPackage/UnknownActorExc.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="960" />
+    <option name="width" value="1212" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -449,18 +496,18 @@
       <workItem from="1559031681288" duration="2454000" />
       <workItem from="1559063809243" duration="14009000" />
       <workItem from="1559086818703" duration="1018000" />
-      <workItem from="1559113124102" duration="61310000" />
+      <workItem from="1559113124102" duration="62020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181607000" />
+    <option name="totallyTimeSpent" value="182317000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
+    <frame x="0" y="0" width="1212" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.498503" visible="true" weight="0.04" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.498503" visible="true" weight="0.2204861" />
       <window_info id="Structure" order="1" sideWeight="0.50149703" side_tool="true" weight="0.20226537" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -534,15 +581,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CompanyPackage/CompanyClass.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/StringBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventPackage/EventComparator.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -584,27 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="143" column="47" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1002,17 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MyExceptionsPackage/UnknownShowExc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1065,10 +1071,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="64" selection-end-column="68" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/ActorComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#254#255#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="7" selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="524" selection-start-line="524" selection-end-line="524" />
+        <state relative-caret-position="146">
+          <caret line="496" column="48" lean-forward="true" selection-start-line="496" selection-end-line="497" />
           <folding>
             <element signature="class#Command#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
@@ -1152,7 +1193,6 @@
             <element signature="e#18720#18790#1" />
             <element signature="e#18836#18895#0" />
             <element signature="e#18955#19039#0" />
-            <element signature="n#!!block;n#mostRomantic#0;n#Main#0" />
             <element signature="method#kingOfCGI#0;class#Main#0" />
             <element signature="e#19223#19375#0" />
             <element signature="e#19416#19475#0" />
@@ -1164,8 +1204,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="749">
-          <caret line="195" column="5" lean-forward="true" selection-start-line="195" selection-start-column="5" selection-end-line="195" selection-end-column="5" />
+        <state relative-caret-position="489">
+          <caret line="218" column="41" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="method#ShowPediaClass#0;class#ShowPediaClass#0" />
@@ -1184,9 +1224,45 @@
             <element signature="method#addEvent#0;class#ShowPediaClass#0" />
             <element signature="method#characterResume#0;class#ShowPediaClass#0" />
             <element signature="method#getActor#0;class#ShowPediaClass#0" />
+            <element signature="e#7518#7525#0" expanded="true" />
             <element signature="method#howAreTheseTwoRelated#0;class#ShowPediaClass#0" />
             <element signature="method#getEpisodeName#0;class#ShowPediaClass#0" />
             <element signature="method#getEventsIt#0;class#ShowPediaClass#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyExceptionsPackage/LoveIsntInTheAirExc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#192#193#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyExceptionsPackage/UnknownActorExc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#159#160#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
           </folding>
         </state>
       </provider>
