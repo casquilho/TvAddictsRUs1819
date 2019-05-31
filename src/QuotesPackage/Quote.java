@@ -4,13 +4,36 @@
  */
 package QuotesPackage;
 
+/**
+ * The interface Quote.
+ */
 public interface Quote {
 
+    /**
+     * Gets quote.
+     *
+     * @return the quote
+     */
     String getQuote();
 
+    /**
+     * Gets char name.
+     *
+     * @return the char name
+     */
     String getCharName();
 
+    /**
+     * Gets season.
+     *
+     * @return the season
+     */
     int getSeason();
 
+    /**
+     * Gets episode.
+     *
+     * @return the episode
+     */
     int getEpisode();
 }
