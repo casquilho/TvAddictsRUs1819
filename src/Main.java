@@ -46,7 +46,7 @@ public class Main {
     private static final String PRINT_CURRENT_SHOW = "%s. Seasons: %d Episodes: %d";
     private static final String UNKNOWN_CATEGORY = "Unknown actor category!";
     private static final String NO_RELATION_OF_KIND = "None.";
-    private static final String CGI_KING = "%s %d";
+    private static final String STRING_INT = "%s %d";
     private static final String EMPTY_STRING = "";
     private static final String COMA_SPACE = ", ";
     private static final String SEMICOLON_SPACE = "; ";
@@ -501,10 +501,10 @@ public class Main {
             while(it.hasNext()) {
                 auxActor = it.next();
                 if(auxActor.getName().compareTo(actorName)==0) {
-                    System.out.println(String.format("%s %d", auxActor.getName(), auxActor.getTotalRomanticNum()));
+                    System.out.println(String.format(STRING_INT, auxActor.getName(), auxActor.getTotalRomanticNum()));
                     break;
                 }
-                System.out.println(String.format("%s %d", auxActor.getName(), auxActor.getTotalRomanticNum()));
+                System.out.println(String.format(STRING_INT, auxActor.getName(), auxActor.getTotalRomanticNum()));
             }
         }
         catch(UnknownActorExc e) {
@@ -518,7 +518,7 @@ public class Main {
     private static void kingOfCGI(ShowPedia showPedia){
         try{
             CGICompany aux = showPedia.kingOfCgi();
-            System.out.println(String.format(CGI_KING, aux.getName(), aux.getProfit()));
+            System.out.println(String.format(STRING_INT, aux.getName(), aux.getProfit()));
         }
         catch (NoVirtualCharactersExc e){
             System.out.println(e.getMessage());
