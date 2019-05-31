@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b3a210-d72e-46fc-956b-33cf32eb287c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/54393_54440_TvAddictsRUs1819.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/54393_54440_TvAddictsRUs1819.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,7 +16,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.8254237">
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="false">
@@ -119,13 +120,10 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="251">
-                  <caret line="437" lean-forward="true" selection-start-line="437" selection-end-line="437" />
+                <state relative-caret-position="305">
+                  <caret line="449" column="39" selection-start-line="449" selection-start-column="39" selection-end-line="449" selection-end-column="39" />
                   <folding>
                     <element signature="e#370#857#0" />
-                    <element signature="e#2568#4668#0" />
-                    <element signature="e#2789#4600#1" />
-                    <element signature="e#2855#4555#0" />
                     <element signature="e#4675#4941#0" />
                     <element signature="e#4735#4845#0" />
                     <element signature="e#4888#4935#0" />
@@ -194,7 +192,6 @@
                     <element signature="e#16708#16792#0" />
                     <element signature="e#17118#17194#0" />
                     <element signature="e#17732#17791#0" />
-                    <element signature="e#17822#17908#0" />
                     <element signature="e#17920#18501#0" />
                     <element signature="e#17998#18382#0" />
                     <element signature="e#18185#18331#1" />
@@ -204,7 +201,6 @@
                     <element signature="e#18790#18860#1" />
                     <element signature="e#18906#18965#0" />
                     <element signature="e#19025#19109#0" />
-                    <element signature="e#19121#20026#0" />
                     <element signature="e#20359#22127#0" />
                     <element signature="e#22134#22205#0" />
                     <element signature="e#22363#22795#0" />
@@ -245,7 +241,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ShowPackage/Show.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="766">
+                <state relative-caret-position="426">
                   <caret line="230" selection-start-line="230" selection-end-line="230" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -348,10 +344,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-141" />
-    <option name="y" value="265" />
-    <option name="width" value="1703" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="224" />
+    <option name="width" value="1696" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -482,7 +477,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EpisodeTest.characterParticipationValid">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="TvAddictsRUs1819" />
@@ -555,11 +550,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.EpisodeTest.characterParticipationValid" />
         <item itemvalue="JUnit.EpisodeTest.characterParticipationInvalid" />
         <item itemvalue="JUnit.EpisodeTest.testPrintMessage" />
         <item itemvalue="JUnit.EpisodeTest" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -593,14 +588,11 @@
       <workItem from="1559031681288" duration="2454000" />
       <workItem from="1559063809243" duration="14009000" />
       <workItem from="1559086818703" duration="1018000" />
-      <workItem from="1559113124102" duration="86425000" />
+      <workItem from="1559113124102" duration="87718000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EpisodeTest_characterParticipationInvalid - 2019.05.31 at 15h 50m 08s.xml">
-      <configuration name="EpisodeTest.characterParticipationInvalid" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="EpisodeTest_characterParticipationInvalid - 2019.05.31 at 15h 50m 22s.xml">
       <configuration name="EpisodeTest.characterParticipationInvalid" configurationId="JUnit" />
     </history-entry>
@@ -628,15 +620,18 @@
     <history-entry file="EpisodeTest_characterParticipationValid - 2019.05.31 at 15h 58m 26s.xml">
       <configuration name="EpisodeTest.characterParticipationValid" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="EpisodeTest_characterParticipationValid - 2019.05.31 at 17h 44m 24s.xml">
+      <configuration name="EpisodeTest.characterParticipationValid" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206722000" />
+    <option name="totallyTimeSpent" value="208015000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="224" y="0" width="1696" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.498503" visible="true" weight="0.16471216" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.498503" visible="true" weight="0.10391198" />
       <window_info id="Structure" order="1" sideWeight="0.50149703" side_tool="true" weight="0.20226537" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -646,7 +641,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.36580086" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.21645021" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33225107" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3314978" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -717,22 +712,16 @@
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>495</line>
-          <properties />
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>429</line>
-          <properties />
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/TestsPackage/EpisodeTest.java</url>
           <line>35</line>
           <properties />
           <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>440</line>
+          <properties />
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1306,13 +1295,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="437" lean-forward="true" selection-start-line="437" selection-end-line="437" />
+        <state relative-caret-position="305">
+          <caret line="449" column="39" selection-start-line="449" selection-start-column="39" selection-end-line="449" selection-end-column="39" />
           <folding>
             <element signature="e#370#857#0" />
-            <element signature="e#2568#4668#0" />
-            <element signature="e#2789#4600#1" />
-            <element signature="e#2855#4555#0" />
             <element signature="e#4675#4941#0" />
             <element signature="e#4735#4845#0" />
             <element signature="e#4888#4935#0" />
@@ -1381,7 +1367,6 @@
             <element signature="e#16708#16792#0" />
             <element signature="e#17118#17194#0" />
             <element signature="e#17732#17791#0" />
-            <element signature="e#17822#17908#0" />
             <element signature="e#17920#18501#0" />
             <element signature="e#17998#18382#0" />
             <element signature="e#18185#18331#1" />
@@ -1391,7 +1376,6 @@
             <element signature="e#18790#18860#1" />
             <element signature="e#18906#18965#0" />
             <element signature="e#19025#19109#0" />
-            <element signature="e#19121#20026#0" />
             <element signature="e#20359#22127#0" />
             <element signature="e#22134#22205#0" />
             <element signature="e#22363#22795#0" />
