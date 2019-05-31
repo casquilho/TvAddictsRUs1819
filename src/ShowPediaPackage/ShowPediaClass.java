@@ -154,7 +154,7 @@ public class ShowPediaClass implements ShowPedia {
         return currentShow.getCharacterResume(charName, auxList);
     }
 
-    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{
+    public Stack<Character> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc{
 
         if(currentShow == null)
             throw new NoShowSelectedExc();

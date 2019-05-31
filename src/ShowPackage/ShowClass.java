@@ -107,7 +107,7 @@ public class ShowClass implements Show {
 
         auxList.add(0,auxChar.getParentsIt());
         auxList.add(1,auxChar.getChildrenIt());
-        auxList.add(2,auxChar.getSiblingsIt(auxChar));
+        auxList.add(2,auxChar.getSiblingsIt());
         auxList.add(3,auxChar.getRomancesIt());
 
         return auxChar.getCharacterEvents();
@@ -248,7 +248,7 @@ public class ShowClass implements Show {
         auxChar2.addPartner(auxChar1);
     }
 
-    public Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc, NotRelatedExc{
+    public Stack<Character> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc, NotRelatedExc{
         if(!characters.containsKey(char1)) {
             aux.add(0, char1);
             throw new UnknownCharacterExc();
@@ -261,8 +261,8 @@ public class ShowClass implements Show {
         Character auxChar1 = characters.get(char1);
         Character auxChar2 = characters.get(char2);
 
-        Stack<String> stack1 = familyBFS(auxChar1, auxChar2);
-        Stack<String> stack2 = familyBFS(auxChar2, auxChar1);
+        Stack<Character> stack1 = familyBFS(auxChar1, auxChar2);
+        Stack<Character> stack2 = familyBFS(auxChar2, auxChar1);
 
         if(stack1 == null && stack2 == null)
             throw new NotRelatedExc();
@@ -330,11 +330,11 @@ public class ShowClass implements Show {
         this.seasonsNumber++;
     }
 
-    private Stack<String> familyBFS(Character x, Character y) {
+    private Stack<Character> familyBFS(Character x, Character y) {
 
         Queue<Character> queue = new LinkedList<>();
         List<Character> visited = new LinkedList<>();
-        Stack<String> descendants = new Stack<>();
+        Stack<Character> descendants = new Stack<>();
 
         visited.add(x);
         queue.add(x);
@@ -351,10 +351,10 @@ public class ShowClass implements Show {
                 if (child.equals(y)) {
                     while (child.getParent() != null) {
                         assert child.hasParent(child.getParent()) && child.getParent().hasChild(child) : child.getCharName();
-                        descendants.add(child.getCharName());
+                        descendants.add(child);
                         child = child.getParent();
                     }
-                    descendants.add(child.getCharName());
+                    descendants.add(child);
                     //clear the parent field in all the nodes
                     for (Character auxP : visited)
                         auxP.addParent(null);

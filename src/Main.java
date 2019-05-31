@@ -438,15 +438,15 @@ public class Main {
 
             //Used a BFS algorithm to find the path between the character and return the
             //output to a stack so it can be printed in the right order by using pop
-            Stack<String> stack = showPedia.howAreTheseTwoRelated(char1, char2, aux);
+            Stack<Character> stack = showPedia.howAreTheseTwoRelated(char1, char2, aux);
 
             while(!stack.empty()){
                 if(flag)
                     System.out.print(SEMICOLON_SPACE);
                 flag = true;
-                System.out.print(stack.pop());
+                System.out.print(stack.pop().getCharName());
             }
-            System.out.println();
+            System.out.println(stack.pop().getCharName());
         }
         catch (NoShowSelectedExc | NotRelatedExc | DuplicateCharRelated e){
             System.out.println(e.getMessage());

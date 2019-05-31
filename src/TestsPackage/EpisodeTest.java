@@ -10,7 +10,7 @@ public class EpisodeTest {
 
 
     @Test
-    public void testPrintMessage() {
+    public void characterParticipationPassed() {
         try {
             /*arrange*/
             ShowPedia showPedia = new ShowPediaClass();

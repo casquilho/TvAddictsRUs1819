@@ -77,7 +77,7 @@ public abstract class CharacterClass implements Character{
         return parents.iterator();
     }
 
-    public Iterator<Character> getSiblingsIt(Character auxChar){
+    public Iterator<Character> getSiblingsIt(){
         return  siblings.iterator();
     }
 

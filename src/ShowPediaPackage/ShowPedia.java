@@ -38,7 +38,7 @@ public interface ShowPedia {
 
     Iterator<List<Event>> characterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc;
 
-    Stack<String> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc;
+    Stack<Character> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws NoShowSelectedExc, DuplicateCharRelated, UnknownCharacterExc, NotRelatedExc;
 
     Iterator<String> getFamousQuotes(String quote) throws NoShowSelectedExc, UnknownQuoteExc;
 
