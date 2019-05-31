@@ -446,7 +446,8 @@ public class Main {
                 flag = true;
                 System.out.print(stack.pop().getCharName());
             }
-            System.out.println(stack.pop().getCharName());
+            if(!stack.empty())
+                System.out.println(stack.pop().getCharName());
         }
         catch (NoShowSelectedExc | NotRelatedExc | DuplicateCharRelated e){
             System.out.println(e.getMessage());
