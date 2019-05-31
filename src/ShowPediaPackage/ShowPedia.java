@@ -67,8 +67,8 @@ public interface ShowPedia {
      * @param actorName the actor name
      * @param cost      the cost per episode of the character
      * @throws NoShowSelectedExc     if there is no show selected
-     * @throws DuplicateCharacterExc the duplicate character exc
-     * @throws InvalidSalaryExc      the invalid salary exc
+     * @throws DuplicateCharacterExc if the character is already registered in the current show
+     * @throws InvalidSalaryExc      if the cost is a negative integer
      */
     void addRealCharacter(String charName, String actorName, int cost) throws NoShowSelectedExc, DuplicateCharacterExc, InvalidSalaryExc;
 
@@ -128,8 +128,8 @@ public interface ShowPedia {
     /**
      * Add a quote by a character to the selected season and episode.
      *
-     * @param season    the season
-     * @param episode   the episode
+     * @param season    the season number
+     * @param episode   the episode number
      * @param charName  the character's name
      * @param quoteText the quote text
      * @throws NoShowSelectedExc     if there is no show selected.
@@ -140,7 +140,7 @@ public interface ShowPedia {
     void addQuote(int season, int episode, String charName, String quoteText) throws NoShowSelectedExc, NonExistentEpisodeExc, NonExistentSeasonExc, UnknownCharacterExc;
 
     /**
-     * Returns the iterator containing the character's events from the method with the same name in the show class.
+     * Returns the iterator containing the character's events.
      *
      * @param charName the character name
      * @param auxList  auxiliary list used to pass different iterators used in the main class

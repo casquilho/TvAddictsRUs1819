@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b3a210-d72e-46fc-956b-33cf32eb287c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/54393_54440_TvAddictsRUs1819.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/54393_54440_TvAddictsRUs1819.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventPackage/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventPackage/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/QuotesPackage/Quote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuotesPackage/Quote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SeasonPackage/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SeasonPackage/Season.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShowPackage/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPackage/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,244 +23,172 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8254237">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="43">
-                  <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#ShowPediaClass#0;class#ShowPediaClass#0" />
-                    <element signature="method#getCurrentShow#0;class#ShowPediaClass#0" />
-                    <element signature="method#addShow#0;class#ShowPediaClass#0" />
-                    <element signature="method#switchShow#0;class#ShowPediaClass#0" />
-                    <element signature="method#addSeasonToCurrentShow#0;class#ShowPediaClass#0" />
-                    <element signature="method#addEpisodeToGivenSeason#0;class#ShowPediaClass#0" />
-                    <element signature="method#addRealCharacter#0;class#ShowPediaClass#0" />
-                    <element signature="e#2236#2350#1" />
-                    <element signature="e#2435#2598#1" />
-                    <element signature="method#addCGICharacter#0;class#ShowPediaClass#0" />
-                    <element signature="method#addRelationship#0;class#ShowPediaClass#0" />
-                    <element signature="method#addRomance#0;class#ShowPediaClass#0" />
-                    <element signature="method#addEvent#0;class#ShowPediaClass#0" />
-                    <element signature="method#addQuote#0;class#ShowPediaClass#0" />
-                    <element signature="method#howAreTheseTwoRelated#0;class#ShowPediaClass#0" />
-                    <element signature="method#getFamousQuotes#0;class#ShowPediaClass#0" />
-                    <element signature="method#alsoAppearsOn#0;class#ShowPediaClass#0" />
-                    <element signature="method#mostRomantic#0;class#ShowPediaClass#0" />
-                    <element signature="method#kingOfCgi#0;class#ShowPediaClass#0" />
-                    <element signature="method#getEpisodeName#0;class#ShowPediaClass#0" />
-                    <element signature="method#getActor#0;class#ShowPediaClass#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3400">
-                  <caret line="200" column="40" selection-start-line="200" selection-start-column="40" selection-end-line="200" selection-end-column="40" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ShowPackage/ShowClass.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="741">
-                  <caret line="119" column="84" selection-start-line="119" selection-start-column="84" selection-end-line="119" selection-end-column="84" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <element signature="method#ShowClass#0;class#ShowClass#0" />
-                    <element signature="method#getEpisodeName#0;class#ShowClass#0" />
-                    <element signature="method#getActorNameFromCharName#0;class#ShowClass#0" />
-                    <element signature="method#getSeason#0;class#ShowClass#0" />
-                    <element signature="method#getEventsFromEpisode#0;class#ShowClass#0" />
-                    <element signature="method#getFamousQuotes#0;class#ShowClass#0" />
-                    <element signature="method#getCharacterResume#0;class#ShowClass#0" />
-                    <element signature="e#3667#3668#0" expanded="true" />
-                    <element signature="e#3716#3717#0" expanded="true" />
-                    <element signature="method#addEpisode#0;class#ShowClass#0" />
-                    <element signature="method#addSeason#0;class#ShowClass#0" />
-                    <element signature="method#addRealCharacter#0;class#ShowClass#0" />
-                    <element signature="method#addCGICharacter#0;class#ShowClass#0" />
-                    <element signature="method#addQuote#0;class#ShowClass#0" />
-                    <element signature="method#addEvent#0;class#ShowClass#0" />
-                    <element signature="method#addRelationship#0;class#ShowClass#0" />
-                    <element signature="method#addRomance#0;class#ShowClass#0" />
-                    <element signature="method#howAreTheseTwoRelated#0;class#ShowClass#0" />
-                    <element signature="method#realChar#0;class#ShowClass#0" />
-                    <element signature="method#processQuote#0;class#ShowClass#0" />
-                    <element signature="method#addCharToEpisodeSeason#0;class#ShowClass#0" />
-                    <element signature="method#familyBFS#0;class#ShowClass#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SeasonPackage/SeasonClass.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-                  <folding>
-                    <element signature="method#SeasonClass#0;class#SeasonClass#0" />
-                    <element signature="method#getEpisodeName#0;class#SeasonClass#0" />
-                    <element signature="n#!!block;n#getEpisodesNumber#0;n#SeasonClass#0" />
-                    <element signature="method#addEpisode#0;class#SeasonClass#0" />
-                    <element signature="n#!!block;n#participatesIn#0;n#SeasonClass#0" />
-                    <element signature="method#addParticipant#0;class#SeasonClass#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="305">
-                  <caret line="449" column="39" selection-start-line="449" selection-start-column="39" selection-end-line="449" selection-end-column="39" />
-                  <folding>
-                    <element signature="e#370#857#0" />
-                    <element signature="e#4675#4941#0" />
-                    <element signature="e#4735#4845#0" />
-                    <element signature="e#4888#4935#0" />
-                    <element signature="e#4948#5019#0" />
-                    <element signature="e#5177#5395#0" />
-                    <element signature="e#5242#5294#0" />
-                    <element signature="e#5330#5389#0" />
-                    <element signature="e#5401#5745#0" />
-                    <element signature="e#5474#5646#0" />
-                    <element signature="e#5680#5739#0" />
-                    <element signature="e#5751#6087#0" />
-                    <element signature="e#5829#5970#0" />
-                    <element signature="e#6022#6081#0" />
-                    <element signature="e#6093#6356#0" />
-                    <element signature="e#6156#6256#0" />
-                    <element signature="e#6291#6350#0" />
-                    <element signature="e#6362#6883#0" />
-                    <element signature="e#6438#6764#0" />
-                    <element signature="e#6818#6877#0" />
-                    <element signature="e#6889#8236#0" />
-                    <element signature="e#7061#8091#0" />
-                    <element signature="e#7284#7662#1" />
-                    <element signature="e#7730#8002#1" />
-                    <element signature="e#8171#8230#0" />
-                    <element signature="e#8242#9205#0" />
-                    <element signature="e#8431#8850#0" />
-                    <element signature="e#8913#8972#0" />
-                    <element signature="e#9000#9082#0" />
-                    <element signature="e#9113#9199#0" />
-                    <element signature="e#9211#9974#0" />
-                    <element signature="e#9395#9613#0" />
-                    <element signature="e#9676#9735#0" />
-                    <element signature="e#9770#9851#0" />
-                    <element signature="e#9882#9968#0" />
-                    <element signature="e#9980#11206#0" />
-                    <element signature="e#10249#10709#0" />
-                    <element signature="e#10521#10576#1" />
-                    <element signature="e#10745#10804#0" />
-                    <element signature="e#10843#10935#0" />
-                    <element signature="e#10975#11076#0" />
-                    <element signature="e#11114#11200#0" />
-                    <element signature="e#11212#12284#0" />
-                    <element signature="e#11433#11789#0" />
-                    <element signature="e#11825#11884#0" />
-                    <element signature="e#11923#12015#0" />
-                    <element signature="e#12055#12156#0" />
-                    <element signature="e#12194#12278#0" />
-                    <element signature="e#12290#13692#0" />
-                    <element signature="e#12517#13467#0" />
-                    <element signature="e#12858#13457#1" />
-                    <element signature="e#13019#13443#1" />
-                    <element signature="e#13259#13425#1" />
-                    <element signature="e#13306#13403#1" />
-                    <element signature="e#13527#13586#0" />
-                    <element signature="e#13642#13686#0" />
-                    <element signature="e#13698#16798#0" />
-                    <element signature="e#14667#16563#0" />
-                    <element signature="e#15045#15836#1" />
-                    <element signature="e#15063#15122#0" />
-                    <element signature="e#15429#15755#1" />
-                    <element signature="e#15472#15737#1" />
-                    <element signature="e#15961#16552#1" />
-                    <element signature="e#16095#16509#1" />
-                    <element signature="e#16174#16430#1" />
-                    <element signature="e#16626#16670#0" />
-                    <element signature="e#16708#16792#0" />
-                    <element signature="e#17118#17194#0" />
-                    <element signature="e#17732#17791#0" />
-                    <element signature="e#17920#18501#0" />
-                    <element signature="e#17998#18382#0" />
-                    <element signature="e#18185#18331#1" />
-                    <element signature="e#18436#18495#0" />
-                    <element signature="e#18507#19115#0" />
-                    <element signature="e#18619#18870#0" />
-                    <element signature="e#18790#18860#1" />
-                    <element signature="e#18906#18965#0" />
-                    <element signature="e#19025#19109#0" />
-                    <element signature="e#20359#22127#0" />
-                    <element signature="e#22134#22205#0" />
-                    <element signature="e#22363#22795#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ShowPackage/Show.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3910">
-                  <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacterClass.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/ShowPackage/Show.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="426">
-                  <caret line="230" selection-start-line="230" selection-end-line="230" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="148" column="47" lean-forward="true" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="4" />
+              <folding>
+                <element signature="docComment;class#ShowPedia#0" />
+                <element signature="docComment;method#getCurrentShow#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addShow#0;class#ShowPedia#0" />
+                <element signature="docComment;method#switchShow#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addSeasonToCurrentShow#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addEpisodeToGivenSeason#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addRealCharacter#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addCGICharacter#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addRelationship#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addRomance#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addEvent#0;class#ShowPedia#0" />
+                <element signature="docComment;method#addQuote#0;class#ShowPedia#0" />
+                <element signature="docComment;method#characterResume#0;class#ShowPedia#0" />
+                <element signature="docComment;method#howAreTheseTwoRelated#0;class#ShowPedia#0" />
+                <element signature="docComment;method#getFamousQuotes#0;class#ShowPedia#0" />
+                <element signature="docComment;method#alsoAppearsOn#0;class#ShowPedia#0" />
+                <element signature="docComment;method#mostRomantic#0;class#ShowPedia#0" />
+                <element signature="docComment;method#kingOfCgi#0;class#ShowPedia#0" />
+                <element signature="docComment;method#getEpisodeName#0;class#ShowPedia#0" />
+                <element signature="docComment;method#getActor#0;class#ShowPedia#0" />
+                <element signature="docComment;method#getEventsIt#0;class#ShowPedia#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ShowPackage/Show.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="docComment;class#Show#0" />
+                <element signature="docComment;method#getName#0;class#Show#0" />
+                <element signature="docComment;method#getEpisodeName#0;class#Show#0" />
+                <element signature="docComment;method#getActorNameFromCharName#0;class#Show#0" />
+                <element signature="docComment;method#getSeasonsNumber#0;class#Show#0" />
+                <element signature="docComment;method#getTotalEpisodesNumber#0;class#Show#0" />
+                <element signature="docComment;method#getNumParentsFromName#0;class#Show#0" />
+                <element signature="docComment;method#getNumChildrenFromName#0;class#Show#0" />
+                <element signature="docComment;method#getSeason#0;class#Show#0" />
+                <element signature="docComment;method#getEventsFromEpisode#0;class#Show#0" />
+                <element signature="docComment;method#getFamousQuotes#0;class#Show#0" />
+                <element signature="docComment;method#getCharacterResume#0;class#Show#0" />
+                <element signature="docComment;method#getEvents#0;class#Show#0" />
+                <element signature="docComment;method#addEpisode#0;class#Show#0" />
+                <element signature="docComment;method#addSeason#0;class#Show#0" />
+                <element signature="docComment;method#addRealCharacter#0;class#Show#0" />
+                <element signature="docComment;method#addCGICharacter#0;class#Show#0" />
+                <element signature="docComment;method#addQuote#0;class#Show#0" />
+                <element signature="docComment;method#addEvent#0;class#Show#0" />
+                <element signature="docComment;method#addRelationship#0;class#Show#0" />
+                <element signature="docComment;method#addRomance#0;class#Show#0" />
+                <element signature="docComment;method#howAreTheseTwoRelated#0;class#Show#0" />
+                <element signature="docComment;method#realChar#0;class#Show#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CGICompaniesPackage/CGICompany.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="661">
+              <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EpisodePackage/Episode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="763">
+              <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EventPackage/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/QuotesPackage/Quote.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SeasonPackage/Season.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="678">
+              <caret line="56" column="59" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -282,6 +217,10 @@
       <find>resume</find>
       <find>howA</find>
       <find>the no show selected exc</find>
+      <find>the non existent episode exc</find>
+      <find>the non existent season exc</find>
+      <find>if the episode's number passed does not correspond to and existing episode in the given season</find>
+      <find>the unknown character exc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -326,27 +265,27 @@
         <option value="$PROJECT_DIR$/src/EventPackage/EventClass.java" />
         <option value="$PROJECT_DIR$/src/SeasonPackage/SeasonClass.java" />
         <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPediaClass.java" />
-        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/CharacterClass.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/Character.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java" />
         <option value="$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacter.java" />
         <option value="$PROJECT_DIR$/src/CGICompaniesPackage/CGICompany.java" />
-        <option value="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" />
         <option value="$PROJECT_DIR$/src/EpisodePackage/Episode.java" />
-        <option value="$PROJECT_DIR$/src/EventPackage/Event.java" />
-        <option value="$PROJECT_DIR$/src/QuotesPackage/Quote.java" />
-        <option value="$PROJECT_DIR$/src/SeasonPackage/Season.java" />
-        <option value="$PROJECT_DIR$/src/ShowPackage/Show.java" />
         <option value="$PROJECT_DIR$/src/TestsPackage/EpisodeTest.java" />
+        <option value="$PROJECT_DIR$/src/QuotesPackage/Quote.java" />
+        <option value="$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java" />
+        <option value="$PROJECT_DIR$/src/SeasonPackage/Season.java" />
+        <option value="$PROJECT_DIR$/src/EventPackage/Event.java" />
+        <option value="$PROJECT_DIR$/src/ShowPackage/ShowClass.java" />
         <option value="$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java" />
+        <option value="$PROJECT_DIR$/src/ShowPackage/Show.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="224" />
-    <option name="width" value="1696" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="960" />
+    <option name="width" value="960" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -357,6 +296,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -427,7 +367,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -588,7 +527,8 @@
       <workItem from="1559031681288" duration="2454000" />
       <workItem from="1559063809243" duration="14009000" />
       <workItem from="1559086818703" duration="1018000" />
-      <workItem from="1559113124102" duration="87718000" />
+      <workItem from="1559113124102" duration="91428000" />
+      <workItem from="1559325796915" duration="508000" />
     </task>
     <servers />
   </component>
@@ -625,13 +565,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208015000" />
+    <option name="totallyTimeSpent" value="212233000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="224" y="0" width="1696" height="1040" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.498503" visible="true" weight="0.10391198" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.498503" visible="true" weight="0.092750534" />
       <window_info id="Structure" order="1" sideWeight="0.50149703" side_tool="true" weight="0.20226537" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -641,7 +581,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.36580086" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.21645021" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3314978" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3314978" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -701,13 +641,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>322</line>
+          <line>333</line>
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>331</line>
+          <line>342</line>
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
@@ -719,7 +659,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>440</line>
+          <line>453</line>
           <properties />
           <option name="timeStamp" value="64" />
         </line-breakpoint>
@@ -938,17 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-276">
-          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/ActorClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -967,46 +896,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuotesPackage/QuoteClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1067">
-          <caret line="176" column="82" selection-start-line="176" selection-start-column="82" selection-end-line="176" selection-end-column="82" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1036,47 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
           <caret line="270" column="28" lean-forward="true" selection-start-line="270" selection-start-column="15" selection-end-line="270" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CGICompaniesPackage/CGICompany.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventPackage/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuotesPackage/Quote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SeasonPackage/Season.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1137,16 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
           <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EpisodePackage/Episode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1239,32 +1077,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
+    <entry file="file://$PROJECT_DIR$/src/QuotesPackage/QuoteClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3400">
-          <caret line="200" column="40" selection-start-line="200" selection-start-column="40" selection-end-line="200" selection-end-column="40" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ShowPackage/ShowClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="119" column="84" selection-start-line="119" selection-start-column="84" selection-end-line="119" selection-end-column="84" />
+        <state relative-caret-position="1275">
+          <caret line="332" column="65" selection-start-line="332" selection-start-column="65" selection-end-line="332" selection-end-column="65" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
             <element signature="method#ShowClass#0;class#ShowClass#0" />
             <element signature="method#getEpisodeName#0;class#ShowClass#0" />
             <element signature="method#getActorNameFromCharName#0;class#ShowClass#0" />
-            <element signature="method#getSeason#0;class#ShowClass#0" />
+            <element signature="n#!!block;n#getNumParentsFromName#0;n#ShowClass#0" />
+            <element signature="n#!!block;n#getNumChildrenFromName#0;n#ShowClass#0" />
             <element signature="method#getEventsFromEpisode#0;class#ShowClass#0" />
             <element signature="method#getFamousQuotes#0;class#ShowClass#0" />
             <element signature="method#getCharacterResume#0;class#ShowClass#0" />
-            <element signature="e#3667#3668#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
             <element signature="method#addEpisode#0;class#ShowClass#0" />
             <element signature="method#addSeason#0;class#ShowClass#0" />
             <element signature="method#addRealCharacter#0;class#ShowClass#0" />
@@ -1277,15 +1112,122 @@
             <element signature="method#realChar#0;class#ShowClass#0" />
             <element signature="method#processQuote#0;class#ShowClass#0" />
             <element signature="method#addCharToEpisodeSeason#0;class#ShowClass#0" />
+            <element signature="n#!!block;n#incrementEpisodesNumber#0;n#ShowClass#0" />
+            <element signature="n#!!block;n#incrementSeasonsNumber#0;n#ShowClass#0" />
             <element signature="method#familyBFS#0;class#ShowClass#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShowPackage/Show.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3910">
-          <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
+        <state relative-caret-position="884">
+          <caret line="118" column="4" lean-forward="true" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#370#857#0" />
+            <element signature="e#2570#4670#0" />
+            <element signature="e#2791#4602#1" />
+            <element signature="e#2857#4557#0" />
+            <element signature="e#4677#4943#0" />
+            <element signature="e#4737#4847#0" />
+            <element signature="e#4890#4937#0" />
+            <element signature="e#5179#5397#0" />
+            <element signature="e#5244#5296#0" />
+            <element signature="e#5332#5391#0" />
+            <element signature="e#5403#5747#0" />
+            <element signature="e#5476#5648#0" />
+            <element signature="e#5682#5741#0" />
+            <element signature="e#5753#6089#0" />
+            <element signature="e#5831#5972#0" />
+            <element signature="e#6024#6083#0" />
+            <element signature="e#6095#6358#0" />
+            <element signature="e#6158#6258#0" />
+            <element signature="e#6293#6352#0" />
+            <element signature="e#6364#6885#0" />
+            <element signature="e#6440#6766#0" />
+            <element signature="e#6820#6879#0" />
+            <element signature="e#6891#8238#0" />
+            <element signature="e#7063#8093#0" />
+            <element signature="e#7286#7664#1" />
+            <element signature="e#7732#8004#1" />
+            <element signature="e#8173#8232#0" />
+            <element signature="e#8244#9207#0" />
+            <element signature="e#8433#8852#0" />
+            <element signature="e#8915#8974#0" />
+            <element signature="e#9002#9084#0" />
+            <element signature="e#9115#9201#0" />
+            <element signature="e#9213#9976#0" />
+            <element signature="e#9397#9615#0" />
+            <element signature="e#9678#9737#0" />
+            <element signature="e#9772#9853#0" />
+            <element signature="e#9884#9970#0" />
+            <element signature="e#9982#11208#0" />
+            <element signature="e#10251#10711#0" />
+            <element signature="e#10523#10578#1" />
+            <element signature="e#10747#10806#0" />
+            <element signature="e#10845#10937#0" />
+            <element signature="e#10977#11078#0" />
+            <element signature="e#11116#11202#0" />
+            <element signature="e#11214#12286#0" />
+            <element signature="e#11435#11791#0" />
+            <element signature="e#11827#11886#0" />
+            <element signature="e#11925#12017#0" />
+            <element signature="e#12057#12158#0" />
+            <element signature="e#12196#12280#0" />
+            <element signature="e#12292#13694#0" />
+            <element signature="e#12519#13469#0" />
+            <element signature="e#12860#13459#1" />
+            <element signature="e#13021#13445#1" />
+            <element signature="e#13261#13427#1" />
+            <element signature="e#13308#13405#1" />
+            <element signature="e#13529#13588#0" />
+            <element signature="e#13644#13688#0" />
+            <element signature="e#13700#16800#0" />
+            <element signature="e#14669#16565#0" />
+            <element signature="e#15047#15838#1" />
+            <element signature="e#15065#15124#0" />
+            <element signature="e#15431#15757#1" />
+            <element signature="e#15474#15739#1" />
+            <element signature="e#15963#16554#1" />
+            <element signature="e#16097#16511#1" />
+            <element signature="e#16176#16432#1" />
+            <element signature="e#16628#16672#0" />
+            <element signature="e#16710#16794#0" />
+            <element signature="e#16806#17891#0" />
+            <element signature="e#17033#17634#0" />
+            <element signature="e#17120#17196#0" />
+            <element signature="e#17405#17590#1" />
+            <element signature="e#17709#17768#0" />
+            <element signature="e#17799#17885#0" />
+            <element signature="e#17897#18478#0" />
+            <element signature="e#17975#18359#0" />
+            <element signature="e#18162#18308#1" />
+            <element signature="e#18413#18472#0" />
+            <element signature="e#18484#19092#0" />
+            <element signature="e#18596#18847#0" />
+            <element signature="e#18767#18837#1" />
+            <element signature="e#18883#18942#0" />
+            <element signature="e#19002#19086#0" />
+            <element signature="e#19098#20009#0" />
+            <element signature="e#19210#19787#0" />
+            <element signature="e#19380#19777#1" />
+            <element signature="e#19483#19648#1" />
+            <element signature="e#19821#19906#0" />
+            <element signature="e#19944#20003#0" />
+            <element signature="e#20015#20338#0" />
+            <element signature="e#20078#20232#0" />
+            <element signature="e#20273#20332#0" />
+            <element signature="e#20344#22112#0" />
+            <element signature="e#22348#22780#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1293,92 +1235,146 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="449" column="39" selection-start-line="449" selection-start-column="39" selection-end-line="449" selection-end-column="39" />
+        <state relative-caret-position="281">
+          <caret line="148" column="47" lean-forward="true" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
           <folding>
-            <element signature="e#370#857#0" />
-            <element signature="e#4675#4941#0" />
-            <element signature="e#4735#4845#0" />
-            <element signature="e#4888#4935#0" />
-            <element signature="e#4948#5019#0" />
-            <element signature="e#5177#5395#0" />
-            <element signature="e#5242#5294#0" />
-            <element signature="e#5330#5389#0" />
-            <element signature="e#5401#5745#0" />
-            <element signature="e#5474#5646#0" />
-            <element signature="e#5680#5739#0" />
-            <element signature="e#5751#6087#0" />
-            <element signature="e#5829#5970#0" />
-            <element signature="e#6022#6081#0" />
-            <element signature="e#6093#6356#0" />
-            <element signature="e#6156#6256#0" />
-            <element signature="e#6291#6350#0" />
-            <element signature="e#6362#6883#0" />
-            <element signature="e#6438#6764#0" />
-            <element signature="e#6818#6877#0" />
-            <element signature="e#6889#8236#0" />
-            <element signature="e#7061#8091#0" />
-            <element signature="e#7284#7662#1" />
-            <element signature="e#7730#8002#1" />
-            <element signature="e#8171#8230#0" />
-            <element signature="e#8242#9205#0" />
-            <element signature="e#8431#8850#0" />
-            <element signature="e#8913#8972#0" />
-            <element signature="e#9000#9082#0" />
-            <element signature="e#9113#9199#0" />
-            <element signature="e#9211#9974#0" />
-            <element signature="e#9395#9613#0" />
-            <element signature="e#9676#9735#0" />
-            <element signature="e#9770#9851#0" />
-            <element signature="e#9882#9968#0" />
-            <element signature="e#9980#11206#0" />
-            <element signature="e#10249#10709#0" />
-            <element signature="e#10521#10576#1" />
-            <element signature="e#10745#10804#0" />
-            <element signature="e#10843#10935#0" />
-            <element signature="e#10975#11076#0" />
-            <element signature="e#11114#11200#0" />
-            <element signature="e#11212#12284#0" />
-            <element signature="e#11433#11789#0" />
-            <element signature="e#11825#11884#0" />
-            <element signature="e#11923#12015#0" />
-            <element signature="e#12055#12156#0" />
-            <element signature="e#12194#12278#0" />
-            <element signature="e#12290#13692#0" />
-            <element signature="e#12517#13467#0" />
-            <element signature="e#12858#13457#1" />
-            <element signature="e#13019#13443#1" />
-            <element signature="e#13259#13425#1" />
-            <element signature="e#13306#13403#1" />
-            <element signature="e#13527#13586#0" />
-            <element signature="e#13642#13686#0" />
-            <element signature="e#13698#16798#0" />
-            <element signature="e#14667#16563#0" />
-            <element signature="e#15045#15836#1" />
-            <element signature="e#15063#15122#0" />
-            <element signature="e#15429#15755#1" />
-            <element signature="e#15472#15737#1" />
-            <element signature="e#15961#16552#1" />
-            <element signature="e#16095#16509#1" />
-            <element signature="e#16174#16430#1" />
-            <element signature="e#16626#16670#0" />
-            <element signature="e#16708#16792#0" />
-            <element signature="e#17118#17194#0" />
-            <element signature="e#17732#17791#0" />
-            <element signature="e#17920#18501#0" />
-            <element signature="e#17998#18382#0" />
-            <element signature="e#18185#18331#1" />
-            <element signature="e#18436#18495#0" />
-            <element signature="e#18507#19115#0" />
-            <element signature="e#18619#18870#0" />
-            <element signature="e#18790#18860#1" />
-            <element signature="e#18906#18965#0" />
-            <element signature="e#19025#19109#0" />
-            <element signature="e#20359#22127#0" />
-            <element signature="e#22134#22205#0" />
-            <element signature="e#22363#22795#0" />
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/RealCharacter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActorCharacterPackage/VirtualCharacter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CGICompaniesPackage/CGICompany.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="661">
+          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EpisodePackage/Episode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="763">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EventPackage/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuotesPackage/Quote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeasonPackage/Season.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="56" column="59" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShowPediaPackage/ShowPedia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="4" />
+          <folding>
+            <element signature="docComment;class#ShowPedia#0" />
+            <element signature="docComment;method#getCurrentShow#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addShow#0;class#ShowPedia#0" />
+            <element signature="docComment;method#switchShow#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addSeasonToCurrentShow#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addEpisodeToGivenSeason#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addRealCharacter#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addCGICharacter#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addRelationship#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addRomance#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addEvent#0;class#ShowPedia#0" />
+            <element signature="docComment;method#addQuote#0;class#ShowPedia#0" />
+            <element signature="docComment;method#characterResume#0;class#ShowPedia#0" />
+            <element signature="docComment;method#howAreTheseTwoRelated#0;class#ShowPedia#0" />
+            <element signature="docComment;method#getFamousQuotes#0;class#ShowPedia#0" />
+            <element signature="docComment;method#alsoAppearsOn#0;class#ShowPedia#0" />
+            <element signature="docComment;method#mostRomantic#0;class#ShowPedia#0" />
+            <element signature="docComment;method#kingOfCgi#0;class#ShowPedia#0" />
+            <element signature="docComment;method#getEpisodeName#0;class#ShowPedia#0" />
+            <element signature="docComment;method#getActor#0;class#ShowPedia#0" />
+            <element signature="docComment;method#getEventsIt#0;class#ShowPedia#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShowPackage/Show.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="docComment;class#Show#0" />
+            <element signature="docComment;method#getName#0;class#Show#0" />
+            <element signature="docComment;method#getEpisodeName#0;class#Show#0" />
+            <element signature="docComment;method#getActorNameFromCharName#0;class#Show#0" />
+            <element signature="docComment;method#getSeasonsNumber#0;class#Show#0" />
+            <element signature="docComment;method#getTotalEpisodesNumber#0;class#Show#0" />
+            <element signature="docComment;method#getNumParentsFromName#0;class#Show#0" />
+            <element signature="docComment;method#getNumChildrenFromName#0;class#Show#0" />
+            <element signature="docComment;method#getSeason#0;class#Show#0" />
+            <element signature="docComment;method#getEventsFromEpisode#0;class#Show#0" />
+            <element signature="docComment;method#getFamousQuotes#0;class#Show#0" />
+            <element signature="docComment;method#getCharacterResume#0;class#Show#0" />
+            <element signature="docComment;method#getEvents#0;class#Show#0" />
+            <element signature="docComment;method#addEpisode#0;class#Show#0" />
+            <element signature="docComment;method#addSeason#0;class#Show#0" />
+            <element signature="docComment;method#addRealCharacter#0;class#Show#0" />
+            <element signature="docComment;method#addCGICharacter#0;class#Show#0" />
+            <element signature="docComment;method#addQuote#0;class#Show#0" />
+            <element signature="docComment;method#addEvent#0;class#Show#0" />
+            <element signature="docComment;method#addRelationship#0;class#Show#0" />
+            <element signature="docComment;method#addRomance#0;class#Show#0" />
+            <element signature="docComment;method#howAreTheseTwoRelated#0;class#Show#0" />
+            <element signature="docComment;method#realChar#0;class#Show#0" />
           </folding>
         </state>
       </provider>

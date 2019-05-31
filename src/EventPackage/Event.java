@@ -10,23 +10,23 @@ package EventPackage;
 public interface Event {
 
     /**
-     * Gets event.
+     * Gets the event's name.
      *
-     * @return the event
+     * @return event name
      */
     String getEvent();
 
     /**
-     * Gets season.
+     * Gets the season's number.
      *
-     * @return the season
+     * @return season number
      */
     int getSeason();
 
     /**
-     * Gets episode.
+     * Gets the episode's number.
      *
-     * @return the episode
+     * @return episode number
      */
     int getEpisode();
 }

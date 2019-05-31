@@ -10,89 +10,88 @@ import CGICompaniesPackage.CGICompany;
 import EventPackage.Event;
 import MyExceptionsPackage.*;
 import SeasonPackage.Season;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
 /**
- * The interface Show.
+ * The Show's interface.
  */
 public interface Show {
 
     /**
-     * Gets name.
+     * Gets the show's name.
      *
-     * @return the name
+     * @return show name
      */
     String getName();
 
     /**
-     * Gets episode name.
+     * Gets the name of a given episode in a given season in the current show.
      *
-     * @param season  the season
-     * @param episode the episode
-     * @return the episode name
-     * @throws NonExistentEpisodeExc the non existent episode exc
-     * @throws NonExistentSeasonExc  the non existent season exc
+     * @param season  the season number
+     * @param episode the episode number
+     * @return episode name
+     * @throws NonExistentEpisodeExc if the episode's number passed does not correspond to an existing episode in the given season
+     * @throws NonExistentSeasonExc  if the season's number passed does not correspond to an existing season in the current show
      */
     String getEpisodeName(int season, int episode) throws NonExistentEpisodeExc, NonExistentSeasonExc;
 
     /**
-     * Gets actor name from char name.
+     * Gets the actor's name from a character's name who he plays name.
      *
-     * @param charName the char name
-     * @return the actor name from char name
-     * @throws UnknownCharacterExc the unknown character exc
+     * @param charName character name
+     * @return actor name
+     * @throws UnknownCharacterExc if the character's name passed does not correspond to nd existing character in the current show
      */
     String getActorNameFromCharName(String charName) throws UnknownCharacterExc;
 
     /**
-     * Gets seasons number.
+     * Gets the number of seasons in the current show.
      *
-     * @return the seasons number
+     * @return seasons number
      */
     int getSeasonsNumber();
 
     /**
-     * Gets total episodes number.
+     * Gets the total number of episodes in the current show.
      *
-     * @return the total episodes number
+     * @return episodes number
      */
     int getTotalEpisodesNumber();
 
     /**
-     * Gets num parents from name.
+     * Gets the number of parents from a character with a given name.
      *
-     * @param charName the char name
-     * @return the num parents from name
+     * @param charName character name
+     * @return parents number
      */
     int getNumParentsFromName(String charName);
 
     /**
-     * Gets num children from name.
+     * Gets the number of children from a character with a given name.
      *
-     * @param charName the char name
-     * @return the num children from name
+     * @param charName character name
+     * @return children number
      */
     int getNumChildrenFromName(String charName);
 
     /**
-     * Gets season.
+     * Gets a season from the current show.
      *
-     * @param seasonNumber the season number
-     * @param seasonStart  the season start
-     * @param seasonEnd    the season end
-     * @return the season
-     * @throws InvalidSeasonInterval the invalid season interval
+     * @param seasonNumber season number
+     * @param seasonStart  season start number, can be used for an interval validation or just given the same number as seasonNumber
+     * @param seasonEnd    season end number, can be used for an interval validation or just given the same number as seasonNumber
+     * @return season
+     * @throws InvalidSeasonInterval if any of the values passed represent and invalid season
      */
     Season getSeason(int seasonNumber, int seasonStart, int seasonEnd) throws InvalidSeasonInterval;
 
     /**
-     * Gets events from episode.
+     * Gets all the events from one episode.
      *
-     * @param key the key
-     * @return the events from episode
+     * @param key the key - the key passed should be a concatenation of the season and episode's numbers (season+""+episode)
+     * @return iterator to the events from the episode
      */
     Iterator<Event> getEventsFromEpisode(String key);
 
@@ -100,131 +99,132 @@ public interface Show {
      * Gets famous quotes.
      *
      * @param quoteText the quote text
-     * @return the famous quotes
-     * @throws UnknownQuoteExc the unknown quote exc
+     * @return iterator of names of the characters who said the given quote
+     * @throws UnknownQuoteExc if the quote text is not registered in the show
      */
     Iterator<String> getFamousQuotes(String quoteText) throws UnknownQuoteExc;
 
     /**
-     * Gets character resume.
+     * Returns the iterator to lists containing the character's events, each list represents one episode.
      *
-     * @param charName the char name
-     * @param auxList  the aux list
-     * @return the character resume
-     * @throws UnknownCharacterExc the unknown character exc
+     * @param charName the character name
+     * @param auxList  auxiliary list used to pass different iterators used in the main class
+     * @return the iterator to the lists of events
+     * @throws UnknownCharacterExc if the character passed is not registered in the show
      */
     Iterator<List<Event>> getCharacterResume(String charName, List<Iterator<Character>> auxList) throws UnknownCharacterExc;
 
     /**
-     * Gets events.
+     * Returns the iterator to lists containing the all the events in the show, each list represents one episode.
      *
-     * @return the events
+     * @return the iterator to the lists of events
      */
     Iterator<List<Event>> getEvents();
 
     /**
-     * Add episode int.
+     * Add a new episode to the given season.
      *
-     * @param seasonsNumber the seasons number
-     * @param epiName       the epi name
-     * @return the int
-     * @throws UnknownSeasonExc the unknown season exc
+     * @param seasonsNumber season number
+     * @param epiName       episode name
+     * @return number of the episode
+     * @throws UnknownSeasonExc if the season's number passed does not correspond to an existing season in the current show
      */
     int addEpisode(int seasonsNumber, String epiName) throws UnknownSeasonExc;
 
     /**
-     * Add season.
+     * Add a new season to current show. The season is added sequentially after the last existing season in the current show.
      */
     void addSeason();
 
     /**
-     * Add real character.
+     * Add real character to the current show. If the actor name passed doesn't correspond to any known actor, then it too is created.
      *
-     * @param charName the char name
-     * @param actor    the actor
-     * @param cost     the cost
-     * @throws DuplicateCharacterExc the duplicate character exc
+     * @param charName  the character name
+     * @param actor     the actor name who plays the character
+     * @param cost      the cost per episode of the character
+     * @throws DuplicateCharacterExc if the character is already registered in the current show
      */
     void addRealCharacter(String charName, Actor actor, int cost) throws DuplicateCharacterExc;
 
     /**
-     * Add cgi character.
+     * Add CGI character to the current show. If the company name passed doesn't correspond to any known company, then it too is created.
      *
-     * @param charName the char name
-     * @param company  the company
-     * @param cost     the cost
-     * @throws DuplicateCharacterExc the duplicate character exc
+     * @param charName the character name
+     * @param company  the company name
+     * @param cost     the cost per season of the character
+     * @throws DuplicateCharacterExc if the character is already registered in the current show
      */
     void addCGICharacter(String charName, String company, int cost) throws DuplicateCharacterExc;
 
     /**
-     * Add quote.
+     * Add a quote by a character to the selected season and episode.
      *
-     * @param season    the season
-     * @param episode   the episode
-     * @param charName  the char name
+     * @param season    the season number
+     * @param episode   the episode number
+     * @param charName  the character's name
      * @param quoteText the quote text
-     * @param companies the companies
-     * @throws NonExistentSeasonExc  the non existent season exc
-     * @throws NonExistentEpisodeExc the non existent episode exc
-     * @throws UnknownCharacterExc   the unknown character exc
+     * @param companies the cgi companies list
+     * @throws NonExistentSeasonExc  if the season's number passed does not correspond to an existing season in the current show
+     * @throws NonExistentEpisodeExc if the episode's number passed does not correspond to an existing episode in the given season
+     * @throws UnknownCharacterExc   if the character's name passed does not correspond to nd existing character in the current show
      */
     void addQuote(int season, int episode, String charName, String quoteText, List<CGICompany> companies) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
     /**
-     * Add event.
+     * Add an event to selected season and episode. the event is stored in a map in both the ShowClass and in the characters that take part in it.
+     * The key is the concatenation of the season and episode numbers which stores a list with all the events in that season and episode.
      *
-     * @param episode      the episode
-     * @param season       the season
-     * @param characters   the characters
-     * @param event        the event
-     * @param companiesCGI the companies cgi
-     * @throws NonExistentSeasonExc  the non existent season exc
-     * @throws NonExistentEpisodeExc the non existent episode exc
-     * @throws UnknownCharacterExc   the unknown character exc
+     * @param episode    the episode
+     * @param season     the season
+     * @param characters list of the characters that take part in the event
+     * @param event      the event
+     * @param companiesCGI the cgi companies list
+     * @throws NonExistentSeasonExc  if the season's number passed does not correspond to an existing season in the current show
+     * @throws NonExistentEpisodeExc if the episode's number passed does not correspond to an existing episode in the given season
+     * @throws UnknownCharacterExc   if the character's name passed does not correspond to nd existing character in the current show
      */
     void addEvent(int episode, int season, List<String> characters, String event, List<CGICompany> companiesCGI) throws NonExistentSeasonExc, NonExistentEpisodeExc, UnknownCharacterExc;
 
     /**
-     * Add relationship.
+     * Add a parent-child relationship between two characters.
      *
-     * @param parent the parent
-     * @param child  the child
-     * @param aux    the aux
-     * @throws UnknownCharacterExc      the unknown character exc
-     * @throws DuplicateRelationshipExc the duplicate relationship exc
+     * @param parent the parent name
+     * @param child  the child name
+     * @param aux    auxiliary list used to pass values to main class
+     * @throws UnknownCharacterExc      if the character's name passed does not correspond to nd existing character in the current show
+     * @throws DuplicateRelationshipExc if the characters passed are already in a parent-child relationship
      */
     void addRelationship(String parent, String child, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc;
 
     /**
-     * Add romance.
+     * Add a romantic relationship between two characters.
      *
-     * @param char1 the char 1
-     * @param char2 the char 2
-     * @param aux   the aux
-     * @throws UnknownCharacterExc      the unknown character exc
-     * @throws DuplicateRelationshipExc the duplicate relationship exc
+     * @param char1 the name of one of the lovers
+     * @param char2 the name of the other lover
+     * @param aux   auxiliary list used to pass values to main class
+     * @throws UnknownCharacterExc      if the character's name passed does not correspond to nd existing character in the current show
+     * @throws DuplicateRelationshipExc if the characters passed are already in a romantic relationship
      */
     void addRomance(String char1, String char2, List<String> aux) throws UnknownCharacterExc, DuplicateRelationshipExc;
 
     /**
-     * How are these two related stack.
+     * Returns a stack of characters containing the order in which the two character given are related.
      *
-     * @param char1 the char 1
-     * @param char2 the char 2
-     * @param aux   the aux
-     * @return the stack
-     * @throws UnknownCharacterExc the unknown character exc
-     * @throws NotRelatedExc       the not related exc
+     * @param char1 name of one of the characters
+     * @param char2 name of the other character
+     * @param aux    auxiliary list used to pass values to main class
+     * @return the stack of related characters or null
+     * @throws UnknownCharacterExc if the character's name passed does not correspond to nd existing character in the current show
+     * @throws NotRelatedExc       is there is no family relationship between the two characters
      */
     Stack<Character> howAreTheseTwoRelated(String char1, String char2, List<String> aux) throws UnknownCharacterExc, NotRelatedExc;
 
     /**
-     * Real char boolean.
+     * Check whether the given character is a real or virtual character
      *
-     * @param charName the char name
+     * @param charName the character's name
      * @return the boolean
-     * @throws NotRealCharacterExc the not real character exc
+     * @throws NotRealCharacterExc if the character is not and instanceOf realCharacter
      */
     boolean realChar(String charName) throws NotRealCharacterExc;
 

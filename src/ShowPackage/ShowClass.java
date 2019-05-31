@@ -105,10 +105,10 @@ public class ShowClass implements Show {
 
         Character auxChar = characters.get(charName);
 
-        auxList.add(0,auxChar.getParentsIt());
-        auxList.add(1,auxChar.getChildrenIt());
-        auxList.add(2,auxChar.getSiblingsIt());
-        auxList.add(3,auxChar.getRomancesIt());
+        auxList.add(0,auxChar.getParentsIt());  //iterator to the character's parents, acessed by index in the for loop
+        auxList.add(1,auxChar.getChildrenIt()); //iterator to the character's children, acessed by index in the for loop
+        auxList.add(2,auxChar.getSiblingsIt()); //iterator to the character's siblings, acessed by index in the for loop
+        auxList.add(3,auxChar.getRomancesIt()); //iterator to the character's romantic partners, acessed by index in the for loop
 
         return auxChar.getCharacterEvents();
     }

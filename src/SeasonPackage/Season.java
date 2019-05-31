@@ -14,50 +14,50 @@ import MyExceptionsPackage.NonExistentEpisodeExc;
 public interface Season  {
 
     /**
-     * Gets episode name.
+     * Gets the episode's name.
      *
-     * @param epiNumber the epi number
-     * @return the episode name
-     * @throws NonExistentEpisodeExc the non existent episode exc
+     * @param epiNumber the number of the episode
+     * @return episode name
+     * @throws NonExistentEpisodeExc if there is no episode with the given number on the current season
      */
     String getEpisodeName(int epiNumber) throws NonExistentEpisodeExc;
 
     /**
-     * Gets episode.
+     * Gets the episode.
      *
-     * @param index the index
-     * @return the episode
+     * @param index the number of the episode
+     * @return episode
      */
     Episode getEpisode(int index);
 
     /**
-     * Add episode int.
+     * Adds an episode to the current season. The episodes are added sequentially in an ArrayList
      *
-     * @param epiName the epi name
-     * @return the int
+     * @param epiName the episode's name
+     * @return the number of the episode
      */
     int addEpisode(String epiName);
 
     /**
-     * Gets episodes number.
+     * Gets the total number of episodes in the current season.
      *
-     * @return the episodes number
+     * @return episodes number
      */
     int getEpisodesNumber();
 
     /**
-     * Participates in boolean.
+     * Checks if a given character is an active participant in the season.
      *
-     * @param charName the char name
-     * @return the boolean
+     * @param charName the character's name
+     * @return <tt>true</tt> if the given character is a participant
      */
     boolean participatesIn(String charName);
 
     /**
-     * Add participant boolean.
+     * Add the given character to the season's participants.
      *
      * @param character the character
-     * @return the boolean
+     * @return <tt>true</tt> if the character was successfully added
      */
     boolean addParticipant(Character character);
 }

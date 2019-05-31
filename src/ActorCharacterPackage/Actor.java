@@ -20,16 +20,18 @@ public interface Actor {
     String getName();
 
     /**
-     * Gets number of romantic shows.
+     * Gets number of shows where this actor
+     * has romantic relationships
      *
-     * @return the number of romantic shows
+     * @return the number of "romantic" shows
      */
     int getNumberOfRomanticShows();
 
     /**
-     * Gets total romantic num.
+     * Gets total sum of all romantic relationships that actor has
+     * in all shows he plays
      *
-     * @return the total romantic num
+     * @return int of the total number of romantic relationships
      */
     int getTotalRomanticNum();
 
@@ -41,9 +43,10 @@ public interface Actor {
     int getNumberOfroles();
 
     /**
-     * Gets num of rom rel by show it.
+     * Gets the iterator to the map where:
+     * (String,Integer) corresponds to (showName, numberOfRomanticRelationships)
      *
-     * @return the num of rom rel by show it
+     * @return iterator
      */
     Iterator<Map.Entry<String, Integer>> getNumOfRomRelByShowIt();
 
@@ -56,9 +59,12 @@ public interface Actor {
     Iterator<String> StarsOn();
 
     /**
-     * Sets num of rom rel by show.
+     * Sets number of romantic relationships for each show.
+     * If the show is already registered, we increment that value
      *
-     * @param showName the show name
+     * @param showName the show name that we want
+     * to save or update the correspondent number of romantic
+     * relationships that actor has in that show
      */
     void setNumOfRomRelByShow(String showName);
 

@@ -10,30 +10,30 @@ package QuotesPackage;
 public interface Quote {
 
     /**
-     * Gets quote.
+     * Gets the quote's text.
      *
-     * @return the quote
+     * @return quote text
      */
     String getQuote();
 
     /**
-     * Gets char name.
+     * Gets the character's name.
      *
-     * @return the char name
+     * @return character name
      */
     String getCharName();
 
     /**
-     * Gets season.
+     * Gets the season's number.
      *
-     * @return the season
+     * @return season number
      */
     int getSeason();
 
     /**
-     * Gets episode.
+     * Gets the episode's number.
      *
-     * @return the episode
+     * @return episode number
      */
     int getEpisode();
 }

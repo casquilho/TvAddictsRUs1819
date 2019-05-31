@@ -120,6 +120,7 @@ public class Main {
     ///////////////////////////COMMANDS////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 
+    /*Show which is the current show*/
     private static void currentShow(ShowPedia showPedia){
         try{
             printCurrentShow(showPedia);
@@ -129,6 +130,7 @@ public class Main {
         }
     }
 
+    /*Add a new show*/
     private static void addShow(Scanner in, ShowPedia showPedia){
         try{
             String showName = in.nextLine();
@@ -140,6 +142,7 @@ public class Main {
         }
     }
 
+    /*Changes the context to a particular show*/
     private static void switchToShow(Scanner in, ShowPedia showPedia){
         try{
             String showName = in.nextLine();
@@ -151,6 +154,7 @@ public class Main {
         }
     }
 
+    /*Add a new season to the current show*/
     private static void addSeason(ShowPedia showPedia){
         try{
             showPedia.addSeasonToCurrentShow();
@@ -161,6 +165,7 @@ public class Main {
         }
     }
 
+    /*Add a new episode to a particular season of the show*/
     private static void addEpisode(Scanner in, ShowPedia showPedia){
         try{
             int seasonNumber = in.nextInt();
@@ -173,6 +178,7 @@ public class Main {
         }
     }
 
+    /*Add a new character to the show*/
     private static void addCharacter(Scanner in, ShowPedia showPedia){
 
         String type = null;
@@ -209,6 +215,7 @@ public class Main {
         }
     }
 
+    /*Add a new family relationship between characters*/
     private static void addRelationship(Scanner in, ShowPedia showPedia){
         String parent = null;
         String child  = null;
@@ -231,6 +238,7 @@ public class Main {
         }
     }
 
+    /*Add a romantic relationship between characters*/
     private static void addRomance(Scanner in, ShowPedia showPedia){
 
         String char1 = null;
@@ -253,6 +261,7 @@ public class Main {
         }
     }
 
+    /*Add a signicant event involving at least one character*/
     private static void addEvent(Scanner in, ShowPedia showPedia){
         String eventDescription = null;
         String showName = null;
@@ -288,6 +297,7 @@ public class Main {
         }
     }
 
+    /*Add a new quote to a character*/
     private static void addQuote(Scanner in, ShowPedia showPedia){
         int season = 0;
         int episode = 0;
@@ -319,6 +329,7 @@ public class Main {
         }
     }
 
+    /*Outline the contents of the selected seasons for the selected show*/
     private static void seasonsOutline(Scanner in, ShowPedia showPedia){
         int seasonStart;
         int seasonEnd;
@@ -358,6 +369,7 @@ public class Main {
         }
     }
 
+    /*Outline the main information on a specic character*/
     private static void characterResume(Scanner in, ShowPedia showPedia){
         boolean flag = true;                                        //used to control the printing of "," in the family information
         Event eventAux;
@@ -425,6 +437,7 @@ public class Main {
         }
     }
 
+    /*Find out if and how two characters may be related*/
     private static void howAreTheseTwoRelated(Scanner in, ShowPedia showPedia){
 
         String char1  = null;
@@ -455,6 +468,7 @@ public class Main {
         }
     }
 
+    /*Find out which character(s) said a particular quote*/
     private static void famousQuotes(Scanner in, ShowPedia showPedia){
         try{
             String quote = in.nextLine();
@@ -472,6 +486,7 @@ public class Main {
         }
     }
 
+    /*Which other shows and roles does this actor appear on?*/
     private static void alsoAppearsOn(Scanner in, ShowPedia showPedia){
         String charName = null;
 
@@ -491,6 +506,7 @@ public class Main {
         }
     }
 
+    /*Is there anybody more romantic than X*/
     private static void mostRomantic(Scanner in, ShowPedia showPedia){
         String actorName = null;
         try {
@@ -515,6 +531,7 @@ public class Main {
         }
     }
 
+    /*Which company has the highest revenue with their CGI virtual actors?*/
     private static void kingOfCGI(ShowPedia showPedia){
         try{
             CGICompany aux = showPedia.kingOfCgi();
@@ -525,6 +542,7 @@ public class Main {
         }
     }
 
+    /*Shows the available commands*/
     private static void help(){
         System.out.println(  "currentShow - show the current show\n"
                             +"addShow - add a new show\n"
